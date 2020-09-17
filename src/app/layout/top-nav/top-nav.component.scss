@@ -1,0 +1,54 @@
+@import '../../../assets/colours';
+.nav-link{
+    font-weight: bolder;
+}
+.top-nav-menu {
+    padding: 0;
+    .navbar-collapse {
+        background-color:$primary_background;
+        height: 50px;
+    }
+    ul {
+        li {
+            padding: 0px;
+            margin: 0;
+        }
+    }
+    .nav-link {
+        color: $bg_white;
+        font-size: 18px;
+        font-weight: 400;
+        cursor: pointer;
+        padding: 11.5px 20px;
+        transition: all 0.5s;
+    }
+    .active, .active a, .nav-link:hover, .nav-link:focus  {
+        background-color: #effedc;
+        color: #000000;
+    }
+    .dropdown-menu {
+        background-color: #fff;
+        margin-top: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.6);
+        padding: 0;
+        a {
+            background-color: #fff;
+            color: $primary_background;
+            border-bottom: 1px solid #cecece;
+            padding: 12px 15px;
+        }
+        a:hover {
+            color: #fff;
+            background-color: $primary_background;
+            transition: all 0.5s;
+        }
+        .active {
+            background-color: #EFFEDC;
+        }
+        .dropdown-toggle::after {
+            margin-left: 10px;
+        }
+    }
+}
