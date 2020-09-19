@@ -11,13 +11,13 @@ export class TopNavComponent implements OnInit {
 
   constructor(
     public auth: AuthenticationService,
-        private router: Router,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
   }
 
-  logout() {
+  logout(): void {
     this.auth.logout();
     this.router.navigate(['/login']);
 }

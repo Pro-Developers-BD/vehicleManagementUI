@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-secondary ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+    <nav class="navbar navbar-dark bg-dark">
+      <app-authorised-side-nav-toggler></app-authorised-side-nav-toggler>
+      <a class="navbar-brand" routerLink="/">Vehicle & Client Management</a>
+    </nav>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/vehicles" [routerLinkActive]="['active']">Vehicles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/brands" [routerLinkActive]="['active']">Brands</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-item nav-link" routerLink="" (click)="logout()" *ngIf="auth.currentUserValue">Logout</a>
+          <a class="nav-item nav-link" routerLink="/login" *ngIf="auth.currentUserValue == null">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
