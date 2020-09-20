@@ -25,6 +25,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HomeComponent } from './components/layout/home/home.component';
 import { AuthorisedSideNavTogglerComponent } from './components/layout/authorised/authorised-side-nav-toggler/authorised-side-nav-toggler.component';
 import { AuthorisedSideNavComponent } from './components/layout/authorised/authorised-side-nav/authorised-side-nav.component';
+import { ProfessionComponent } from './components/client/profession/profession.component';
+import { ProfessionSaveComponent } from './components/client/profession/profession-save/profession-save.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AuthorisedSideNavComponent } from './components/layout/authorised/autho
     SafePipe,
     HomeComponent,
     AuthorisedSideNavTogglerComponent,
-    AuthorisedSideNavComponent
+    AuthorisedSideNavComponent,
+    ProfessionComponent,
+    ProfessionSaveComponent
   ],
   imports: [
     BrowserModule,

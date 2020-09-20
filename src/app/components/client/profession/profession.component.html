@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-12 p-0">
+    <div class="pageTitle text-left">
+      <h4 class="mb-n1 text-center">Profession List</h4>
+    </div>
+  </div>
+  <div class="col-sm-12 inner-wraper">
+    <table class="table table-bordered post-list">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Created Date</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let profession of professionList">
+        <td>{{ profession?.professionName}}</td>
+        <td>{{ profession?.createdDate | date}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <div>
+              <a class="btn btn-primary"
+                 routerLink="/profession/save/{{profession.id}}">Edit</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

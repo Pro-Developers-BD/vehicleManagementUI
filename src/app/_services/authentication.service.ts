@@ -47,9 +47,9 @@ export class AuthenticationService {
 
   // tslint:disable-next-line:typedef
   login(username: string, password: string) {
-    return this.http.post<any>(`http://localhost:1234/auth/login`, {username, password})
+    return this.http.post<any>(`http://localhost:1234/v1/api/auth/login`, {username, password})
       .pipe(map(user => {
-        if (user && user.accessToken) {
+        if (user && user.content.token) {
           this.cookieService.set('currentUser', JSON.stringify(user));
           // this.getuserPermissions();
           this.currentUserSubject.next(user);
@@ -57,15 +57,12 @@ export class AuthenticationService {
         return user;
       }));
   }
-
-  // tslint:disable-next-line:typedef
-  logout() {
+  logout(): void {
     this.cookieService.delete('currentUser');
     this.currentUserSubject.next(null);
   }
-  // tslint:disable-next-line:typedef
-  public getVerificationToken(token: string) {
-    return this.http.get(this.url + '/public/verify/' + token);
+  public getVerificationToken(token: string): any {
+    return this.http.get(this.url + '/auth' + token);
   }
 
 }

@@ -2,11 +2,10 @@
 .landing {
   position: relative;
   background-size: cover;
+  background: url('../../../../assets/img/homepagePic.jpeg') no-repeat center;
   height: 100vh;
-  width:auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 1160px;
+  margin-bottom: -10px;
 }
 
 .landing-inner {
@@ -14,7 +13,7 @@
 }
 
 .dark-overlay {
-  background-color: grey;
+  background-color: rgba(0, 0, 0, 0.7);
   position: relative;
   top: 0;
   left: 0;

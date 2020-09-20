@@ -1,4 +1,4 @@
-<div>
-	<app-header></app-header>
-	<app-footer></app-footer>
-  </div>
+<div [ngClass]="{'public-wrapper': auth.currentUserValue==null, 'admin-wrapper':auth.currentUserValue !=null }">
+  <app-header></app-header>
+  <app-footer></app-footer>
+</div>

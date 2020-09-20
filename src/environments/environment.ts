@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiurl: {
-    service: 'http://localhost:1234'
+    service: 'http://localhost:1234/v1/api'
   }
 };
 
