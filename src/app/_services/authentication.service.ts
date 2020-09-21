@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -16,6 +16,11 @@ export class AuthenticationService {
   public permissions: any[];
 
   private url = environment.apiurl.service;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(
     private http: HttpClient,
@@ -32,9 +37,10 @@ export class AuthenticationService {
       this.currentUserSubject = new BehaviorSubject<User>(null);
     }
     this.currentUser = this.currentUserSubject.asObservable();
+    console.log(this.currentUser);
   }
 
-  public get currentUserValue(): User {
+  public get currentUserValue(): any {
     return this.currentUserSubject.value;
   }
 

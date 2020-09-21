@@ -27,6 +27,8 @@ import { AuthorisedSideNavTogglerComponent } from './components/layout/authorise
 import { AuthorisedSideNavComponent } from './components/layout/authorised/authorised-side-nav/authorised-side-nav.component';
 import { ProfessionComponent } from './components/client/profession/profession.component';
 import { ProfessionSaveComponent } from './components/client/profession/profession-save/profession-save.component';
+import { ClientInfoComponent } from './components/client/client-info/client-info.component';
+import { ClientInfoSaveComponent } from './components/client/client-info-save/client-info-save.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ProfessionSaveComponent } from './components/client/profession/professi
     AuthorisedSideNavTogglerComponent,
     AuthorisedSideNavComponent,
     ProfessionComponent,
-    ProfessionSaveComponent
+    ProfessionSaveComponent,
+    ClientInfoComponent,
+    ClientInfoSaveComponent
   ],
   imports: [
     BrowserModule,
