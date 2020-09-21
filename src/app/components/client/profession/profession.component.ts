@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientService} from "../../../_services/client.service";
+import {ClientService} from '../../../_services/client.service';
 
 @Component({
   selector: 'app-profession',
@@ -19,7 +19,7 @@ export class ProfessionComponent implements OnInit {
     this.loadData();
   }
 
-  loadData() : void{
+  loadData(): void{
     this.clientService.getProfessionList().subscribe(
       (data: any) => {
         this.professionList = data.content;

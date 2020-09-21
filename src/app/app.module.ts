@@ -27,8 +27,8 @@ import { AuthorisedSideNavTogglerComponent } from './components/layout/authorise
 import { AuthorisedSideNavComponent } from './components/layout/authorised/authorised-side-nav/authorised-side-nav.component';
 import { ProfessionComponent } from './components/client/profession/profession.component';
 import { ProfessionSaveComponent } from './components/client/profession/profession-save/profession-save.component';
-import { ClientInfoComponent } from './components/client/client-info/client-info.component';
-import { ClientInfoSaveComponent } from './components/client/client-info-save/client-info-save.component';
+import { EmailDomainComponent } from './components/client/email-domain/email-domain.component';
+import { EmailDomainSaveComponent } from './components/client/email-domain/email-domain-save/email-domain-save.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +43,8 @@ import { ClientInfoSaveComponent } from './components/client/client-info-save/cl
     AuthorisedSideNavComponent,
     ProfessionComponent,
     ProfessionSaveComponent,
-    ClientInfoComponent,
-    ClientInfoSaveComponent
+    EmailDomainComponent,
+    EmailDomainSaveComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login';
 import {HomeComponent} from './components/layout/home/home.component';
 import {ProfessionSaveComponent} from './components/client/profession/profession-save/profession-save.component';
 import {ProfessionComponent} from './components/client/profession/profession.component';
+import {EmailDomainSaveComponent} from './components/client/email-domain/email-domain-save/email-domain-save.component';
+import {EmailDomainComponent} from './components/client/email-domain/email-domain.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -11,6 +13,9 @@ const routes: Routes = [
   {path: 'profession/save', component: ProfessionSaveComponent},
   {path: 'profession/save/:id', component: ProfessionSaveComponent},
   {path: 'profession/list', component: ProfessionComponent},
+  {path: 'emailDomain/save', component: EmailDomainSaveComponent},
+  {path: 'emailDomain/save/:id', component: EmailDomainSaveComponent},
+  {path: 'emailDomain/list', component: EmailDomainComponent},
   {path: '**', redirectTo: ''}
 ];
 
