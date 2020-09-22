@@ -1,1 +1,131 @@
-<p>client-info-save works!</p>
+<div class="row">
+  <div class="col-12 p-0">
+    <div class="pageTitle text-left">
+      <h4 class="mb-n1 text-center">Address Book</h4>
+    </div>
+  </div>
+
+  <div class="col-sm-12 inner-wraper">
+    <form [formGroup]="clientForm" (ngSubmit)="uploadSubmit()">
+      <div class="row">
+        <div class="col-12 col-sm-8">
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="customerName" class="col-form-label">Customer Name<span
+                class="text-danger"> (*)</span> </label>
+              <input class="form-control" type="text" id="customerName" formControlName="customerName">
+              <div *ngIf="submitted" class="alert alert-danger">
+                <div *ngIf="customerName?.errors?.required">
+                  Customer Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="companyName" class="col-form-label">Company Name<span
+                class="text-danger"> (*)</span> </label>
+              <input class="form-control" type="text" id="companyName" formControlName="companyName">
+              <div *ngIf="submitted" class="alert alert-danger">
+                <div *ngIf="companyName?.errors?.required">
+                  Company Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="profession" class="col-form-label">Profession<span
+                class="text-danger"> (*)</span> </label>
+              <select formControlName="profession" id="profession" class="form-control">
+                <option disabled>Select Profession</option>
+                <option >Choose One</option>
+                <option *ngFor="let prof of professionList">{{prof.professionName}}</option>
+              </select>
+              <div *ngIf="submitted" class="alert alert-danger">
+                <div *ngIf="profession?.errors?.required">
+                  Profession is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="address" class="col-form-label">Address<span
+                class="text-danger"> (*)</span> </label>
+              <input class="form-control" type="text" id="address" formControlName="address">
+              <div *ngIf="submitted" class="alert alert-danger">
+                <div *ngIf="address?.errors?.required">
+                  Address is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="areaName" class="col-form-label">Area Name<span
+                class="text-danger"> (*)</span> </label>
+              <input class="form-control" type="text" id="areaName" formControlName="areaName">
+              <div *ngIf="submitted" class="alert alert-danger">
+                <div *ngIf="areaName?.errors?.required">
+                  Area Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="divisionName" class="col-form-label">Division Name<span
+                class="text-danger"> (*)</span> </label>
+              <input class="form-control" type="text" id="divisionName" formControlName="divisionName">
+              <div *ngIf="submitted" class="alert alert-danger">
+                <div *ngIf="divisionName?.errors?.required">
+                  Division Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="contactNo" class="col-form-label">Contact No<span
+                class="text-danger"> (*)</span> </label>
+              <input class="form-control" type="number" placeholder="01*********" id="contactNo" formControlName="contactNo">
+              <div *ngIf="submitted" class="alert alert-danger">
+                <div *ngIf="contactNo?.errors?.required">
+                  Contact No is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="emailAddress" class="col-form-label">Email Address<span
+                class="text-danger"> (*)</span> </label>
+              <input class="form-control" type="text" id="emailAddress" formControlName="emailAddress">
+              <div *ngIf="submitted" class="alert alert-danger">
+                <div *ngIf="emailAddress?.errors?.required">
+                  Email Address is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="mt-2 pr-2 ml-3">
+          <input type="submit" class="btn btn-lg btn-success" value="Save">
+        </div>
+        <div class="mt-2">
+          <input type="reset" class="btn btn-lg btn-danger" value="Reset">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

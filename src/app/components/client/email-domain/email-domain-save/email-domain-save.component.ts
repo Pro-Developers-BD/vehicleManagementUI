@@ -12,9 +12,9 @@ import {ClientService} from '../../../../_services/client.service';
 export class EmailDomainSaveComponent implements OnInit {
   submitted = false;
   public pageTitle: string;
-  public brand: any;
   public emailDomainForm: FormGroup;
   public domainName: any;
+  private result: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,8 +38,8 @@ export class EmailDomainSaveComponent implements OnInit {
             id: res.content.id,
             domainName: res.content.domainName,
           });
-          this.brand = res;
-          console.log(this.brand);
+          this.result = res;
+          console.log(this.result);
         }
       );
     } else {

@@ -5,12 +5,12 @@
 #sidebar {
   min-width: 200px;
   max-width: 200px;
-  min-height: 100vh;
+  min-height: 120vh;
   color: #fff;
   transition: all 0.3s;
   font-weight: 300;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 #sidebar.hidden {

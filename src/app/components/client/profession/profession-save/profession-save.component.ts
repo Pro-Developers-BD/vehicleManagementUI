@@ -13,9 +13,9 @@ export class ProfessionSaveComponent implements OnInit {
   public baseUrl = environment.apiurl.service;
   submitted = false;
   public pageTitle: string;
-  public brand: any;
   public professionForm: FormGroup;
   public professionName: any;
+  public result: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -38,8 +38,8 @@ export class ProfessionSaveComponent implements OnInit {
             id: res.content.id,
             professionName: res.content.professionName,
           });
-          this.brand = res;
-          console.log(this.brand);
+          this.result = res;
+          console.log(this.result);
         }
       );
     } else {

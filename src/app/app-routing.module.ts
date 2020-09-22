@@ -6,6 +6,8 @@ import {ProfessionSaveComponent} from './components/client/profession/profession
 import {ProfessionComponent} from './components/client/profession/profession.component';
 import {EmailDomainSaveComponent} from './components/client/email-domain/email-domain-save/email-domain-save.component';
 import {EmailDomainComponent} from './components/client/email-domain/email-domain.component';
+import {ClientInfoComponent} from './components/client/client-info/client-info.component';
+import {ClientInfoSaveComponent} from './components/client/client-info-save/client-info-save.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,6 +18,9 @@ const routes: Routes = [
   {path: 'emailDomain/save', component: EmailDomainSaveComponent},
   {path: 'emailDomain/save/:id', component: EmailDomainSaveComponent},
   {path: 'emailDomain/list', component: EmailDomainComponent},
+  {path: 'client/list', component: ClientInfoComponent},
+  {path: 'client/save', component: ClientInfoSaveComponent},
+  {path: 'client/save/:id', component: ClientInfoSaveComponent},
   {path: '**', redirectTo: ''}
 ];
 

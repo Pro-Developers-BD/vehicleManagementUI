@@ -1,1 +1,41 @@
-<p>client-info works!</p>
+<!--
+<div class="container-fluid">
+  <div class="col-12">
+    <div class="pageTitle text-left">
+      <h4 class="mb-n1 text-center">Customer List</h4>
+    </div>
+  </div>
+  <div class="col-12 inner-wraper">
+    <button class="btn-primary p-2 mt-2 mb-2" routerLink="/client/save">Add Customer</button>
+    <table datatable class="row-border hover">
+      <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th>Company Name</th>
+        <th>Profession</th>
+        <th>Address</th>
+        <th>Area Name</th>
+        <th>Division Name</th>
+        <th>Contact No</th>
+        <th>Email Address</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let emailDomain of domainList">
+        <td>{{ emailDomain?.domainName}}</td>
+        <td>{{ createdDate | date}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <div>
+              <a class="btn btn-primary"
+                 routerLink="/emailDomain/save/{{emailDomain.id}}">Edit</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+-->

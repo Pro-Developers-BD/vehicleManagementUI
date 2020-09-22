@@ -35,4 +35,12 @@ export class ClientService {
   getDomainList(): any{
     return this.http.get(this.baseUrl + '/domains');
   }
+
+  saveClientInfo(data: FormData): any {
+    return this.http.post(this.baseUrl + '/clients', data);
+  }
+
+  getClientInfoById(id): any {
+    return this.http.get(this.baseUrl + '/clients/' + id);
+  }
 }

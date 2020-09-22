@@ -30,6 +30,8 @@ import { ProfessionComponent } from './components/client/profession/profession.c
 import { ProfessionSaveComponent } from './components/client/profession/profession-save/profession-save.component';
 import { EmailDomainComponent } from './components/client/email-domain/email-domain.component';
 import { EmailDomainSaveComponent } from './components/client/email-domain/email-domain-save/email-domain-save.component';
+import { ClientInfoSaveComponent } from './components/client/client-info-save/client-info-save.component';
+import { ClientInfoComponent } from './components/client/client-info/client-info.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { EmailDomainSaveComponent } from './components/client/email-domain/email
     ProfessionComponent,
     ProfessionSaveComponent,
     EmailDomainComponent,
-    EmailDomainSaveComponent
+    EmailDomainSaveComponent,
+    ClientInfoSaveComponent,
+    ClientInfoComponent
   ],
   imports: [
     BrowserModule,
