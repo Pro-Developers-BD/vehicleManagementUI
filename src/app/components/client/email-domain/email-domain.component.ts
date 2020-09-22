@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ClientService} from '../../../_services/client.service';
 
 @Component({
   selector: 'app-email-domain',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailDomainComponent implements OnInit {
 
-  constructor() { }
+  public domainList: any;
+  public createdDate: Date;
 
-  ngOnInit(): void {
+  constructor(
+    private clientService: ClientService
+  ) {
   }
 
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(): void{
+    this.clientService.getDomainList().subscribe(
+      (data: any) => {
+        this.domainList = data.content;
+        this.createdDate = new Date();
+      }
+    );
+  }
 }

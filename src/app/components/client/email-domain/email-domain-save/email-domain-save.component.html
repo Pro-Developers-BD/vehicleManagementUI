@@ -1,1 +1,36 @@
-<p>email-domain-save works!</p>
+<div class="row">
+  <div class="col-12 p-0">
+    <div class="pageTitle text-left">
+      <h4 class="mb-n1 text-center">Email Domain</h4>
+    </div>
+  </div>
+
+  <div class="col-sm-12 inner-wraper">
+    <form [formGroup]="emailDomainForm" (ngSubmit)="uploadSubmit()">
+      <div class="row">
+        <div class="col-12 col-sm-8">
+          <div class="row">
+            <div class="form-group col-12">
+              <label for="domainName" class="col-form-label">Domain Name<span
+                class="text-danger"> (*)</span> </label>
+              <input class="form-control" type="text" id="domainName" formControlName="domainName">
+              <div *ngIf="submitted" class="alert alert-danger">
+                <div *ngIf="domainName?.errors?.required">
+                  Email Domain is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mt-2 pr-2 ml-3">
+          <input type="reset" class="btn btn-lg btn-danger" value="Reset">
+        </div>
+        <div class="mt-2">
+          <input type="submit" class="btn btn-lg btn-success" value="Save">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

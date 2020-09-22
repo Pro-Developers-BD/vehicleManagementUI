@@ -26,4 +26,13 @@ export class ClientService {
   getProfessionList(): any{
     return this.http.get(this.baseUrl + '/professions' );
   }
+  getDomainById(id): any {
+    return this.http.get(this.baseUrl + '/domains/' + id);
+  }
+  saveDomain(data: any): any {
+    return this.http.post(this.baseUrl + '/domains', data);
+  }
+  getDomainList(): any{
+    return this.http.get(this.baseUrl + '/domains');
+  }
 }
