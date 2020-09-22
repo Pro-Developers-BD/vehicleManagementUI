@@ -53,7 +53,7 @@ export class ClientInfoSaveComponent implements OnInit {
             id: res.content.id,
             customerName: res.content.customerName,
             companyName: res.content.companyName,
-            profession: this.professionList,
+            profession: res.content.profession,
             address: res.content.address,
             areaName: res.content.areaName,
             divisionName: res.content.divisionName,
@@ -85,7 +85,7 @@ export class ClientInfoSaveComponent implements OnInit {
       data.append('emailAddress', this.clientForm.controls.emailAddress.value);
       this.clientService.saveClientInfo(data).subscribe(
         res => {
-          if (res) {
+          if (res.status=='Created') {
             this.router.navigate(['client/list']);
           }
         });

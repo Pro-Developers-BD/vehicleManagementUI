@@ -13,12 +13,7 @@
             <div class="form-group col-12">
               <label for="domainName" class="col-form-label">Domain Name<span
                 class="text-danger"> (*)</span> </label>
-              <input class="form-control" type="text" id="domainName" formControlName="domainName">
-              <div *ngIf="submitted" class="alert alert-danger">
-                <div *ngIf="domainName?.errors?.required">
-                  Email Domain is required
-                </div>
-              </div>
+              <input class="form-control" type="text" id="domainName" required="true" formControlName="domainName">
             </div>
           </div>
         </div>
@@ -30,7 +25,7 @@
         <div class="mt-2">
           <input type="submit" class="btn btn-lg btn-success" value="Save">
         </div>
-      </div>
+      </div>s
     </form>
   </div>
 </div>

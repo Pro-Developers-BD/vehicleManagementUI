@@ -55,7 +55,7 @@ export class EmailDomainSaveComponent implements OnInit {
       data.append('domainName', this.emailDomainForm.controls.domainName.value);
       this.clientService.saveDomain(data).subscribe(
         res => {
-          if (res) {
+          if (res.status=='Created') {
             this.router.navigate(['emailDomain/list']);
           }
         });

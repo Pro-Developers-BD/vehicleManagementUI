@@ -43,4 +43,8 @@ export class ClientService {
   getClientInfoById(id): any {
     return this.http.get(this.baseUrl + '/clients/' + id);
   }
+
+  getClientList() {
+    return this.http.get(this.baseUrl + '/clients' );
+  }
 }

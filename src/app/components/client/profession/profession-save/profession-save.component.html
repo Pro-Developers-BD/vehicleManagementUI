@@ -13,22 +13,17 @@
             <div class="form-group col-12">
               <label for="professionName" class="col-form-label">Profession Name<span
                 class="text-danger"> (*)</span> </label>
-              <input class="form-control" type="text" id="professionName" formControlName="professionName">
-              <div *ngIf="submitted" class="alert alert-danger">
-                <div *ngIf="professionName?.errors?.required">
-                  Profession is required
-                </div>
-              </div>
+              <input class="form-control" type="text" id="professionName" required="true" formControlName="professionName">
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="mt-2 pr-2 ml-3">
-          <input type="submit" class="btn btn-lg btn-success" value="Reset">
+          <input type="reset" class="btn btn-lg btn-danger" value="Reset">
         </div>
         <div class="mt-2">
-          <input type="reset" class="btn btn-lg btn-danger" value="Save">
+          <input type="submit" class="btn btn-lg btn-success" value="Save">
         </div>
       </div>
     </form>

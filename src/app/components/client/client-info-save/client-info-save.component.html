@@ -39,9 +39,8 @@
               <label for="profession" class="col-form-label">Profession<span
                 class="text-danger"> (*)</span> </label>
               <select formControlName="profession" id="profession" class="form-control">
-                <option disabled>Select Profession</option>
-                <option >Choose One</option>
-                <option *ngFor="let prof of professionList">{{prof.professionName}}</option>
+                <option readonly="true">Select Profession</option>
+                <option *ngFor="let prof of professionList" >{{prof.professionName}}</option>
               </select>
               <div *ngIf="submitted" class="alert alert-danger">
                 <div *ngIf="profession?.errors?.required">
@@ -120,10 +119,10 @@
       </div>
       <div class="row">
         <div class="mt-2 pr-2 ml-3">
-          <input type="submit" class="btn btn-lg btn-success" value="Save">
+          <input type="reset" class="btn btn-lg btn-danger" value="Reset">
         </div>
         <div class="mt-2">
-          <input type="reset" class="btn btn-lg btn-danger" value="Reset">
+          <input type="submit" class="btn btn-lg btn-success" value="Save">
         </div>
       </div>
     </form>
