@@ -1,11 +1,12 @@
-<div class="row">
-  <div class="col-12 p-0">
+<div class="container-fluid">
+  <div class="col-12">
     <div class="pageTitle text-left">
       <h4 class="mb-n1 text-center">Profession List</h4>
     </div>
   </div>
-  <div class="col-sm-12 inner-wraper">
-    <table class="table table-bordered post-list">
+  <div class="col-12 inner-wraper">
+    <button class="btn-primary p-2 mt-2 mb-2" routerLink="/profession/save">Add New Profession</button>
+    <table datatable class="row-border hover">
       <thead>
       <tr>
         <th>Name</th>
@@ -16,7 +17,7 @@
       <tbody>
       <tr *ngFor="let profession of professionList">
         <td>{{ profession?.professionName}}</td>
-        <td>{{ profession?.createdDate | date}}</td>
+        <td>{{ createdDate | date}}</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
             <div>

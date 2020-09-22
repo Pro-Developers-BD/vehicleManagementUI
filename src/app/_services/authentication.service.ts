@@ -43,16 +43,12 @@ export class AuthenticationService {
   public get currentUserValue(): any {
     return this.currentUserSubject.value;
   }
-
-  // tslint:disable-next-line:typedef
-  private checkAvailability(arr, val) {
+  private checkAvailability(arr, val): any {
     return arr.some(function(arrVal) {
       return val === arrVal.authority;
     });
   }
-
-  // tslint:disable-next-line:typedef
-  login(username: string, password: string) {
+  login(username: string, password: string): any {
     return this.http.post<any>(`http://localhost:1234/v1/api/auth/login`, {username, password})
       .pipe(map(user => {
         if (user && user.content.token) {

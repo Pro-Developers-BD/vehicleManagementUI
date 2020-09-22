@@ -14,6 +14,7 @@ import { JwtInterceptor, ErrorInterceptor, AppErrorHandler } from './_helpers';
 import { SafePipe } from './_helpers/safe.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataTablesModule } from 'angular-datatables';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ShareButtonsModule } from '@ngx-share/buttons';
@@ -55,6 +56,7 @@ import { EmailDomainSaveComponent } from './components/client/email-domain/email
     NgSelectModule,
     ShareButtonsModule,
     BrowserAnimationsModule,
+    DataTablesModule,
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
     AccordionModule.forRoot(),

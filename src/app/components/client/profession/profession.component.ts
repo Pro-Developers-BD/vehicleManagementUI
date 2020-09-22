@@ -9,6 +9,7 @@ import {ClientService} from '../../../_services/client.service';
 export class ProfessionComponent implements OnInit {
 
   public professionList: any;
+  public createdDate: Date;
 
   constructor(
     private clientService: ClientService
@@ -23,7 +24,7 @@ export class ProfessionComponent implements OnInit {
     this.clientService.getProfessionList().subscribe(
       (data: any) => {
         this.professionList = data.content;
-        console.log(this.professionList);
+        this.createdDate = new Date();
       }
     );
   }

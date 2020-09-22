@@ -20,7 +20,7 @@ export class ProfessionSaveComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private clientService: ClientService
+    private clientService: ClientService,
   ) {
     this.professionForm = this.formBuilder.group({
       id: '',
@@ -35,8 +35,8 @@ export class ProfessionSaveComponent implements OnInit {
       this.clientService.getProfessionById(parseInt(id)).subscribe(
         (res: any ) => {
           this.professionForm.patchValue({
-            id: res.id,
-            professionName: res.professionName,
+            id: res.content.id,
+            professionName: res.content.professionName,
           });
           this.brand = res;
           console.log(this.brand);
@@ -55,12 +55,8 @@ export class ProfessionSaveComponent implements OnInit {
       data.append('professionName', this.professionForm.controls.professionName.value);
       this.clientService.saveProfession(data).subscribe(
         res => {
-          if (res === 'OK') {
-            if (this.professionForm.controls.id.value) {
-              this.router.navigate(['profession/save/' + this.professionForm.controls.id.value]);
-            } else {
-              this.router.navigate(['profession/list']);
-            }
+          if (res) {
+            this.router.navigate(['profession/list']);
           }
         });
     }
