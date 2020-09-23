@@ -14,7 +14,7 @@
               <label for="customerName" class="col-form-label">Customer Name<span
                 class="text-danger"> (*)</span> </label>
               <input class="form-control" type="text" id="customerName" formControlName="customerName">
-              <div *ngIf="submitted" class="alert alert-danger">
+              <div *ngIf="submitted && customerName.invalid" class="alert alert-danger">
                 <div *ngIf="customerName?.errors?.required">
                   Customer Name is required
                 </div>
@@ -26,7 +26,7 @@
               <label for="companyName" class="col-form-label">Company Name<span
                 class="text-danger"> (*)</span> </label>
               <input class="form-control" type="text" id="companyName" formControlName="companyName">
-              <div *ngIf="submitted" class="alert alert-danger">
+              <div *ngIf="submitted && companyName.invalid" class="alert alert-danger">
                 <div *ngIf="companyName?.errors?.required">
                   Company Name is required
                 </div>
@@ -38,15 +38,12 @@
             <div class="form-group col-12">
               <label for="profession" class="col-form-label">Profession<span
                 class="text-danger"> (*)</span> </label>
-              <select class="form-control" formControlName="profession" id="profession"  (change)="getProfByClient($event.target.value)" >
-                <option readonly="true"  value="" selected>Select Profession</option>
-                <option *ngFor="let prof of professionList; let i = index" [value]="prof.id">{{prof.professionName}}</option>
+              <select class="form-control" formControlName="profession" id="profession"
+                      (change)="getProfByClient($event.target.value)">
+                <option value="" selected>Select Profession</option>
+                <option *ngFor="let prof of professionList; let i = index"
+                        [value]="prof.id">{{prof.professionName}}</option>
               </select>
-              <div *ngIf="submitted" class="alert alert-danger">
-                <div *ngIf="profession.id?.errors?.required">
-                  Profession is required
-                </div>
-              </div>
             </div>
           </div>
 
@@ -55,7 +52,7 @@
               <label for="address" class="col-form-label">Address<span
                 class="text-danger"> (*)</span> </label>
               <input class="form-control" type="text" id="address" formControlName="address">
-              <div *ngIf="submitted" class="alert alert-danger">
+              <div *ngIf="submitted && address.invalid " class="alert alert-danger">
                 <div *ngIf="address?.errors?.required">
                   Address is required
                 </div>
@@ -68,7 +65,7 @@
               <label for="areaName" class="col-form-label">Area Name<span
                 class="text-danger"> (*)</span> </label>
               <input class="form-control" type="text" id="areaName" formControlName="areaName">
-              <div *ngIf="submitted" class="alert alert-danger">
+              <div *ngIf="submitted && areaName.invalid" class="alert alert-danger">
                 <div *ngIf="areaName?.errors?.required">
                   Area Name is required
                 </div>
@@ -81,7 +78,7 @@
               <label for="divisionName" class="col-form-label">Division Name<span
                 class="text-danger"> (*)</span> </label>
               <input class="form-control" type="text" id="divisionName" formControlName="divisionName">
-              <div *ngIf="submitted" class="alert alert-danger">
+              <div *ngIf="submitted && divisionName.invalid" class="alert alert-danger">
                 <div *ngIf="divisionName?.errors?.required">
                   Division Name is required
                 </div>
@@ -93,8 +90,9 @@
             <div class="form-group col-12">
               <label for="contactNo" class="col-form-label">Contact No<span
                 class="text-danger"> (*)</span> </label>
-              <input class="form-control" type="text" placeholder="01*********" id="contactNo" formControlName="contactNo">
-              <div *ngIf="submitted" class="alert alert-danger">
+              <input class="form-control" type="text" placeholder="01*********" id="contactNo"
+                     formControlName="contactNo">
+              <div *ngIf="submitted && contactNo.invalid" class="alert alert-danger">
                 <div *ngIf="contactNo?.errors?.required">
                   Contact No is required
                 </div>
@@ -107,7 +105,7 @@
               <label for="emailAddress" class="col-form-label">Email Address<span
                 class="text-danger"> (*)</span> </label>
               <input class="form-control" type="text" id="emailAddress" formControlName="emailAddress">
-              <div *ngIf="submitted" class="alert alert-danger">
+              <div *ngIf="submitted && emailAddress.invalid" class="alert alert-danger">
                 <div *ngIf="emailAddress?.errors?.required">
                   Email Address is required
                 </div>

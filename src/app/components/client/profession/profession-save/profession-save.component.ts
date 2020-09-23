@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ClientService} from '../../../../_services/client.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -14,8 +14,9 @@ export class ProfessionSaveComponent implements OnInit {
   submitted = false;
   public pageTitle: string;
   public professionForm: FormGroup;
-  public professionName: any;
+
   public result: any;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -33,7 +34,7 @@ export class ProfessionSaveComponent implements OnInit {
     if (id) {
       this.pageTitle = 'Edit Profession';
       this.clientService.getProfessionById(parseInt(id)).subscribe(
-        (res: any ) => {
+        (res: any) => {
           this.professionForm.patchValue({
             id: res.content.id,
             professionName: res.content.professionName,
@@ -62,7 +63,7 @@ export class ProfessionSaveComponent implements OnInit {
     }
   }
 
-  resetAll(): void {
-    this.professionForm.controls.professionName.reset();
+  get professionName() {
+    return this.professionForm.get('professionName');
   }
 }

@@ -17,14 +17,6 @@ export class ClientInfoSaveComponent implements OnInit {
   public pageTitle: string;
   public clientForm: FormGroup;
   public clientInfo: any;
-  emailAddress: any;
-  contactNo: any;
-  divisionName: any;
-  areaName: any;
-  address: any;
-  profession: any;
-  companyName: any;
-  customerName: any;
   professionList: any = [];
   httpOptions = {
     headers: new HttpHeaders({
@@ -82,29 +74,11 @@ export class ClientInfoSaveComponent implements OnInit {
   uploadSubmit(): void {
     this.submitted = true;
     if (this.clientForm.valid) {
-      /*const data = new FormData();
-      data.append('id', this.clientForm.controls.id.value);
-      data.append('customerName', this.clientForm.controls.customerName.value);
-      data.append('companyName', this.clientForm.controls.companyName.value);
-      data.append('profession', this.clientForm.controls.profession.value);
-      data.append('address', this.clientForm.controls.address.value);
-      data.append('areaName', this.clientForm.controls.areaName.value);
-      data.append('divisionName', this.clientForm.controls.divisionName.value);
-      data.append('contactNo', this.clientForm.controls.contactNo.value);
-      data.append('emailAddress', this.clientForm.controls.emailAddress.value);
-      console.log(data);
-      this.clientService.saveClientInfo(data).subscribe(
-        (res): any => {
-          if (res.status === 'Created') {
-            this.router.navigate(['client/list']);
-          }
-        });*/
-      const formObj = this.clientForm.getRawValue(); // {name: '', description: ''}
+      const formObj = this.clientForm.getRawValue();
       const serializedForm = JSON.stringify(formObj);
       console.log(serializedForm);
       this.httpClient.post(this.baseUrl + '/clients', serializedForm, this.httpOptions).subscribe((res): any => {
         if (res) {
-          console.log(res);
           this.router.navigate(['client/list']);
         }
       });
@@ -115,7 +89,6 @@ export class ClientInfoSaveComponent implements OnInit {
     this.clientService.getProfessionList().subscribe(
       (data: any) => {
         this.professionList = data.content;
-        console.log(this.professionList);
       }
     );
   }
@@ -127,5 +100,37 @@ export class ClientInfoSaveComponent implements OnInit {
         return el;
       }
     });
+  }
+
+  get emailAddress() {
+    return this.clientForm.get('emailAddress');
+  }
+
+  get contactNo() {
+    return this.clientForm.get('contactNo');
+  }
+
+  get divisionName() {
+    return this.clientForm.get('divisionName');
+  }
+
+  get areaName() {
+    return this.clientForm.get('areaName');
+  }
+
+  get address() {
+    return this.clientForm.get('address');
+  }
+
+  get profession() {
+    return this.clientForm.get('profession');
+  }
+
+  get companyName() {
+    return this.clientForm.get('companyName');
+  }
+
+  get customerName() {
+    return this.clientForm.get('customerName');
   }
 }

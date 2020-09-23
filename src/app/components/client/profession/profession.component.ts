@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ClientService} from '../../../_services/client.service';
+import {DataTableDirective} from "angular-datatables";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-profession',
@@ -7,6 +9,11 @@ import {ClientService} from '../../../_services/client.service';
   styleUrls: ['./profession.component.scss']
 })
 export class ProfessionComponent implements OnInit {
+
+  @ViewChild(DataTableDirective)
+  dtElement: DataTableDirective;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
 
   public professionList: any;
   public createdDate: Date;
@@ -25,6 +32,9 @@ export class ProfessionComponent implements OnInit {
       (data: any) => {
         this.professionList = data.content;
         this.createdDate = new Date();
+        this.dtTrigger.next();
+      }, (err) => {
+        console.log('-----> err :', err);
       }
     );
   }

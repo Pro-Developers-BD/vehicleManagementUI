@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ClientService} from "../../../_services/client.service";
+import {DataTableDirective} from "angular-datatables";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-client-info',
@@ -7,8 +9,12 @@ import {ClientService} from "../../../_services/client.service";
   styleUrls: ['./client-info.component.scss']
 })
 export class ClientInfoComponent implements OnInit {
-  private createdDate: Date;
+  @ViewChild(DataTableDirective)
+  dtElement: DataTableDirective;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
   public clientList: any;
+
   constructor(
     private clientService: ClientService
   ) {
@@ -18,12 +24,13 @@ export class ClientInfoComponent implements OnInit {
     this.loadData();
   }
 
-  loadData(): void{
+  loadData(): void {
     this.clientService.getClientList().subscribe(
       (data: any) => {
         this.clientList = data.content;
-        this.createdDate = new Date();
-        console.log(this.clientList);
+        this.dtTrigger.next();
+      }, (err) => {
+        console.log('-----> err :', err);
       }
     );
   }

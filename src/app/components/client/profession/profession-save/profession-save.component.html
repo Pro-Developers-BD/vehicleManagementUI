@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-12 p-0">
+  <div class="col-12">
     <div class="pageTitle text-left">
       <h4 class="mb-n1 text-center">Client's Profession</h4>
     </div>
@@ -8,12 +8,13 @@
   <div class="col-sm-12 inner-wraper">
     <form [formGroup]="professionForm" (ngSubmit)="uploadSubmit()">
       <div class="row">
-        <div class="col-12 col-sm-8">
-          <div class="row">
-            <div class="form-group col-12">
-              <label for="professionName" class="col-form-label">Profession Name<span
-                class="text-danger"> (*)</span> </label>
-              <input class="form-control" type="text" id="professionName" required="true" formControlName="professionName">
+        <div class="form-group col-8">
+          <label for="professionName" class="col-form-label">Profession Name<span
+            class="text-danger"> (*)</span> </label>
+          <input class="form-control" type="text" id="professionName" required="true" formControlName="professionName">
+          <div *ngIf="submitted && professionName.invalid " class="alert alert-danger">
+            <div *ngIf="professionName?.errors?.required">
+              Profession Name is required
             </div>
           </div>
         </div>

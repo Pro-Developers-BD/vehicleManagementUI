@@ -13,7 +13,6 @@ export class EmailDomainSaveComponent implements OnInit {
   submitted = false;
   public pageTitle: string;
   public emailDomainForm: FormGroup;
-  public domainName: any;
   private result: any;
 
   constructor(
@@ -39,7 +38,6 @@ export class EmailDomainSaveComponent implements OnInit {
             domainName: res.content.domainName,
           });
           this.result = res;
-          console.log(this.result);
         }
       );
     } else {
@@ -61,10 +59,8 @@ export class EmailDomainSaveComponent implements OnInit {
         });
     }
   }
-
-  resetAll(): void {
-    this.emailDomainForm.controls.domainName.reset();
-
+  get domainName() {
+    return this.emailDomainForm.get('domainName');
   }
 }
 
