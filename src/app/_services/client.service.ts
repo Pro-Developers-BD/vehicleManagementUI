@@ -44,7 +44,7 @@ export class ClientService {
     return this.http.get(this.baseUrl + '/clients/' + id);
   }
 
-  getClientList() {
+  getClientList(): any {
     return this.http.get(this.baseUrl + '/clients' );
   }
 }

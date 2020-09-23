@@ -55,7 +55,7 @@ export class ProfessionSaveComponent implements OnInit {
       data.append('professionName', this.professionForm.controls.professionName.value);
       this.clientService.saveProfession(data).subscribe(
         res => {
-          if (res.status=='Created') {
+          if (res.status === 'Created') {
             this.router.navigate(['profession/list']);
           }
         });

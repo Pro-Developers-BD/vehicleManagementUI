@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import {environment} from "../../../../environments/environment";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ClientService} from "../../../_services/client.service";
+import {Component, OnInit} from '@angular/core';
+import {environment} from '../../../../environments/environment';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ClientService} from '../../../_services/client.service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-client-info-save',
   templateUrl: './client-info-save.component.html',
   styleUrls: ['./client-info-save.component.scss']
 })
+
 export class ClientInfoSaveComponent implements OnInit {
   public baseUrl = environment.apiurl.service;
   submitted = false;
@@ -24,17 +26,24 @@ export class ClientInfoSaveComponent implements OnInit {
   companyName: any;
   customerName: any;
   professionList: any = [];
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private clientService: ClientService,
+    public httpClient: HttpClient
   ) {
     this.clientForm = this.formBuilder.group({
       id: '',
       customerName: ['', Validators.required],
       companyName: ['', Validators.required],
-      profession: ['', Validators.required],
+      profession: {},
       address: ['', Validators.required],
       areaName: ['', Validators.required],
       divisionName: ['', Validators.required],
@@ -48,12 +57,12 @@ export class ClientInfoSaveComponent implements OnInit {
     if (id) {
       this.pageTitle = 'Edit Client';
       this.clientService.getClientInfoById(parseInt(id)).subscribe(
-        (res: any ) => {
+        (res: any) => {
           this.clientForm.patchValue({
             id: res.content.id,
             customerName: res.content.customerName,
             companyName: res.content.companyName,
-            profession: res.content.profession,
+            profession: res.content.profession.id,
             address: res.content.address,
             areaName: res.content.areaName,
             divisionName: res.content.divisionName,
@@ -73,7 +82,7 @@ export class ClientInfoSaveComponent implements OnInit {
   uploadSubmit(): void {
     this.submitted = true;
     if (this.clientForm.valid) {
-      const data = new FormData();
+      /*const data = new FormData();
       data.append('id', this.clientForm.controls.id.value);
       data.append('customerName', this.clientForm.controls.customerName.value);
       data.append('companyName', this.clientForm.controls.companyName.value);
@@ -83,15 +92,26 @@ export class ClientInfoSaveComponent implements OnInit {
       data.append('divisionName', this.clientForm.controls.divisionName.value);
       data.append('contactNo', this.clientForm.controls.contactNo.value);
       data.append('emailAddress', this.clientForm.controls.emailAddress.value);
+      console.log(data);
       this.clientService.saveClientInfo(data).subscribe(
-        res => {
-          if (res.status=='Created') {
+        (res): any => {
+          if (res.status === 'Created') {
             this.router.navigate(['client/list']);
           }
-        });
+        });*/
+      const formObj = this.clientForm.getRawValue(); // {name: '', description: ''}
+      const serializedForm = JSON.stringify(formObj);
+      console.log(serializedForm);
+      this.httpClient.post(this.baseUrl + '/clients', serializedForm, this.httpOptions).subscribe((res): any => {
+        if (res) {
+          console.log(res);
+          this.router.navigate(['client/list']);
+        }
+      });
     }
   }
-  getProfessionList(): any{
+
+  getProfessionList(): any {
     this.clientService.getProfessionList().subscribe(
       (data: any) => {
         this.professionList = data.content;
@@ -100,4 +120,12 @@ export class ClientInfoSaveComponent implements OnInit {
     );
   }
 
+  public getProfByClient(profOBJ): any {
+    const prof = this.professionList.filter((el) => {
+      if (profOBJ == el.id) {
+        this.clientForm.get('profession').setValue(el);
+        return el;
+      }
+    });
+  }
 }
