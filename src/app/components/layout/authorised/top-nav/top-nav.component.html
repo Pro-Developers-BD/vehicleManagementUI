@@ -1,10 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-secondary ftco-navbar-light" id="ftco-navbar">
-  <div class="container">
+  <div class="container-fluid">
+    <div class="row">
+    <app-authorised-side-nav-toggler></app-authorised-side-nav-toggler>
     <nav class="navbar navbar-dark bg-dark">
-      <app-authorised-side-nav-toggler></app-authorised-side-nav-toggler>
-      <a class="navbar-brand" routerLink="/">Vehicle & Client Management</a>
+      <img src="assets/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <a class="navbar-brand" routerLink="/">&nbsp;Vehicle & Client Management</a>
     </nav>
-
+    </div>
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
@@ -16,6 +18,10 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/brands" [routerLinkActive]="['active']">Brands</a>
         </li>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
         <li class="nav-item">
           <a class="nav-item nav-link" routerLink="" (click)="logout()" *ngIf="auth.currentUserValue">Logout</a>
           <a class="nav-item nav-link" routerLink="/login" *ngIf="auth.currentUserValue == null">Login</a>
