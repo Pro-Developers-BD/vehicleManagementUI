@@ -9,110 +9,125 @@
     <form [formGroup]="clientForm" (ngSubmit)="uploadSubmit()">
       <div class="row">
         <div class="col-12 col-sm-8">
-          <div class="row">
-            <div class="form-group col-12">
+
+          <div class="row form-group">
+            <div class="col-3">
               <label for="customerName" class="col-form-label">Customer Name<span
                 class="text-danger"> (*)</span> </label>
+            </div>
+            <div class="col-9 pt-1">
               <input class="form-control" type="text" id="customerName" formControlName="customerName">
-              <div *ngIf="submitted && customerName.invalid" class="alert alert-danger">
-                <div *ngIf="customerName?.errors?.required">
+              <div *ngIf="submitted && customerName.invalid" class="alert p-0">
+                <div *ngIf="customerName?.errors?.required" class="text-danger bg-transparent font-weight-bold">
                   Customer Name is required
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="form-group col-12">
+
+          <div class="row form-group">
+            <div class="col-3 pb-2">
               <label for="companyName" class="col-form-label">Company Name<span
                 class="text-danger"> (*)</span> </label>
+            </div>
+            <div class="col-9 pt-1">
               <input class="form-control" type="text" id="companyName" formControlName="companyName">
-              <div *ngIf="submitted && companyName.invalid" class="alert alert-danger">
-                <div *ngIf="companyName?.errors?.required">
+              <div *ngIf="submitted && companyName.invalid" class="alert p-0">
+                <div *ngIf="companyName?.errors?.required" class="text-danger bg-transparent font-weight-bold">
                   Company Name is required
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="form-group col-12">
-              <label for="profession" class="col-form-label">Profession<span
-                class="text-danger"> (*)</span> </label>
+          <div class="row form-group">
+            <div class="col-3 pb-2">
+              <label for="profession" class="col-form-label">Profession</label>
+            </div>
+            <div class="col-9 pt-1">
               <select class="form-control" formControlName="profession" id="profession"
                       (change)="getProfByClient($event.target.value)">
-                <option value="" selected>Select Profession</option>
-                <option *ngFor="let prof of professionList; let i = index"
-                        [value]="prof.id">{{prof.professionName}}</option>
+                <option *ngFor="let prof of professionList;"
+                        [value]="prof.id" >{{prof.professionName}}</option>
               </select>
             </div>
           </div>
 
-          <div class="row">
-            <div class="form-group col-12">
-              <label for="address" class="col-form-label">Address<span
-                class="text-danger"> (*)</span> </label>
-              <input class="form-control" type="text" id="address" formControlName="address">
-              <div *ngIf="submitted && address.invalid " class="alert alert-danger">
-                <div *ngIf="address?.errors?.required">
-                  Address is required
-                </div>
+          <div class="row form-group">
+          <div class="col-3 pb-2">
+            <label for="address" class="col-form-label">Address<span
+              class="text-danger"> (*)</span> </label>
+          </div>
+          <div class="col-9 pt-1">
+            <input class="form-control" type="text" id="address" formControlName="address">
+            <div *ngIf="submitted && address.invalid" class="alert p-0">
+              <div *ngIf="address?.errors?.required" class="text-danger bg-transparent font-weight-bold">
+                Address is required
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="row">
-            <div class="form-group col-12">
+          <div class="row form-group">
+            <div class="col-3 pb-2">
               <label for="areaName" class="col-form-label">Area Name<span
                 class="text-danger"> (*)</span> </label>
+            </div>
+            <div class="col-9 pt-1">
               <input class="form-control" type="text" id="areaName" formControlName="areaName">
-              <div *ngIf="submitted && areaName.invalid" class="alert alert-danger">
-                <div *ngIf="areaName?.errors?.required">
+              <div *ngIf="submitted && areaName.invalid" class="alert p-0">
+                <div *ngIf="areaName?.errors?.required" class="text-danger bg-transparent font-weight-bold">
                   Area Name is required
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="form-group col-12">
+          <div class="row form-group">
+            <div class="col-3 pb-2">
               <label for="divisionName" class="col-form-label">Division Name<span
                 class="text-danger"> (*)</span> </label>
+            </div>
+            <div class="col-9 pt-1">
               <input class="form-control" type="text" id="divisionName" formControlName="divisionName">
-              <div *ngIf="submitted && divisionName.invalid" class="alert alert-danger">
-                <div *ngIf="divisionName?.errors?.required">
+              <div *ngIf="submitted && divisionName.invalid" class="alert p-0">
+                <div *ngIf="divisionName?.errors?.required" class="text-danger bg-transparent font-weight-bold">
                   Division Name is required
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="form-group col-12">
+          <div class="row form-group">
+            <div class="col-3 pb-2">
               <label for="contactNo" class="col-form-label">Contact No<span
                 class="text-danger"> (*)</span> </label>
+            </div>
+            <div class="col-9 pt-1">
               <input class="form-control" type="text" placeholder="01*********" id="contactNo"
                      formControlName="contactNo">
-              <div *ngIf="submitted && contactNo.invalid" class="alert alert-danger">
-                <div *ngIf="contactNo?.errors?.required">
+              <div *ngIf="submitted && contactNo.invalid" class="alert p-0">
+                <div *ngIf="contactNo?.errors?.required" class="text-danger bg-transparent font-weight-bold">
                   Contact No is required
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="form-group col-12">
+          <div class="row form-group">
+            <div class="col-3 pb-2">
               <label for="emailAddress" class="col-form-label">Email Address<span
-                class="text-danger"> (*)</span> </label>
+              class="text-danger"> (*)</span> </label>
+            </div>
+            <div class="col-9 pt-1">
               <input class="form-control" type="text" id="emailAddress" formControlName="emailAddress">
-              <div *ngIf="submitted && emailAddress.invalid" class="alert alert-danger">
-                <div *ngIf="emailAddress?.errors?.required">
+              <div *ngIf="submitted && emailAddress.invalid" class="alert p-0">
+                <div *ngIf="emailAddress?.errors?.required" class="text-danger bg-transparent font-weight-bold">
                   Email Address is required
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
       <div class="row">
