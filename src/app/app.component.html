@@ -1,4 +1,7 @@
 <div [ngClass]="{'public-wrapper': auth.currentUserValue==null, 'admin-wrapper':auth.currentUserValue !=null }">
   <app-header></app-header>
+  <div class="container-fluid col-12" *ngIf="auth.currentUserValue ==null">
+    <router-outlet></router-outlet>
+  </div>
   <app-footer></app-footer>
 </div>

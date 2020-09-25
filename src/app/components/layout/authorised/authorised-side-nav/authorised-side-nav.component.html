@@ -1,26 +1,30 @@
 <div class="row">
-  <div class="col-2" >
+  <div class="col-2" *ngIf="auth.currentUserValue !=null">
     <nav id="sidebar" class="navbar-collapse bg-info" [ngClass]="{'hidden': homeService.hideSideNav }">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link font-weight-bold" routerLink="/" [routerLinkActive]="['active']">Dashboard</a>
+
+          <a class="nav-link font-weight-bold d-inline-block" routerLink="/"><img src="assets/img/logo.png" width="20" height="20"
+                                                                   class="align-top" alt=""> Dashboard </a>
         </li>
       </ul>
       <ul class="navbar-nav">
-        <span class="pl-1 font-weight-bold">Customer Setting</span>
-        <li class="nav-item">
+        <span class="listHeader pl-1 font-weight-bold" data-toggle="collapse" data-target="#item1">
+          <a class="nav-link" routerLink="#" [routerLinkActive]="['active']">Customer Setting</a>
+        </span>
+        <li class="nav-item collapse" id="item1">
           <a class="nav-link" routerLink="/client/list" [routerLinkActive]="['active']">Customer List</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item collapse" id="item1">
           <a class="nav-link" routerLink="/profession/list" [routerLinkActive]="['active']">Profession List</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item collapse" id="item1">
           <a class="nav-link" routerLink="/emailDomain/list" [routerLinkActive]="['active']">Email Domain List</a>
         </li>
       </ul>
     </nav>
   </div>
-  <div class="col-10 container-fluid">
+  <div class="col-10 container-fluid" *ngIf="auth.currentUserValue !=null">
     <router-outlet></router-outlet>
   </div>
 </div>

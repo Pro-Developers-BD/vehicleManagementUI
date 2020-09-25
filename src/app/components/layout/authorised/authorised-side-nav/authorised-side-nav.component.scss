@@ -1,12 +1,20 @@
 :host {
-  background: #343a40;
+  background: white;
+}
+.active {
+  color: navajowhite;
+  font-weight: bold;
+}
+
+a, a:hover, a:focus {
+  color: antiquewhite;
 }
 
 #sidebar {
   min-width: 200px;
   max-width: 200px;
   min-height: 120vh;
-  color: #fff;
+  color: antiquewhite;
   transition: all 0.3s;
   font-weight: 300;
   font-size: 1rem;
@@ -28,10 +36,6 @@ a[data-toggle="collapse"] {
   #sidebar.hidden {
     margin-left: 0;
   }
-}
-
-a, a:hover, a:focus {
-  color: inherit;
 }
 
 #sidebar .sidebar-header {

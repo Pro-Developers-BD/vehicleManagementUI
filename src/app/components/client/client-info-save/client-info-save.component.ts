@@ -93,11 +93,11 @@ export class ClientInfoSaveComponent implements OnInit {
     );
   }
 
-  public getProfByClient(profOBJ): any {
+  public getProfByClient(profId): any {
     const prof = this.professionList.filter((el) => {
-      if (profOBJ == el.id) {
+      if (el.id == profId) {
         this.clientForm.get('profession').setValue(el);
-        return el;
+        return el.id == profId;
       }
     });
   }

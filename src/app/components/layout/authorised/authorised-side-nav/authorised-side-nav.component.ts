@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HomeService} from '../../../../_services/home.service';
+import {AuthenticationService} from "../../../../_services/authentication.service";
 
 @Component({
   selector: 'app-authorised-side-nav',
@@ -8,7 +9,10 @@ import {HomeService} from '../../../../_services/home.service';
 })
 export class AuthorisedSideNavComponent implements OnInit {
 
-  constructor(public homeService: HomeService) { }
+  constructor(
+    public homeService: HomeService,
+    public auth: AuthenticationService) {
+  }
 
   ngOnInit(): void {
   }
