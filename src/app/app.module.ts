@@ -32,6 +32,8 @@ import { EmailDomainComponent } from './components/client/email-domain/email-dom
 import { EmailDomainSaveComponent } from './components/client/email-domain/email-domain-save/email-domain-save.component';
 import { ClientInfoSaveComponent } from './components/client/client-info-save/client-info-save.component';
 import { ClientInfoComponent } from './components/client/client-info/client-info.component';
+import { CarGradeComponent } from './components/car/car-grade/car-grade.component';
+import { CarGradeSaveComponent } from './components/car/car-grade/car-grade-save/car-grade-save.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { ClientInfoComponent } from './components/client/client-info/client-info
     EmailDomainComponent,
     EmailDomainSaveComponent,
     ClientInfoSaveComponent,
-    ClientInfoComponent
+    ClientInfoComponent,
+    CarGradeComponent,
+    CarGradeSaveComponent
   ],
   imports: [
     BrowserModule,
