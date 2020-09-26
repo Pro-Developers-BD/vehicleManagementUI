@@ -34,6 +34,10 @@ import { ClientInfoSaveComponent } from './components/client/client-info-save/cl
 import { ClientInfoComponent } from './components/client/client-info/client-info.component';
 import { CarGradeComponent } from './components/vehicle/car-grade/car-grade.component';
 import { CarGradeSaveComponent } from './components/vehicle/car-grade/car-grade-save/car-grade-save.component';
+import { CarModelComponent } from './components/vehicle/car-model/car-model.component';
+import { CarModelSaveComponent } from './components/vehicle/car-model/car-model-save/car-model-save.component';
+import { CarCompanyComponent } from './components/vehicle/car-company/car-company.component';
+import { CarCompanySaveComponent } from './components/vehicle/car-company/car-company-save/car-company-save.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,11 @@ import { CarGradeSaveComponent } from './components/vehicle/car-grade/car-grade-
     ClientInfoSaveComponent,
     ClientInfoComponent,
     CarGradeComponent,
-    CarGradeSaveComponent
+    CarGradeSaveComponent,
+    CarModelComponent,
+    CarModelSaveComponent,
+    CarCompanyComponent,
+    CarCompanySaveComponent
   ],
   imports: [
     BrowserModule,

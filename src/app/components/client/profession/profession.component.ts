@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ClientService} from '../../../_services/client.service';
-import {DataTableDirective} from "angular-datatables";
-import {Subject} from "rxjs";
+import {DataTableDirective} from 'angular-datatables';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-profession',
@@ -39,6 +39,4 @@ export class ProfessionComponent implements OnInit {
       }
     );
   }
-
-
 }
