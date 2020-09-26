@@ -18,7 +18,7 @@
             <div class="col-9 pt-1">
               <input class="form-control" type="text" id="customerName" formControlName="customerName">
               <div *ngIf="submitted && customerName.invalid" class="alert p-0">
-                <div *ngIf="customerName?.errors?.required" class="text-danger bg-transparent font-weight-bold">
+                <div *ngIf="customerName?.errors?.required" class="text-danger bg-transparent">
                   Customer Name is required
                 </div>
               </div>
@@ -33,7 +33,7 @@
             <div class="col-9 pt-1">
               <input class="form-control" type="text" id="companyName" formControlName="companyName">
               <div *ngIf="submitted && companyName.invalid" class="alert p-0">
-                <div *ngIf="companyName?.errors?.required" class="text-danger bg-transparent font-weight-bold">
+                <div *ngIf="companyName?.errors?.required" class="text-danger bg-transparent">
                   Company Name is required
                 </div>
               </div>
@@ -62,7 +62,7 @@
           <div class="col-9 pt-1">
             <input class="form-control" type="text" id="address" formControlName="address">
             <div *ngIf="submitted && address.invalid" class="alert p-0">
-              <div *ngIf="address?.errors?.required" class="text-danger bg-transparent font-weight-bold">
+              <div *ngIf="address?.errors?.required" class="text-danger bg-transparent">
                 Address is required
               </div>
             </div>
@@ -77,7 +77,7 @@
             <div class="col-9 pt-1">
               <input class="form-control" type="text" id="areaName" formControlName="areaName">
               <div *ngIf="submitted && areaName.invalid" class="alert p-0">
-                <div *ngIf="areaName?.errors?.required" class="text-danger bg-transparent font-weight-bold">
+                <div *ngIf="areaName?.errors?.required" class="text-danger bg-transparent">
                   Area Name is required
                 </div>
               </div>
@@ -92,7 +92,7 @@
             <div class="col-9 pt-1">
               <input class="form-control" type="text" id="divisionName" formControlName="divisionName">
               <div *ngIf="submitted && divisionName.invalid" class="alert p-0">
-                <div *ngIf="divisionName?.errors?.required" class="text-danger bg-transparent font-weight-bold">
+                <div *ngIf="divisionName?.errors?.required" class="text-danger bg-transparent">
                   Division Name is required
                 </div>
               </div>
@@ -108,7 +108,7 @@
               <input class="form-control" type="text" placeholder="01*********" id="contactNo"
                      formControlName="contactNo">
               <div *ngIf="submitted && contactNo.invalid" class="alert p-0">
-                <div *ngIf="contactNo?.errors?.required" class="text-danger bg-transparent font-weight-bold">
+                <div *ngIf="contactNo?.errors?.required" class="text-danger bg-transparent">
                   Contact No is required
                 </div>
               </div>
@@ -123,7 +123,7 @@
             <div class="col-9 pt-1">
               <input class="form-control" type="text" id="emailAddress" formControlName="emailAddress">
               <div *ngIf="submitted && emailAddress.invalid" class="alert p-0">
-                <div *ngIf="emailAddress?.errors?.required" class="text-danger bg-transparent font-weight-bold">
+                <div *ngIf="emailAddress?.errors?.required" class="text-danger bg-transparent">
                   Email Address is required
                 </div>
               </div>

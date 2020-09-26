@@ -31,7 +31,8 @@ export class ProfessionComponent implements OnInit {
     this.clientService.getProfessionList().subscribe(
       (data: any) => {
         this.professionList = data.content;
-        this.createdDate = new Date();
+        this.createdDate = data.timeStamp;
+        console.log(data);
         this.dtTrigger.next();
       }, (err) => {
         console.log('-----> err :', err);
