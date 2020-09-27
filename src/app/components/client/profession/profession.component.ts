@@ -14,9 +14,7 @@ export class ProfessionComponent implements OnInit {
   dtElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
-
   public professionList: any;
-  public createdDate: Date;
 
   constructor(
     private clientService: ClientService
@@ -31,8 +29,7 @@ export class ProfessionComponent implements OnInit {
     this.clientService.getProfessionList().subscribe(
       (data: any) => {
         this.professionList = data.content;
-        this.createdDate = data.timeStamp;
-        console.log(data);
+        console.log(this.professionList);
         this.dtTrigger.next();
       }, (err) => {
         console.log('-----> err :', err);

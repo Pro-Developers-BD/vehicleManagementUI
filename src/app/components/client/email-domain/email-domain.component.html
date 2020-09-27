@@ -18,7 +18,7 @@
       <tbody>
       <tr *ngFor="let emailDomain of domainList">
         <td>{{ emailDomain?.domainName}}</td>
-        <td>{{ createdDate | date}}</td>
+        <td>{{ emailDomain?.createdAt | date}}</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
             <div>

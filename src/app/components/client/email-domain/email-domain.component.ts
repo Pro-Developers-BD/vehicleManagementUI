@@ -14,7 +14,6 @@ export class EmailDomainComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   public domainList: any;
-  public createdDate: Date;
 
   constructor(
     private clientService: ClientService
@@ -29,7 +28,6 @@ export class EmailDomainComponent implements OnInit {
     this.clientService.getDomainList().subscribe(
       (data: any) => {
         this.domainList = data.content;
-        this.createdDate = new Date();
         this.dtTrigger.next();
       }, (err) => {
         console.log('-----> err :', err);

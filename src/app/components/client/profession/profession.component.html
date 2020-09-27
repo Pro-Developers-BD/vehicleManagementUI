@@ -18,7 +18,7 @@
       <tbody>
       <tr *ngFor="let profession of professionList">
         <td>{{ profession?.professionName}}</td>
-        <td>{{ createdDate | date}}</td>
+        <td>{{ profession?.createdAt | date}}</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
             <div>

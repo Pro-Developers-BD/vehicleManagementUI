@@ -1,15 +1,13 @@
 <div class="row">
-  <div class="col-12 p-0">
+  <div class="col-12">
     <div class="pageTitle text-left">
       <h4 class="mb-n1 text-center">Address Book</h4>
     </div>
   </div>
-
-  <div class="col-sm-12 inner-wraper">
+  <div class="col-12 m-2 inner-wraper">
     <form [formGroup]="clientForm" (ngSubmit)="uploadSubmit()">
       <div class="row">
         <div class="col-12 col-sm-8">
-
           <div class="row form-group">
             <div class="col-3">
               <label for="customerName" class="col-form-label">Customer Name<span
@@ -47,7 +45,7 @@
             <div class="col-9 pt-1">
               <select class="form-control" formControlName="profession" id="profession"
                       (change)="getProfByClient($event.target.value)">
-                <option value="" disabled>Select One</option>
+                <option readonly="true" selected>Select One</option>
                 <option *ngFor="let prof of professionList; let i=index;"
                         [value]="prof.id" >{{prof.professionName}}</option>
               </select>

@@ -54,7 +54,7 @@ export class ClientInfoSaveComponent implements OnInit {
             id: res.content.id,
             customerName: res.content.customerName,
             companyName: res.content.companyName,
-            profession: res.content.profession.id,
+            profession: res.content.profession,
             address: res.content.address,
             areaName: res.content.areaName,
             divisionName: res.content.divisionName,
@@ -74,6 +74,7 @@ export class ClientInfoSaveComponent implements OnInit {
   uploadSubmit(): void {
     this.submitted = true;
     if (this.clientForm.valid) {
+      const prof =this.clientForm.get('profession').value;
       const formObj = this.clientForm.getRawValue();
       const serializedForm = JSON.stringify(formObj);
       console.log(serializedForm);
