@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {DataTableDirective} from "angular-datatables";
+import {Subject} from "rxjs";
+import {ClientService} from "../../../_services/client.service";
+import {VehicleService} from "../../../_services/vehicle.service";
 
 @Component({
   selector: 'app-car-company',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarCompanyComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild(DataTableDirective)
+  dtElement: DataTableDirective;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
+  public carCompanyList: any;
+
+  constructor(
+    private vehicleService: VehicleService
+  ) {
+  }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(): void{
+    this.vehicleService.getCarCompanyList().subscribe(
+      (data: any) => {
+        this.carCompanyList = data.content;
+        this.dtTrigger.next();
+      }, (err) => {
+        console.log('-----> err :', err);
+      }
+    );
   }
 
 }

@@ -15,7 +15,7 @@ export class ClientService {
 
   constructor(private http: HttpClient) { }
 
-  getProfessionById(id): any {
+  getProfessionById(id : number): any {
     return this.http.get(this.baseUrl + '/professions/' + id);
   }
 
@@ -26,7 +26,7 @@ export class ClientService {
   getProfessionList(): any{
     return this.http.get(this.baseUrl + '/professions' );
   }
-  getDomainById(id): any {
+  getDomainById(id : number): any {
     return this.http.get(this.baseUrl + '/domains/' + id);
   }
   saveDomain(data: any): any {
@@ -40,7 +40,7 @@ export class ClientService {
     return this.http.post(this.baseUrl + '/clients', data);
   }
 
-  getClientInfoById(id): any {
+  getClientInfoById(id : number): any {
     return this.http.get(this.baseUrl + '/clients/' + id);
   }
 

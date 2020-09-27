@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {VehicleService} from '../../../../_services/vehicle.service';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-car-grade-save',
@@ -9,10 +11,15 @@ import {VehicleService} from '../../../../_services/vehicle.service';
   styleUrls: ['./car-grade-save.component.scss']
 })
 export class CarGradeSaveComponent implements OnInit {
+  public baseUrl = environment.apiurl.service;
   submitted = false;
   public pageTitle: string;
   public carGradeForm: FormGroup;
-
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
   public result: any;
 
   constructor(
@@ -20,6 +27,7 @@ export class CarGradeSaveComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
+    public httpClient: HttpClient
   ) {
     this.carGradeForm = this.formBuilder.group({
       id: '',
@@ -49,15 +57,14 @@ export class CarGradeSaveComponent implements OnInit {
   uploadSubmit(): void {
     this.submitted = true;
     if (this.carGradeForm.valid) {
-      const data = new FormData();
-      data.append('id', this.carGradeForm.controls.id.value);
-      data.append('gradeName', this.carGradeForm.controls.gradeName.value);
-      this.vehicleService.saveCarGrade(data).subscribe(
-        res => {
-          if (res.status === 'Created') {
-            this.router.navigate(['carGrade/list']);
-          }
-        });
+      const gradeForm = this.carGradeForm.getRawValue();
+      const serialForm = JSON.stringify(gradeForm);
+      console.log(serialForm);
+      this.httpClient.post(this.baseUrl + '/carGrades', serialForm, this.httpOptions).subscribe((res): any => {
+        if (res) {
+          this.router.navigate(['carGrade/list']);
+        }
+      });
     }
   }
 

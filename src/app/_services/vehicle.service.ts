@@ -15,15 +15,27 @@ export class VehicleService {
 
   constructor(private http: HttpClient) { }
 
-  getCarGardeById(id): any {
+  getCarGardeById(id : number): any {
     return this.http.get(this.baseUrl + '/carGrades/' + id);
-  }
-
-  saveCarGrade(data: any): any {
-    return this.http.post(this.baseUrl + '/carGrades', data);
   }
 
   getCarGradeList(): any{
     return this.http.get(this.baseUrl + '/carGrades' );
+  }
+
+  carCompanyById(id : number):any {
+    return this.http.get(this.baseUrl + '/carCompany/' + id);
+  }
+
+  getCarCompanyList(): any {
+    return this.http.get(this.baseUrl + '/carCompany' );
+  }
+
+  carModelById(id: number) {
+    return this.http.get(this.baseUrl + '/carModel/' + id);
+  }
+
+  getCarModelList() {
+    return this.http.get(this.baseUrl + '/carModel' );
   }
 }
