@@ -23,6 +23,7 @@ export class ClientInfoSaveComponent implements OnInit {
       'Content-Type': 'application/json'
     })
   };
+  private selectedValue: null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -94,11 +95,11 @@ export class ClientInfoSaveComponent implements OnInit {
     );
   }
 
-  public getProfByClient(profId): any {
+  public getProfByClient(e): any {
     const prof = this.professionList.filter((el) => {
-      if (el.id == profId) {
+      if (el.id == e.target.value) {
         this.clientForm.get('profession').setValue(el);
-        return el.id == profId;
+        return el.id == e.target.value;
       }
     });
   }

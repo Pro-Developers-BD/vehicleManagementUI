@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {environment} from "../../../../../environments/environment";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ClientService} from "../../../../_services/client.service";
 import {VehicleService} from "../../../../_services/vehicle.service";
@@ -22,6 +22,7 @@ export class CarCompanySaveComponent implements OnInit {
       'Content-Type': 'application/json'
     })
   };
+  public modelList: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,6 +34,7 @@ export class CarCompanySaveComponent implements OnInit {
     this.carCompanyForm = this.formBuilder.group({
       id: '',
       carCompanyName: ['', Validators.required],
+      carModelList: new FormArray([])
     });
   }
 
@@ -46,6 +48,7 @@ export class CarCompanySaveComponent implements OnInit {
           this.carCompanyForm.patchValue({
             id: res.content.id,
             carCompanyName: res.content.carCompanyName,
+            carModelList: res.content.carModelList
           });
           this.result = res;
           console.log(this.result);
@@ -54,6 +57,8 @@ export class CarCompanySaveComponent implements OnInit {
     } else {
       this.pageTitle = 'Create Car Company';
     }
+    this.getCarModels();
+    console.log(this.carCompanyForm.controls.carModelList.value);
   }
 
   uploadSubmit(): void {
@@ -68,6 +73,25 @@ export class CarCompanySaveComponent implements OnInit {
         }
       });
     }
+  }
+
+  getCarModels() {
+    this.vehicleService.getCarModelList().subscribe(
+      (models): any => {
+        this.modelList = models.content;
+        console.log(this.modelList);
+      });
+  }
+
+  getModelDataByCompany(e: any) {
+    console.log(e.target.value);
+    this.modelList.filter((el)=>{
+      console.log(el);
+      if(el.id == e.target.value){
+        const controls=el;
+        this.carCompanyForm.setControl('carModelList', new FormControl(controls));
+      }
+    });
   }
 
   get carCompanyName() {

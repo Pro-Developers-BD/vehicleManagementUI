@@ -9,7 +9,7 @@
     <form [formGroup]="carCompanyForm" (ngSubmit)="uploadSubmit()">
       <div class="row">
         <div class="form-group col-8">
-          <label for="carCompanyName" class="col-form-label">Car Company Name<span
+          <label for="carCompanyName" class="col-form-label">Company Name<span
             class="text-danger"> (*)</span> </label>
           <input class="form-control" type="text" id="carCompanyName" required="true" formControlName="carCompanyName">
           <div *ngIf="submitted && carCompanyName.invalid " class="alert alert-danger">
@@ -19,6 +19,17 @@
           </div>
         </div>
       </div>
+
+      <div class="row form-group">
+        <div class="col-8 pt-1">
+          <label class="col-6" formArrayName="carModelList"
+                 *ngFor="let model of modelList; let i = index">
+            <input type="checkbox" [formControlName]="i" [value]="model.id" (change)="getModelDataByCompany($event)">
+            {{ model.carModelName }}
+          </label>
+        </div>
+      </div>
+
       <div class="row">
         <div class="mt-2 pr-2 ml-3">
           <input type="reset" class="btn btn-lg btn-danger" value="Reset">

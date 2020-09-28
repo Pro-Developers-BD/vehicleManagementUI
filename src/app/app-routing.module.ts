@@ -14,6 +14,10 @@ import {CarModelComponent} from './components/vehicle/car-model/car-model.compon
 import {CarModelSaveComponent} from './components/vehicle/car-model/car-model-save/car-model-save.component';
 import {CarCompanyComponent} from './components/vehicle/car-company/car-company.component';
 import {CarCompanySaveComponent} from './components/vehicle/car-company/car-company-save/car-company-save.component';
+import {CarStockDetailsComponent} from "./components/vehicle/carStockDetails/car-stock-details.component";
+import {CarStockDetailSaveComponent} from "./components/vehicle/carStockDetails/car-stock-detail-save/car-stock-detail-save.component";
+import {ColorComponent} from "./components/vehicle/color/color.component";
+import {ColorSaveComponent} from "./components/vehicle/color/color-save/color-save.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -36,6 +40,12 @@ const routes: Routes = [
   {path: 'carCompany/list', component: CarCompanyComponent},
   {path: 'carCompany/save', component: CarCompanySaveComponent},
   {path: 'carCompany/save/:id', component: CarCompanySaveComponent},
+  {path: 'carStockDetails/list', component: CarStockDetailsComponent},
+  {path: 'carStockDetails/save', component: CarStockDetailSaveComponent},
+  {path: 'carStockDetails/save/:id', component: CarStockDetailSaveComponent},
+  {path: 'color/list', component: ColorComponent},
+  {path: 'color/save', component: ColorSaveComponent},
+  {path: 'color/save/:id', component: ColorSaveComponent},
   {path: '**', redirectTo: ''}
 ];
 

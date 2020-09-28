@@ -38,6 +38,10 @@ import { CarModelComponent } from './components/vehicle/car-model/car-model.comp
 import { CarModelSaveComponent } from './components/vehicle/car-model/car-model-save/car-model-save.component';
 import { CarCompanyComponent } from './components/vehicle/car-company/car-company.component';
 import { CarCompanySaveComponent } from './components/vehicle/car-company/car-company-save/car-company-save.component';
+import { CarStockDetailsComponent } from './components/vehicle/carStockDetails/car-stock-details.component';
+import { CarStockDetailSaveComponent } from './components/vehicle/carStockDetails/car-stock-detail-save/car-stock-detail-save.component';
+import { ColorComponent } from './components/vehicle/color/color.component';
+import { ColorSaveComponent } from './components/vehicle/color/color-save/color-save.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,11 @@ import { CarCompanySaveComponent } from './components/vehicle/car-company/car-co
     CarModelComponent,
     CarModelSaveComponent,
     CarCompanyComponent,
-    CarCompanySaveComponent
+    CarCompanySaveComponent,
+    CarStockDetailsComponent,
+    CarStockDetailSaveComponent,
+    ColorComponent,
+    ColorSaveComponent
   ],
   imports: [
     BrowserModule,
