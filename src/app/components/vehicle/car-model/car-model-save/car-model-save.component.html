@@ -12,13 +12,26 @@
           <label for="carModelName" class="col-form-label">Model Name<span
             class="text-danger"> (*)</span> </label>
           <input class="form-control" type="text" id="carModelName" required="true" formControlName="carModelName">
-          <div *ngIf="submitted && modelName.invalid " class="alert alert-danger">
+          <div *ngIf="submitted && modelName.invalid " class="text-danger bg-transparent">
             <div *ngIf="modelName?.errors?.required">
               Car Model Name is required
             </div>
           </div>
         </div>
       </div>
+
+      <div class="row form-group">
+        <div class="col-8 pt-1">
+          <label class="col-6" formArrayName="carGradeList"
+                 *ngFor="let grade of gradeList; let i = index">
+            <input type="checkbox" name="carGradeList" value={{grade.id}} [(ngModel)]="grade.checked"
+                   (change)="getGradeDataByModel($event)"/>
+            {{grade.gradeName}}
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+
       <div class="row">
         <div class="mt-2 pr-2 ml-3">
           <input type="reset" class="btn btn-lg btn-danger" value="Reset">

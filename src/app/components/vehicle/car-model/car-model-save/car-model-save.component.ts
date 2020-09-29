@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {environment} from "../../../../../environments/environment";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {VehicleService} from "../../../../_services/vehicle.service";
@@ -21,7 +21,7 @@ export class CarModelSaveComponent implements OnInit {
       'Content-Type': 'application/json'
     })
   };
-
+  gradeList: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -32,6 +32,7 @@ export class CarModelSaveComponent implements OnInit {
     this.carModelForm = this.formBuilder.group({
       id: '',
       carModelName: ['', Validators.required],
+      carGradeList: new FormControl([])
     });
   }
 
@@ -41,18 +42,18 @@ export class CarModelSaveComponent implements OnInit {
       this.pageTitle = 'Edit Car Model';
       this.vehicleService.carModelById(parseInt(id)).subscribe(
         (res: any) => {
-          console.log(res);
           this.carModelForm.patchValue({
             id: res.content.id,
             carModelName: res.content.carModelName,
+            carGradeList: res.content.carGradeList
           });
           this.result = res;
-          console.log(this.result);
         }
       );
     } else {
       this.pageTitle = 'Create Car Model';
     }
+    this.getCarGrades();
   }
 
   uploadSubmit(): void {
@@ -69,8 +70,24 @@ export class CarModelSaveComponent implements OnInit {
     }
   }
 
+  getCarGrades(): any {
+    this.vehicleService.getCarGradeList().subscribe(
+      (models): any => {
+        this.gradeList = models.content;
+        console.log(this.gradeList);
+      });
+  }
+
+  getGradeDataByModel(e) {
+    for (const grade of this.gradeList) {
+      if (e.target.checked && e.target.value==grade.id) {
+        this.carModelForm.controls.carGradeList.value.push(grade);
+        console.log(this.carModelForm.controls.carGradeList.value);
+      }
+    }
+  }
+
   get modelName() {
     return this.carModelForm.get('carModelName');
   }
-
 }
