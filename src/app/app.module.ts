@@ -42,6 +42,7 @@ import { CarStockDetailsComponent } from './components/vehicle/carStockDetails/c
 import { CarStockDetailSaveComponent } from './components/vehicle/carStockDetails/car-stock-detail-save/car-stock-detail-save.component';
 import { ColorComponent } from './components/vehicle/color/color.component';
 import { ColorSaveComponent } from './components/vehicle/color/color-save/color-save.component';
+import {DpDatePickerModule} from "ng2-date-picker";
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { ColorSaveComponent } from './components/vehicle/color/color-save/color-
     AccordionModule.forRoot(),
     ButtonsModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    DpDatePickerModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
