@@ -19,7 +19,11 @@
       <tbody>
       <tr *ngFor="let model of carModelList">
         <td>{{ model?.carModelName}}</td>
-        <td>{{ model?.carGradeList}}</td>
+        <td>
+          <ol>
+            <li *ngFor="let grade of model?.carGradeList">{{ grade?.gradeName}}</li>
+          </ol>
+        </td>
         <td>{{ model?.createdAt | date}}</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">

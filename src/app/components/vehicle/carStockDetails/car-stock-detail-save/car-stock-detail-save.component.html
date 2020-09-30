@@ -17,7 +17,7 @@
                   (change)="getCompanyByClient($event)">
             <option disabled value="" selected>Select One</option>
             <option *ngFor="let com of carCompanyList; let i=index;"
-                    [value]="com.id" >{{com.carCompanyName}}</option>
+                    [value]="com.id">{{com.carCompanyName}}</option>
           </select>
         </div>
       </div>
@@ -31,7 +31,7 @@
                   (change)="getModelByCompany($event)">
             <option disabled value="" selected>Select One</option>
             <option *ngFor="let model of carModelList; let i=index;"
-                    [value]="model.id" >{{model.carModelName}}</option>
+                    [value]="model.id">{{model.carModelName}}</option>
           </select>
         </div>
       </div>
@@ -42,10 +42,10 @@
         </div>
         <div class="col-8 pt-1">
           <select class="form-control" formControlName="carGrade" id="carGrade"
-                  (change)="getGradeByClient($event)">
+                  (change)="getGradeByModel($event)">
             <option disabled value="" selected>Select One</option>
             <option *ngFor="let grade of carGradeList; let i=index;"
-                    [value]="grade.id" >{{grade.gradeName}}</option>
+                    [value]="grade.id">{{grade.gradeName}}</option>
           </select>
         </div>
       </div>
@@ -59,78 +59,81 @@
         </div>
       </div>
 
-     <div class="row form-group">
-       <div class="col-3 pb-2">
-         <label for="chassisNo" class="col-form-label">Chassis No</label>
-       </div>
+      <div class="row form-group">
+        <div class="col-3 pb-2">
+          <label for="chassisNo" class="col-form-label">Chassis No</label>
+        </div>
         <div class="col-8">
           <input class="form-control" type="number" id="chassisNo" formControlName="chassisNo">
         </div>
       </div>
-      <div class="row form-group">
-        <div class="col-3 pb-2">
-          <label for="carStockDetails.client" class="col-form-label">Color</label>
+      <div formGroupName="carStockDetails">
+        <div class="row form-group">
+          <div class="col-3 pb-2">
+            <label for="client" class="col-form-label">Client</label>
+          </div>
+          <div class="col-8 pt-1">
+            <select class="form-control" formControlName="client" id="client"
+                    (change)="getClientByCarId($event.target.value)">
+              <option disabled value="" selected>Select One</option>
+              <option *ngFor="let client of clientList; let i=index;"
+                      [value]="client.id">{{client.customerName}}</option>
+            </select>
+          </div>
         </div>
-        <div class="col-8 pt-1">
-          <select class="form-control" formControlName="carStockDetails.client" id="carStockDetails.client"
-                  (change)="getClientByCarId($event.target.value)">
-            <option disabled value="" selected>Select One</option>
-            <option *ngFor="let client of clientList; let i=index;"
-                    [value]="client.id" >{{client.clientName}}</option>
-          </select>
+
+        <div class="row form-group">
+          <div class="col-3 pb-2">
+            <label for="carType" class="col-form-label">Car Type</label>
+          </div>
+          <div class="col-8">
+            <input class="form-control" type="text" id="carType" formControlName="carType">
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-3 pb-2">
+            <label for="color" class="col-form-label">Color</label>
+          </div>
+          <div class="col-8 pt-1">
+            <select class="form-control" formControlName="color" id="color"
+                    (change)="getColorByCar($event.target.value)">
+              <option disabled value="" selected>Select One</option>
+              <option *ngFor="let clr of colorList; let i=index;"
+                      [value]="clr.id">{{clr.colorName}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-3 pb-2">
+            <label for="price" class="col-form-label">Price</label>
+          </div>
+          <div class="col-8">
+            <input class="form-control" type="number" step=0.01 id="price" formControlName="price">
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-3 pb-2">
+            <label for="carAuction" class="col-form-label">Car Auction</label>
+          </div>
+          <div class="col-8">
+            <input class="form-control" type="text" id="carAuction"
+                   formControlName="carAuction">
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-3 pb-2">
+            <label for="availableStatus" class="col-form-label">Available(if checked then yes)</label>
+          </div>
+          <div class="col-8">
+            <input class="form-control" type="checkbox" class="form-control" name="availableStatus" id="availableStatus"
+                   (change)="onChecked($event.target.value)">
+
+          </div>
         </div>
       </div>
-
-
-      <div class="row form-group">
-        <div class="col-3 pb-2">
-          <label for="carStockDetails.carType" class="col-form-label">Car Type</label>
-        </div>
-        <div class="col-8">
-          <input class="form-control" type="text" id="carStockDetails.carType" formControlName="carStockDetails.carType">
-        </div>
-      </div>
-
-      <div class="row form-group">
-        <div class="col-3 pb-2">
-          <label for="carStockDetails.color" class="col-form-label">Color</label>
-        </div>
-        <div class="col-8 pt-1">
-          <select class="form-control" formControlName="carStockDetails.color" id="carStockDetails.color"
-                  (change)="getColorByClient($event.target.value)">
-            <option readonly="true" value="" selected>Select One</option>
-            <option *ngFor="let clr of colorList; let i=index;"
-                    [value]="clr.id" >{{clr.colorName}}</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row form-group">
-        <div class="col-3 pb-2">
-          <label for="carStockDetails.price" class="col-form-label">Price</label>
-        </div>
-        <div class="col-8">
-          <input class="form-control" type="number" step=0.01 id="carStockDetails.price" formControlName="carStockDetails.price">
-        </div>
-      </div>
-      <div class="row form-group">
-        <div class="col-3 pb-2">
-          <label for="carStockDetails.carAuction" class="col-form-label">Car Auction</label>
-        </div>
-        <div class="col-8">
-          <input class="form-control" type="text" id="carStockDetails.carAuction" formControlName="carStockDetails.carAuction">
-        </div>
-      </div>
-
-      <div class="row form-group">
-        <div class="col-3 pb-2">
-          <label for="carStockDetails.availableStatus" class="col-form-label">Available</label>
-        </div>
-        <div class="col-8">
-          <input type="checkbox" name="carStockDetails.availableStatus" id="carStockDetails.availableStatus" value="1" checked>
-        </div>
-      </div>
-
       <div class="row">
         <div class="mt-2 pr-2 ml-3">
           <input type="reset" class="btn btn-lg btn-danger" value="Reset">

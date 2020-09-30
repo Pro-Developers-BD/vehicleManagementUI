@@ -34,7 +34,7 @@ export class CarCompanySaveComponent implements OnInit {
     this.carCompanyForm = this.formBuilder.group({
       id: '',
       carCompanyName: ['', Validators.required],
-      carModelList: new FormArray([])
+      carModelList: new FormControl([])
     });
   }
 
@@ -83,15 +83,21 @@ export class CarCompanySaveComponent implements OnInit {
       });
   }
 
-  getModelDataByCompany(e: any) {
-    console.log(e.target.value);
+  getModelDataByCompany(e) {
+   /* console.log(e.target.value);
     this.modelList.filter((el)=>{
       console.log(el);
       if(el.id == e.target.value){
         const controls=el;
         this.carCompanyForm.setControl('carModelList', new FormControl(controls));
       }
-    });
+    });*/
+    for (const model of this.modelList) {
+      if (e.target.checked && e.target.value == model.id) {
+        this.carCompanyForm.controls.carModelList.value.push(model);
+        console.log(this.carCompanyForm.controls.carModelList.value);
+      }
+    }
   }
 
   get carCompanyName() {

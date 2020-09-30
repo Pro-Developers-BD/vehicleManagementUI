@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {VehicleService} from "../../../../_services/vehicle.service";
+import {ClientService} from "../../../../_services/client.service";
 
 @Component({
   selector: 'app-car-stock-detail-save',
@@ -33,6 +34,7 @@ export class CarStockDetailSaveComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
+    private clientService : ClientService,
     public httpClient: HttpClient
   ) {
     this.carStockDeatilsForm = this.formBuilder.group({
@@ -43,7 +45,7 @@ export class CarStockDetailSaveComponent implements OnInit {
       engineNo: '',
       chassisNo: '',
       yearOfModel: '',
-      carStockDetails: {
+      carStockDetails: this.formBuilder.group({
         id: '',
         client: {},
         carType: '',
@@ -51,7 +53,7 @@ export class CarStockDetailSaveComponent implements OnInit {
         price: '',
         carAuction: '',
         availableStatus: ''
-      }
+      })
     });
   }
 
@@ -70,12 +72,14 @@ export class CarStockDetailSaveComponent implements OnInit {
             engineNo: res.content.engineNo,
             chassisNo: res.content.chassisNo,
             yearOfModel: res.content.yearOfModel,
-            client: res.content.carStockDetails.client,
-            carType: res.content.carStockDetails.carType,
-            color: res.content.carStockDetails.color,
-            price: res.content.carStockDetails.price,
-            carAuction: res.content.carStockDetails.carAuction,
-            availableStatus: res.content.carStockDetails.availableStatus,
+            carStockDetails: {
+              client: res.content.client,
+              carType: res.content.carType,
+              color: res.content.color,
+              price: res.content.price,
+              carAuction: res.content.carAuction,
+              availableStatus: res.content.availableStatus,
+            }
           });
           this.result = res;
           console.log(this.result);
@@ -85,6 +89,8 @@ export class CarStockDetailSaveComponent implements OnInit {
       this.pageTitle = 'Add Car Stock Detail';
     }
     this.getCarCompanyList();
+    this.getClients();
+    this.getColors();
   }
 
   uploadSubmit(): void {
@@ -101,36 +107,95 @@ export class CarStockDetailSaveComponent implements OnInit {
     }
   }
 
-  getCarCompanyList(): any{
+  getCarCompanyList(): any {
     this.vehicleService.getCarCompanyList().subscribe(
-      (data):any=>{
-        this.carCompanyList=data.content;
-      console.log(this.carCompanyList);
-    });
+      (data): any => {
+        this.carCompanyList = data.content;
+      });
   }
 
-  getCompanyByClient(value: any) {
+  getCompanyByClient(e) {
+    console.log(e.target.value);
     const prof = this.carCompanyList.filter((el) => {
-      if (el.id == value) {
-        this.carStockDeatilsForm.get('profession').setValue(el);
-        return el.id == value;
+      if (el.id == e.target.value) {
+        this.carStockDeatilsForm.get('carCompany').setValue(el);
+        this.vehicleService.carCompanyById(el.id).subscribe(
+          (data):any=>{
+            this.carModelList = data.content.carModelList;
+          });
+        return el.id == e.target.value;
       }
     });
   }
 
-  getModelByCompany(value: any) {
-
+  getModelByCompany(e) {
+    this.carModelList.filter((el)=>{
+      if (el.id == e.target.value){
+        this.carStockDeatilsForm.get('carModel').setValue(el);
+        this.vehicleService.carModelById(el.id).subscribe(
+          (modelData):any=>{
+            this.carGradeList=modelData.content.carGradeList;
+          });
+        return el.id == e.target.value;
+      }
+    });
   }
 
-  getGradeByClient(value: any) {
-
+  getGradeByModel(e) {
+    this.carGradeList.filter((el)=>{
+      if (el.id == e.target.value){
+        this.carStockDeatilsForm.get('carGrade').setValue(el);
+        return el.id == e.target.value;
+      }
+    });
   }
 
-  getColorByClient(value: any) {
-
+  getClients(): any{
+    this.clientService.getClientList().subscribe(
+      (data): any=>{
+        this.clientList=data.content;
+      });
   }
 
   getClientByCarId(value: any) {
+    this.clientList.filter(
+      (el):any=>{
+        if (el.id == value){
+          this.carStockDeatilsForm.controls.carStockDetails.get('client').setValue(el);
+          console.log(this.carStockDeatilsForm.controls.carStockDetails.get('client').value);
+          return el.id == value;
+        }
+      });
+  }
 
+  getColors(): any{
+    this.vehicleService.getColorList().subscribe(
+      (data): any=>{
+        this.colorList=data.content;
+      });
+  }
+
+  getColorByCar(value: any) {
+    this.colorList.filter(
+      (el):any=>{
+        if (el.id == value){
+          this.carStockDeatilsForm.controls.carStockDetails.get('color').setValue(el);
+          console.log(this.carStockDeatilsForm.controls.carStockDetails.get('color').value);
+          return el.id == value;
+        }
+      });
+  }
+
+  onChecked(value: any) {
+    if(value)
+    {
+      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(1);
+      console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
+    }
+    else
+    {
+      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(0);
+      console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
+    }
   }
 }

@@ -30,6 +30,7 @@ export class CarCompanyComponent implements OnInit {
     this.vehicleService.getCarCompanyList().subscribe(
       (data: any) => {
         this.carCompanyList = data.content;
+        console.log(this.carCompanyList);
         this.dtTrigger.next();
       }, (err) => {
         console.log('-----> err :', err);
