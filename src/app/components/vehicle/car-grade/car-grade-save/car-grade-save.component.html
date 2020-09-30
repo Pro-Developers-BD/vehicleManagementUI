@@ -12,7 +12,7 @@
           <label for="gradeName" class="col-form-label">Grade Name<span
             class="text-danger"> (*)</span> </label>
           <input class="form-control" type="text" id="gradeName" required="true" formControlName="gradeName">
-          <div *ngIf="submitted && gradeName.invalid " class="alert alert-danger">
+          <div *ngIf="submitted && gradeName.invalid " class="text-danger bg-transparent">
             <div *ngIf="gradeName?.errors?.required">
               Car Grade Name is required
             </div>

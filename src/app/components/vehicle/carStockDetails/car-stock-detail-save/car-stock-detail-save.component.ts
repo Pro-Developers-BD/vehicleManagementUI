@@ -18,6 +18,7 @@ export class CarStockDetailSaveComponent implements OnInit {
   public pageTitle: string;
   public carStockDeatilsForm: FormGroup;
   public result: any;
+  year: any;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -91,6 +92,7 @@ export class CarStockDetailSaveComponent implements OnInit {
     this.getCarCompanyList();
     this.getClients();
     this.getColors();
+    this.year =new Date().getFullYear();
   }
 
   uploadSubmit(): void {
@@ -186,15 +188,15 @@ export class CarStockDetailSaveComponent implements OnInit {
       });
   }
 
-  onChecked(value: any) {
+  onChecked(value: Boolean) {
     if(value)
     {
-      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(1);
+      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(true);
       console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
     }
     else
     {
-      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(0);
+      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(false);
       console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
     }
   }

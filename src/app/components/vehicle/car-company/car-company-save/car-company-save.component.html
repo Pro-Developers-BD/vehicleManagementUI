@@ -12,7 +12,7 @@
           <label for="carCompanyName" class="col-form-label">Company Name<span
             class="text-danger"> (*)</span> </label>
           <input class="form-control" type="text" id="carCompanyName" required="true" formControlName="carCompanyName">
-          <div *ngIf="submitted && carCompanyName.invalid " class="alert alert-danger">
+          <div *ngIf="submitted && carCompanyName.invalid " class="text-danger bg-transparent">
             <div *ngIf="carCompanyName?.errors?.required">
               Car Company Name is required
             </div>

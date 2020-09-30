@@ -67,6 +67,15 @@
           <input class="form-control" type="number" id="chassisNo" formControlName="chassisNo">
         </div>
       </div>
+      <div class="row form-group">
+        <div class="col-3 pb-2">
+          <label for="yearOfModel" class="col-form-label">Year Model</label>
+        </div>
+        <div class="col-8">
+          <input type="number" id="yearOfModel" min="1900" max="{{year}}" step="1" value="{{year}}" />
+        </div>
+      </div>
+
       <div formGroupName="carStockDetails">
         <div class="row form-group">
           <div class="col-3 pb-2">
@@ -127,7 +136,7 @@
           <div class="col-3 pb-2">
             <label for="availableStatus" class="col-form-label">Available(if checked then yes)</label>
           </div>
-          <div class="col-8">
+          <div class="col-1">
             <input class="form-control" type="checkbox" class="form-control" name="availableStatus" id="availableStatus"
                    (change)="onChecked($event.target.value)">
 
