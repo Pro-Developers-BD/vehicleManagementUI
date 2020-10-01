@@ -29,6 +29,7 @@ export class CarStockDetailSaveComponent implements OnInit {
   carGradeList: any;
   colorList: any;
   clientList: any;
+  public config: {};
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,6 +57,12 @@ export class CarStockDetailSaveComponent implements OnInit {
         availableStatus: ''
       })
     });
+    this.config ={
+      drops: 'down',
+      format: 'YYYY',
+      yearFormat: 'YYYY',
+
+    }
   }
 
   ngOnInit(): any {
@@ -191,13 +198,15 @@ export class CarStockDetailSaveComponent implements OnInit {
   onChecked(value: Boolean) {
     if(value)
     {
-      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(true);
+      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(1);
       console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
     }
     else
     {
-      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(false);
+      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(0);
       console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
     }
   }
+
+
 }

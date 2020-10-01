@@ -34,6 +34,7 @@
     "datatables.net-dt": "^1.10.22",
     "jquery": "^3.5.1",
     "jwt-decode": "^3.0.0-beta.2",
+    "ng2-date-picker": "^10.0.0",
     "ngx-bootstrap": "^6.1.0",
     "ngx-cookie-service": "^10.0.1",
     "ngx-permissions": "^8.0.0",
