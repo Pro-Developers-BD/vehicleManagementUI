@@ -24,8 +24,8 @@
         <div class="col-8 pt-1">
           <label class="col-6" formArrayName="carGradeList"
                  *ngFor="let grade of gradeList; let i = index">
-            <input type="checkbox" name="carGradeList" value={{grade.id}} [(ngModel)]="grade.checked"
-                   (change)="getGradeDataByModel($event)"/>
+            <input type="checkbox" name="carGradeList" value={{grade}}
+                   (change)="getGradeDataByModel($event, grade)"/>
             {{grade.gradeName}}
             <span class="checkmark"></span>
           </label>
