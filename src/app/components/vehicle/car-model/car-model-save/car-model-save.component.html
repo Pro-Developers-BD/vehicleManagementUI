@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="pageTitle text-left">
-      <h4 class="mb-n1 text-center">Car Model Name</h4>
+      <h4 class="mb-n1 text-center">Car Brand Name</h4>
     </div>
   </div>
 
@@ -9,12 +9,12 @@
     <form [formGroup]="carModelForm" (ngSubmit)="uploadSubmit()">
       <div class="row">
         <div class="form-group col-8">
-          <label for="carModelName" class="col-form-label">Model Name<span
+          <label for="carModelName" class="col-form-label">Brand Name<span
             class="text-danger"> (*)</span> </label>
           <input class="form-control" type="text" id="carModelName" required="true" formControlName="carModelName">
           <div *ngIf="submitted && modelName.invalid " class="text-danger bg-transparent">
             <div *ngIf="modelName?.errors?.required">
-              Car Model Name is required
+              Car Brand Name is required
             </div>
           </div>
         </div>

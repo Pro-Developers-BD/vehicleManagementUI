@@ -24,7 +24,7 @@
 
       <div class="row form-group">
         <div class="col-3 pb-2">
-          <label for="carModel" class="col-form-label">Model</label>
+          <label for="carModel" class="col-form-label">Brand</label>
         </div>
         <div class="col-8 pt-1">
           <select class="form-control" formControlName="carModel" id="carModel"
@@ -72,9 +72,9 @@
           <label for="yearOfModel" class="col-form-label">Year Model</label>
         </div>
         <div class="col-8">
-          <!--<input type="number" id="yearOfModel" min="1900" max="{{year}}" step="1" value="{{year}}" />-->
-          <input id="yearOfModel" formControlName="yearOfModel" placeholder="Select Year" [dpDayPicker]="config"
-                 mode="month"/>
+          <input type="number" id="yearOfModel" min="1900" max="{{year}}" step="1" value="{{year}}" />
+          <!--<input id="yearOfModel" formControlName="yearOfModel" placeholder="Select Year" [dpDayPicker]="config"
+                 mode="month"/>-->
         </div>
       </div>
 
@@ -106,13 +106,17 @@
           <div class="col-3 pb-2">
             <label for="color" class="col-form-label">Color</label>
           </div>
-          <div class="col-8 pt-1">
-            <select class="form-control" formControlName="color" id="color"
-                    (change)="getColorByCar($event.target.value)">
-              <option disabled value="" selected>Select One</option>
-              <option *ngFor="let clr of colorList; let i=index;"
-                      [value]="clr.id">{{clr.colorName}}</option>
-            </select>
+          <!-- <div class="col-8 pt-1">
+             <select class="form-control" formControlName="color" id="color"
+                     (change)="getColorByCar($event.target.value)">
+               <option disabled value="" selected>Select One</option>
+               <option *ngFor="let clr of colorList; let i=index;"
+                       [value]="clr.id">{{clr.colorName}}</option>
+             </select>
+           </div>-->
+          <div class="col-8">
+            <input class="form-control" type="text" id="color"
+                   formControlName="color">
           </div>
         </div>
 
@@ -140,8 +144,7 @@
           </div>
           <div class="col-1">
             <input class="form-control" type="checkbox" class="form-control" name="availableStatus" id="availableStatus"
-                   (change)="onChecked($event.target.value)">
-
+                   ng-checked="isChecked" (change)="onChecked($event)">
           </div>
         </div>
       </div>

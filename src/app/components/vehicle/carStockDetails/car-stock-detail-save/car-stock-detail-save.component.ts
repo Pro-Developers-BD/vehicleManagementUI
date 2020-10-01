@@ -12,7 +12,6 @@ import {ClientService} from "../../../../_services/client.service";
   styleUrls: ['./car-stock-detail-save.component.scss']
 })
 export class CarStockDetailSaveComponent implements OnInit {
-
   public baseUrl = environment.apiurl.service;
   submitted = false;
   public pageTitle: string;
@@ -30,6 +29,7 @@ export class CarStockDetailSaveComponent implements OnInit {
   colorList: any;
   clientList: any;
   public config: {};
+  private isChecked: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -81,15 +81,20 @@ export class CarStockDetailSaveComponent implements OnInit {
             chassisNo: res.content.chassisNo,
             yearOfModel: res.content.yearOfModel,
             carStockDetails: {
-              client: res.content.client,
-              carType: res.content.carType,
-              color: res.content.color,
-              price: res.content.price,
-              carAuction: res.content.carAuction,
-              availableStatus: res.content.availableStatus,
+              client: res.content.carStockDetails.client,
+              carType: res.content.carStockDetails.carType,
+              color: res.content.carStockDetails.color,
+              price: res.content.carStockDetails.price,
+              carAuction: res.content.carStockDetails.carAuction,
+              availableStatus: res.content.carStockDetails.availableStatus,
             }
           });
           this.result = res;
+          if(res.content.carStockDetails.availableStatus==true){
+            this.isChecked=true;
+          }else{
+            this.isChecked=false;
+          }
           console.log(this.result);
         }
       );
@@ -195,15 +200,17 @@ export class CarStockDetailSaveComponent implements OnInit {
       });
   }
 
-  onChecked(value: Boolean) {
-    if(value)
+  onChecked(e) {
+    if(e.target.checked)
     {
-      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(1);
+      this.isChecked=true;
+      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(true);
       console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
     }
     else
     {
-      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(0);
+      this.isChecked=false;
+      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(false);
       console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
     }
   }
