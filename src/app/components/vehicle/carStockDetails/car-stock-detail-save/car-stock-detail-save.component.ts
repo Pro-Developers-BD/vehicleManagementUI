@@ -29,7 +29,7 @@ export class CarStockDetailSaveComponent implements OnInit {
 /*  colorList: any;*/
   clientList: any;
   public config: {};
-  private isChecked: boolean;
+  isChecked: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
