@@ -22,6 +22,7 @@ export class CarModelSaveComponent implements OnInit {
     })
   };
   gradeList: any;
+  public checked: Boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,6 +50,11 @@ export class CarModelSaveComponent implements OnInit {
             carGradeList: res.content.carGradeList
           });
           this.result = res;
+          for (let key in res.content.carGradeList) {
+            if(res.content.carGradeList[key].gradeName != ''){
+              this.checked=true;
+            }
+          }
         }
       );
     } else {

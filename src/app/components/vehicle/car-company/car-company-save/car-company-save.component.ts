@@ -22,6 +22,7 @@ export class CarCompanySaveComponent implements OnInit {
     })
   };
   public modelList: any;
+  checked: boolean=false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -50,7 +51,11 @@ export class CarCompanySaveComponent implements OnInit {
             carModelList: res.content.carModelList
           });
           this.result = res;
-          console.log(this.result);
+          for (let key in res.content.carModelList) {
+            if(res.content.carModelList[key].carModelName != ''){
+              this.checked=true;
+            }
+          }
         }
       );
     } else {

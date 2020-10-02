@@ -90,12 +90,8 @@ export class CarStockDetailSaveComponent implements OnInit {
             }
           });
           this.result = res;
-          if(res.content.carStockDetails.availableStatus==true){
-            this.isChecked=true;
-          }else{
-            this.isChecked=false;
-          }
-          console.log(this.result);
+          this.isChecked=res.content.carStockDetails.availableStatus;
+          console.log(this.isChecked);
         }
       );
     } else {
