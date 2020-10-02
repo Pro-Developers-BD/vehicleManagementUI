@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {environment} from "../../../../../environments/environment";
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ClientService} from "../../../../_services/client.service";
 import {VehicleService} from "../../../../_services/vehicle.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
@@ -83,21 +82,14 @@ export class CarCompanySaveComponent implements OnInit {
       });
   }
 
-  getModelDataByCompany(e) {
-   /* console.log(e.target.value);
-    this.modelList.filter((el)=>{
-      console.log(el);
-      if(el.id == e.target.value){
-        const controls=el;
-        this.carCompanyForm.setControl('carModelList', new FormControl(controls));
-      }
-    });*/
-    for (const model of this.modelList) {
-      if (e.target.checked && e.target.value == model.id) {
-        this.carCompanyForm.controls.carModelList.value.push(model);
-        console.log(this.carCompanyForm.controls.carModelList.value);
-      }
+  getModelDataByCompany(e, data) {
+    if (e.target.checked) {
+      this.carCompanyForm.controls.carModelList.value.push(data);
+    } else {
+      const index = this.carCompanyForm.controls.carModelList.value.indexOf(data);
+      this.carCompanyForm.controls.carModelList.value.splice(index, 1);
     }
+    console.log(this.carCompanyForm.controls.carModelList.value);
   }
 
   get carCompanyName() {

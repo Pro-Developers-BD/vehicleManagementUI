@@ -25,7 +25,7 @@
           <label class="col-6" formArrayName="carModelList"
                  *ngFor="let model of modelList; let i = index">
             <input type="checkbox" name="carModelList" value={{model.id}} [(ngModel)]="model.checked"
-                   (change)="getModelDataByCompany($event)"/>
+                   (change)="getModelDataByCompany($event, model)"/>
             {{model.carModelName}}
             <span class="checkmark"></span>
           </label>
