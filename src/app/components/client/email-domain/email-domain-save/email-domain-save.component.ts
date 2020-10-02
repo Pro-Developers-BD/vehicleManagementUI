@@ -41,7 +41,7 @@ export class EmailDomainSaveComponent implements OnInit {
         }
       );
     } else {
-      this.pageTitle = 'Create Email Domain';
+      this.pageTitle = 'Add Email Domain';
     }
   }
 

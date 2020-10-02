@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="pageTitle text-left">
-      <h4 class="mb-n1 text-center">Car Stock Information</h4>
+      <h4 class="mb-n1 text-center">{{pageTitle}}</h4>
     </div>
   </div>
 
@@ -72,8 +72,8 @@
           <label for="yearOfModel" class="col-form-label">Year Model</label>
         </div>
         <div class="col-8">
-          <input type="number" id="yearOfModel" min="1900" max="{{year}}" step="1" />
-          <!--<input id="yearOfModel" formControlName="yearOfModel" placeholder="Select Year" [dpDayPicker]="config"
+          <input class="yearModel" type="date" id="yearOfModel" formControlName="yearOfModel" [valueAsDate]="1970"/>
+        <!--  <input id="yearOfModel" formControlName="yearOfModel" placeholder="Select Year" [dpDayPicker]="config"
                  mode="month"/>-->
         </div>
       </div>

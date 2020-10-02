@@ -40,7 +40,7 @@ export class CarModelSaveComponent implements OnInit {
   ngOnInit(): any {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.pageTitle = 'Edit Car Model';
+      this.pageTitle = 'Edit Car Brand';
       this.vehicleService.carModelById(parseInt(id)).subscribe(
         (res: any) => {
           this.carModelForm.patchValue({
@@ -52,7 +52,7 @@ export class CarModelSaveComponent implements OnInit {
         }
       );
     } else {
-      this.pageTitle = 'Create Car Model';
+      this.pageTitle = 'Create Car Brand';
     }
     this.getCarGrades();
   }

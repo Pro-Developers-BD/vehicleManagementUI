@@ -50,7 +50,7 @@ export class CarGradeSaveComponent implements OnInit {
         }
       );
     } else {
-      this.pageTitle = 'Create Car Grade';
+      this.pageTitle = 'Add Car Grade';
     }
   }
 

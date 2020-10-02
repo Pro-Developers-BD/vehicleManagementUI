@@ -12,6 +12,7 @@
       <tr>
         <th>Company Name</th>
         <th>Brand</th>
+        <th>Year Model</th>
         <th>Available</th>
         <th>Created Date</th>
         <th>Action</th>
@@ -21,6 +22,7 @@
       <tr *ngFor="let stock of carStockDetailsList">
         <td>{{ stock?.carCompany.carCompanyName}}</td>
         <td>{{ stock?.carModel.carModelName}}</td>
+        <td>{{ (stock?.yearOfModel | date)}}</td>
         <td>{{ stock?.carStockDetails?.availableStatus == true? 'Yes':'No'}}</td>
         <td>{{ stock?.createdAt | date}}</td>
         <td>

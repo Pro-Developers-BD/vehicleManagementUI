@@ -38,7 +38,7 @@ export class ColorSaveComponent implements OnInit {
   ngOnInit(): any {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.pageTitle = 'Edit Car Grade';
+      this.pageTitle = 'Edit Color Name';
       this.vehicleService.getColorById(parseInt(id)).subscribe(
         (res: any) => {
           this.colorForm.patchValue({
@@ -50,7 +50,7 @@ export class ColorSaveComponent implements OnInit {
         }
       );
     } else {
-      this.pageTitle = 'Create Car Grade';
+      this.pageTitle = 'Add Car Color';
     }
   }
 

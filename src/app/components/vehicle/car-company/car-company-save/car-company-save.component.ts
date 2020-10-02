@@ -54,7 +54,7 @@ export class CarCompanySaveComponent implements OnInit {
         }
       );
     } else {
-      this.pageTitle = 'Create Car Company';
+      this.pageTitle = 'Add Car Company';
     }
     this.getCarModels();
     console.log(this.carCompanyForm.controls.carModelList.value);

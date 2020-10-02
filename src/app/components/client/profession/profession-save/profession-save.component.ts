@@ -44,7 +44,7 @@ export class ProfessionSaveComponent implements OnInit {
         }
       );
     } else {
-      this.pageTitle = 'Create Profession';
+      this.pageTitle = 'Add Profession';
     }
   }
 

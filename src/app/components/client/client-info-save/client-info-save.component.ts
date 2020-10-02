@@ -48,7 +48,7 @@ export class ClientInfoSaveComponent implements OnInit {
   ngOnInit(): any {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.pageTitle = 'Edit Client';
+      this.pageTitle = 'Edit Address Book';
       this.clientService.getClientInfoById(parseInt(id)).subscribe(
         (res: any) => {
           this.clientForm.patchValue({
@@ -67,7 +67,7 @@ export class ClientInfoSaveComponent implements OnInit {
         }
       );
     } else {
-      this.pageTitle = 'Create Client';
+      this.pageTitle = 'Address Book';
     }
     this.getProfessionList();
   }
