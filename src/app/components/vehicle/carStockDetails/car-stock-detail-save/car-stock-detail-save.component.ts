@@ -26,7 +26,7 @@ export class CarStockDetailSaveComponent implements OnInit {
   carCompanyList: any;
   carModelList: any;
   carGradeList: any;
-  colorList: any;
+/*  colorList: any;*/
   clientList: any;
   public config: {};
   private isChecked: boolean;
@@ -51,7 +51,7 @@ export class CarStockDetailSaveComponent implements OnInit {
         id: '',
         client: {},
         carType: '',
-        color: {},
+        color: '',
         price: '',
         carAuction: '',
         availableStatus: ''
@@ -103,7 +103,7 @@ export class CarStockDetailSaveComponent implements OnInit {
     }
     this.getCarCompanyList();
     this.getClients();
-    this.getColors();
+   /* this.getColors();*/
     this.year =new Date().getFullYear();
   }
 
@@ -182,7 +182,7 @@ export class CarStockDetailSaveComponent implements OnInit {
       });
   }
 
-  getColors(): any{
+  /*getColors(): any{
     this.vehicleService.getColorList().subscribe(
       (data): any=>{
         this.colorList=data.content;
@@ -198,7 +198,7 @@ export class CarStockDetailSaveComponent implements OnInit {
           return el.id == value;
         }
       });
-  }
+  }*/
 
   onChecked(e) {
     if(e.target.checked)

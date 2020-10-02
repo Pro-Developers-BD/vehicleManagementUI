@@ -144,7 +144,7 @@
           </div>
           <div class="col-1">
             <input class="form-control" type="checkbox" class="form-control" name="availableStatus" id="availableStatus"
-                   ng-checked="isChecked" (change)="onChecked($event)">
+                   [value]="isChecked" (change)="onChecked($event)">
           </div>
         </div>
       </div>
