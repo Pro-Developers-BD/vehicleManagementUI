@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { TopNavComponent } from './components/layout/authorised/top-nav/top-nav.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/auth/login/login.component';
 import { AuthenticationService } from './_services/authentication.service';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -43,6 +43,7 @@ import { CarStockDetailSaveComponent } from './components/vehicle/carStockDetail
 import { ColorComponent } from './components/vehicle/color/color.component';
 import { ColorSaveComponent } from './components/vehicle/color/color-save/color-save.component';
 import { DpDatePickerModule } from "ng2-date-picker";
+import { UserSaveComponent } from './components/auth/user-save/user-save.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { DpDatePickerModule } from "ng2-date-picker";
     CarStockDetailsComponent,
     CarStockDetailSaveComponent,
     ColorComponent,
-    ColorSaveComponent
+    ColorSaveComponent,
+    UserSaveComponent
   ],
   imports: [
     BrowserModule,

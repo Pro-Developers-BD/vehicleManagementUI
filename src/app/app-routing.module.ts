@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login';
+import { LoginComponent } from './components/auth/login';
 import {HomeComponent} from './components/layout/home/home.component';
 import {ProfessionSaveComponent} from './components/client/profession/profession-save/profession-save.component';
 import {ProfessionComponent} from './components/client/profession/profession.component';
@@ -18,10 +18,12 @@ import {CarStockDetailsComponent} from "./components/vehicle/carStockDetails/car
 import {CarStockDetailSaveComponent} from "./components/vehicle/carStockDetails/car-stock-detail-save/car-stock-detail-save.component";
 import {ColorComponent} from "./components/vehicle/color/color.component";
 import {ColorSaveComponent} from "./components/vehicle/color/color-save/color-save.component";
+import {UserSaveComponent} from "./components/auth/user-save/user-save.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: UserSaveComponent},
   {path: 'profession/save', component: ProfessionSaveComponent},
   {path: 'profession/save/:id', component: ProfessionSaveComponent},
   {path: 'profession/list', component: ProfessionComponent},

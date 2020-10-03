@@ -11,4 +11,8 @@ export class HomeService {
   toggleSideNav(): void {
     this.hideSideNav = !this.hideSideNav;
   }
+
+  getUserByEmail(email: string) {
+
+  }
 }

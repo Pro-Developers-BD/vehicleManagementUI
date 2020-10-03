@@ -1,0 +1,35 @@
+<div class="card bg-light">
+  <article class="card-body mx-auto" style="max-width: 400px;">
+    <h4 class="card-title mt-3 text-center">Create Account</h4>
+    <form [formGroup]="userRegistrationForm" (ngSubmit)="saveUser()">
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input formControlName="userName" id="userName" class="form-control" placeholder="User Name" type="text">
+      </div> <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+        </div>
+        <input formControlName="email" id="email" class="form-control" placeholder="Email address" type="email">
+      </div> <!-- form-group// -->
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input class="form-control" formControlName="password" id="password" placeholder="Create password" type="password">
+      </div> <!-- form-group// -->
+<!--      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+        <input class="form-control" placeholder="Repeat password" type="password">
+      </div> &lt;!&ndash; form-group// &ndash;&gt;-->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+      </div> <!-- form-group// -->
+      <p class="text-center">Have an account? <a routerLink="/login"><i class="fa fa-user"></i> Login</a> </p>
+    </form>
+  </article>
+</div> <!-- card.// -->
