@@ -36,12 +36,14 @@ export class ClientInfoSaveComponent implements OnInit {
       id: '',
       customerName: ['', Validators.required],
       companyName: ['', Validators.required],
-      profession: {},
       address: ['', Validators.required],
       areaName: ['', Validators.required],
       divisionName: ['', Validators.required],
       contactNo: ['', Validators.required],
       emailAddress: ['', Validators.required],
+      profession: this.formBuilder.group({
+        id: ''
+      })
     });
   }
 
@@ -55,7 +57,7 @@ export class ClientInfoSaveComponent implements OnInit {
             id: res.content.id,
             customerName: res.content.customerName,
             companyName: res.content.companyName,
-            profession: res.content.profession,
+            profession: {id: res.content.profession.id},
             address: res.content.address,
             areaName: res.content.areaName,
             divisionName: res.content.divisionName,
@@ -75,7 +77,7 @@ export class ClientInfoSaveComponent implements OnInit {
   uploadSubmit(): void {
     this.submitted = true;
     if (this.clientForm.valid) {
-      const prof =this.clientForm.get('profession').value;
+      const prof = this.clientForm.get('profession').value;
       const formObj = this.clientForm.getRawValue();
       const serializedForm = JSON.stringify(formObj);
       console.log(serializedForm);
