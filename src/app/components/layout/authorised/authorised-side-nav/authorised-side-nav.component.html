@@ -1,16 +1,15 @@
 <div class="row">
   <div class="col-2" *ngIf="auth.currentUserValue !=null">
     <nav id="sidebar" class="navbar-collapse bg-info" [ngClass]="{'hidden': homeService.hideSideNav }">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-
-          <a class="nav-link font-weight-bold d-inline-block" routerLink="/"><img src="assets/img/logo.png" width="20" height="20"
-                                                                   class="align-top" alt=""> Dashboard </a>
-        </li>
+      <ul class="navbar-nav pl-2">
+          <a class="nav-link font-weight-bold d-inline-block" routerLink="/">
+            <img src="assets/img/icon1.svg" width="25" height="25" class="align-content-start" alt="">Dashboard
+          </a>
       </ul>
       <ul class="navbar-nav">
         <span class="listHeader pl-1 font-weight-bold" data-toggle="collapse" data-target="#item1">
-          <a class="nav-link" routerLink="#" [routerLinkActive]="['active']">Customer Setting</a>
+          <a class="nav-link" routerLink="#" [routerLinkActive]="['active']">
+            <img src="assets/img/icon2.svg" width="25" height="25" class="align-content-start" alt=""> Customer Setting</a>
         </span>
         <li class="nav-item collapse" id="item1">
           <a class="nav-link" routerLink="/client/list" [routerLinkActive]="['active']">Customer</a>
@@ -24,7 +23,8 @@
       </ul>
       <ul class="navbar-nav">
         <span class="listHeader pl-1 font-weight-bold" data-toggle="collapse" data-target="#item2">
-          <a class="nav-link" routerLink="#" [routerLinkActive]="['active']">Vehicle Setting</a>
+          <a class="nav-link" routerLink="#" [routerLinkActive]="['active']">
+            <img src="assets/img/icon3.svg" width="25" height="25" class="align-content-start"  alt=""> Vehicle Setting</a>
         </span>
         <li class="nav-item collapse" id="item2">
           <a class="nav-link" routerLink="/carStockDetails/list" [routerLinkActive]="['active']">Car Stock Info</a>
