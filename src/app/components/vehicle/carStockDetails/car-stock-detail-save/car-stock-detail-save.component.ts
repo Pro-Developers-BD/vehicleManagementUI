@@ -31,7 +31,12 @@ export class CarStockDetailSaveComponent implements OnInit {
   /*  colorList: any;*/
   clientList: any;
   isChecked: boolean;
-  public yearModel: any;
+  public carTypeArr =[
+    {id: 1, value: 'New'},
+    {id: 2, value: 'Old'},
+    {id: 3, value: 'Own'},
+    {id: 4, value: 'Importer'},
+  ]
 
   constructor(
     private formBuilder: FormBuilder,

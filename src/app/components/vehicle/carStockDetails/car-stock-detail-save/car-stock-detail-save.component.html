@@ -105,7 +105,11 @@
             <label for="carType" class="col-form-label">Car Type</label>
           </div>
           <div class="col-8">
-            <input class="form-control" type="text" id="carType" formControlName="carType">
+            <select class="form-control" formControlName="carType" id="carType">
+              <option disabled value="" selected>Select One</option>
+              <option *ngFor="let type of carTypeArr; let i=index;"
+                      [value]="type.value">{{type.value}}</option>
+            </select>
           </div>
         </div>
 
