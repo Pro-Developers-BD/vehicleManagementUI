@@ -12,7 +12,7 @@
           <label for="professionName" class="col-form-label">Profession Name<span
             class="text-danger"> (*)</span> </label>
           <input class="form-control" type="text" id="professionName" required="true" formControlName="professionName">
-          <div *ngIf="submitted && professionName.invalid " class="alert alert-danger">
+          <div *ngIf="submitted && professionName.invalid " class="text-danger bg-transparent">
             <div *ngIf="professionName?.errors?.required">
               Profession Name is required
             </div>

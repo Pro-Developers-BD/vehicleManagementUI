@@ -15,7 +15,7 @@ export class UserSaveComponent implements OnInit {
   public baseUrl = environment.apiurl.service;
   userRegistrationForm: FormGroup;
   public uniqueCheckEmail: any;
-  public submited = false;
+  public submitted = false;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -29,8 +29,8 @@ export class UserSaveComponent implements OnInit {
     public auth: AuthenticationService) {
     this.userRegistrationForm = this.fb.group({
       userName: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
-      password: ['', [Validators.required]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     });
   }
 
@@ -46,10 +46,10 @@ export class UserSaveComponent implements OnInit {
   }
 
   saveUser() {
-    this.submited = true;
+    this.submitted = true;
     if(this.userRegistrationForm.valid) {
-      const stockForm = this.userRegistrationForm.getRawValue();
-      const serialForm = JSON.stringify(stockForm);
+      const userForm = this.userRegistrationForm.getRawValue();
+      const serialForm = JSON.stringify(userForm);
       console.log(serialForm);
       this.httpClient.post(this.baseUrl + '/users', serialForm, this.httpOptions).subscribe((res): any => {
         if (res) {
@@ -59,10 +59,7 @@ export class UserSaveComponent implements OnInit {
     }
 
   }
-
-  get username() { return this.userRegistrationForm.get('userName'); }
-  get firstName() { return this.userRegistrationForm.get('email'); }
-  get lastName() { return this.userRegistrationForm.get('password'); }
+  get f() { return this.userRegistrationForm.controls; }
 
   /*public checkUniqueEmail(email: string) {
     if(email){

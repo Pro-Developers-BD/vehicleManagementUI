@@ -1,15 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {environment} from "../../../../../environments/environment";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {VehicleService} from "../../../../_services/vehicle.service";
 import {ClientService} from "../../../../_services/client.service";
+import {DatePipe, formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-car-stock-detail-save',
   templateUrl: './car-stock-detail-save.component.html',
-  styleUrls: ['./car-stock-detail-save.component.scss']
+  styleUrls: ['./car-stock-detail-save.component.scss'],
+  providers: [DatePipe]
 })
 export class CarStockDetailSaveComponent implements OnInit {
   public baseUrl = environment.apiurl.service;
@@ -26,30 +28,38 @@ export class CarStockDetailSaveComponent implements OnInit {
   carCompanyList: any;
   carModelList: any;
   carGradeList: any;
-/*  colorList: any;*/
+  /*  colorList: any;*/
   clientList: any;
-  public config: {};
   isChecked: boolean;
+  public yearModel: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
-    private clientService : ClientService,
+    private clientService: ClientService,
     public httpClient: HttpClient
   ) {
     this.carStockDeatilsForm = this.formBuilder.group({
       id: '',
-      carCompany: {},
-      carModel: {},
-      carGrade: {},
+      carCompany: this.formBuilder.group({
+        id: ''
+      }),
+      carModel: this.formBuilder.group({
+        id: ''
+      }),
+      carGrade: this.formBuilder.group({
+        id: ''
+      }),
       engineNo: '',
       chassisNo: '',
       yearOfModel: '',
       carStockDetails: this.formBuilder.group({
         id: '',
-        client: {},
+        client: this.formBuilder.group({
+          id: ''
+        }),
         carType: '',
         color: '',
         price: '',
@@ -57,12 +67,6 @@ export class CarStockDetailSaveComponent implements OnInit {
         availableStatus: ''
       })
     });
-    this.config ={
-      drops: 'down',
-      format: 'YYYY',
-      yearFormat: 'YYYY',
-
-    }
   }
 
   ngOnInit(): any {
@@ -74,14 +78,22 @@ export class CarStockDetailSaveComponent implements OnInit {
           console.log(res);
           this.carStockDeatilsForm.patchValue({
             id: res.content.id,
-            carCompany: res.content.carCompany,
-            carModel: res.content.carModel,
-            carGrade: res.content.carGrade,
+            carCompany: {
+              id: res.content.carCompany.id
+            },
+            carModel: {
+              id: res.content.carModel.id
+            },
+            carGrade: {
+              id: res.content.carGrade.id
+            },
             engineNo: res.content.engineNo,
             chassisNo: res.content.chassisNo,
-            yearOfModel: res.content.yearOfModel,
+            yearOfModel: formatDate(res.content.yearOfModel,'yyyy-MM-dd','en-US'),
             carStockDetails: {
-              client: res.content.carStockDetails.client,
+              client: {
+                id: res.content.carStockDetails.client.id
+              },
               carType: res.content.carStockDetails.carType,
               color: res.content.carStockDetails.color,
               price: res.content.carStockDetails.price,
@@ -90,8 +102,8 @@ export class CarStockDetailSaveComponent implements OnInit {
             }
           });
           this.result = res;
-          this.isChecked=res.content.carStockDetails.availableStatus;
-          console.log(this.isChecked);
+          console.log(this.result);
+          this.isChecked = res.content.carStockDetails.availableStatus;
         }
       );
     } else {
@@ -99,8 +111,7 @@ export class CarStockDetailSaveComponent implements OnInit {
     }
     this.getCarCompanyList();
     this.getClients();
-   /* this.getColors();*/
-    this.year =new Date().getFullYear();
+    /* this.getColors();*/
   }
 
   uploadSubmit(): void {
@@ -126,55 +137,30 @@ export class CarStockDetailSaveComponent implements OnInit {
 
   getCompanyByClient(e) {
     console.log(e.target.value);
-    const prof = this.carCompanyList.filter((el) => {
-      if (el.id == e.target.value) {
-        this.carStockDeatilsForm.get('carCompany').setValue(el);
-        this.vehicleService.carCompanyById(el.id).subscribe(
-          (data):any=>{
-            this.carModelList = data.content.carModelList;
-          });
-        return el.id == e.target.value;
-      }
-    });
+    if (e.target.value) {
+      this.vehicleService.carCompanyById(e.target.value).subscribe(
+        (data): any => {
+          this.carModelList = data.content.carModelList;
+        });
+    }
+    return e.target.value;
   }
 
   getModelByCompany(e) {
-    this.carModelList.filter((el)=>{
-      if (el.id == e.target.value){
-        this.carStockDeatilsForm.get('carModel').setValue(el);
-        this.vehicleService.carModelById(el.id).subscribe(
-          (modelData):any=>{
-            this.carGradeList=modelData.content.carGradeList;
-          });
-        return el.id == e.target.value;
-      }
-    });
+    if(e.target.value) {
+      this.vehicleService.carModelById(e.target.value).subscribe(
+        (modelData): any => {
+          this.carGradeList = modelData.content.carGradeList;
+        });
+    }
+    return e.target.value;
   }
 
-  getGradeByModel(e) {
-    this.carGradeList.filter((el)=>{
-      if (el.id == e.target.value){
-        this.carStockDeatilsForm.get('carGrade').setValue(el);
-        return el.id == e.target.value;
-      }
-    });
-  }
 
-  getClients(): any{
+  getClients(): any {
     this.clientService.getClientList().subscribe(
-      (data): any=>{
-        this.clientList=data.content;
-      });
-  }
-
-  getClientByCarId(value: any) {
-    this.clientList.filter(
-      (el):any=>{
-        if (el.id == value){
-          this.carStockDeatilsForm.controls.carStockDetails.get('client').setValue(el);
-          console.log(this.carStockDeatilsForm.controls.carStockDetails.get('client').value);
-          return el.id == value;
-        }
+      (data): any => {
+        this.clientList = data.content;
       });
   }
 
@@ -197,15 +183,12 @@ export class CarStockDetailSaveComponent implements OnInit {
   }*/
 
   onChecked(e) {
-    if(e.target.checked)
-    {
-      this.isChecked=true;
+    if (e.target.checked) {
+      this.isChecked = true;
       this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(true);
       console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
-    }
-    else
-    {
-      this.isChecked=false;
+    } else {
+      this.isChecked = false;
       this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(false);
       console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
     }

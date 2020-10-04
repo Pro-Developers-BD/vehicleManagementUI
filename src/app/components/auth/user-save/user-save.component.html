@@ -6,19 +6,29 @@
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-user"></i> </span>
         </div>
-        <input formControlName="userName" id="userName" class="form-control" placeholder="User Name" type="text">
-      </div> <!-- form-group// -->
+        <input formControlName="userName" id="userName" class="form-control" placeholder="User Name" type="text" required="true">
+        <div *ngIf="submitted && f.userName.invalid" class="text-danger bg-transparent">
+          <div *ngIf="f.userName?.errors?.required">&nbsp;<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Username is required</div>
+        </div>
+      </div><!-- form-group// -->
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
         </div>
-        <input formControlName="email" id="email" class="form-control" placeholder="Email address" type="email">
+        <input formControlName="email" id="email" class="form-control" placeholder="Email" type="email" required="true">
+        <div *ngIf="submitted && f.email.invalid" class="text-danger bg-transparent">
+          <div *ngIf="f.email?.errors?.required">&nbsp;<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Valid email is required</div>
+          <div *ngIf="f.email?.errors?.email">&nbsp;<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Your email is not valid</div>
+        </div>
       </div> <!-- form-group// -->
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
         </div>
-        <input class="form-control" formControlName="password" id="password" placeholder="Create password" type="password">
+        <input class="form-control" formControlName="password" id="password" placeholder="Password" type="password" required="true">
+        <div *ngIf="submitted && f.password.invalid" class="text-danger bg-transparent">
+          <div *ngIf="f.password?.errors?.required">&nbsp;<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Password is required </div>
+        </div>
       </div> <!-- form-group// -->
 <!--      <div class="form-group input-group">
         <div class="input-group-prepend">

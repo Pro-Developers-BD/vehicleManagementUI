@@ -8,45 +8,50 @@
   <div class="col-12 inner-wraper ml-2">
     <form [formGroup]="carStockDeatilsForm" (ngSubmit)="uploadSubmit()">
 
-      <div class="row form-group">
-        <div class="col-3 pb-2">
-          <label for="carCompany" class="col-form-label">Company</label>
-        </div>
-        <div class="col-8 pt-1">
-          <select class="form-control" formControlName="carCompany" id="carCompany"
-                  (change)="getCompanyByClient($event)">
-            <option disabled value="" selected>Select One</option>
-            <option *ngFor="let com of carCompanyList; let i=index;"
-                    [value]="com.id">{{com.carCompanyName}}</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row form-group">
-        <div class="col-3 pb-2">
-          <label for="carModel" class="col-form-label">Brand</label>
-        </div>
-        <div class="col-8 pt-1">
-          <select class="form-control" formControlName="carModel" id="carModel"
-                  (change)="getModelByCompany($event)">
-            <option disabled value="" selected>Select One</option>
-            <option *ngFor="let model of carModelList; let i=index;"
-                    [value]="model.id">{{model.carModelName}}</option>
-          </select>
+      <div formGroupName="carCompany">
+        <div class="row form-group">
+          <div class="col-3 pb-2">
+            <label for="id" class="col-form-label">Company</label>
+          </div>
+          <div class="col-8 pt-1">
+            <select class="form-control" formControlName="id" id="id"
+                    (change)="getCompanyByClient($event)">
+              <option disabled value="" selected>Select One</option>
+              <option *ngFor="let com of carCompanyList; let i=index;"
+                      [value]="com.id">{{com.carCompanyName}}</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      <div class="row form-group">
-        <div class="col-3 pb-2">
-          <label for="carGrade" class="col-form-label">Grade</label>
+      <div formGroupName="carModel">
+        <div class="row form-group">
+          <div class="col-3 pb-2">
+            <label for="id" class="col-form-label">Brand</label>
+          </div>
+          <div class="col-8 pt-1">
+            <select class="form-control" formControlName="id" id="id"
+                    (change)="getModelByCompany($event)">
+              <option disabled value="" selected>Select One</option>
+              <option *ngFor="let model of carModelList; let i=index;"
+                      [value]="model.id">{{model.carModelName}}</option>
+            </select>
+          </div>
         </div>
-        <div class="col-8 pt-1">
-          <select class="form-control" formControlName="carGrade" id="carGrade"
-                  (change)="getGradeByModel($event)">
-            <option disabled value="" selected>Select One</option>
-            <option *ngFor="let grade of carGradeList; let i=index;"
-                    [value]="grade.id">{{grade.gradeName}}</option>
-          </select>
+      </div>
+
+      <div formGroupName="carGrade">
+        <div class="row form-group">
+          <div class="col-3 pb-2">
+            <label for="id" class="col-form-label">Grade</label>
+          </div>
+          <div class="col-8 pt-1">
+            <select class="form-control" formControlName="id" id="id">
+              <option disabled value="" selected>Select One</option>
+              <option *ngFor="let grade of carGradeList; let i=index;"
+                      [value]="grade.id">{{grade.gradeName}}</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -72,24 +77,26 @@
           <label for="yearOfModel" class="col-form-label">Year Model</label>
         </div>
         <div class="col-8">
-          <input class="yearModel" type="date" id="yearOfModel" formControlName="yearOfModel" [valueAsDate]="1970"/>
-        <!--  <input id="yearOfModel" formControlName="yearOfModel" placeholder="Select Year" [dpDayPicker]="config"
-                 mode="month"/>-->
+          <input class="yearModel" type="date" id="yearOfModel" formControlName="yearOfModel"/>
+          <!--  <input id="yearOfModel" formControlName="yearOfModel" placeholder="Select Year" [dpDayPicker]="config"
+                   mode="month"/>-->
         </div>
       </div>
 
       <div formGroupName="carStockDetails">
-        <div class="row form-group">
-          <div class="col-3 pb-2">
-            <label for="client" class="col-form-label">Client</label>
-          </div>
-          <div class="col-8 pt-1">
-            <select class="form-control" formControlName="client" id="client"
-                    (change)="getClientByCarId($event.target.value)">
-              <option disabled value="" selected>Select One</option>
-              <option *ngFor="let client of clientList; let i=index;"
-                      [value]="client.id">{{client.customerName}}</option>
-            </select>
+
+        <div formGroupName="client">
+          <div class="row form-group">
+            <div class="col-3 pb-2">
+              <label for="id" class="col-form-label">Client</label>
+            </div>
+            <div class="col-8 pt-1">
+              <select class="form-control" formControlName="id" id="id">
+                <option disabled value="" selected>Select One</option>
+                <option *ngFor="let client of clientList; let i=index;"
+                        [value]="client.id">{{client.customerName}}</option>
+              </select>
+            </div>
           </div>
         </div>
 
