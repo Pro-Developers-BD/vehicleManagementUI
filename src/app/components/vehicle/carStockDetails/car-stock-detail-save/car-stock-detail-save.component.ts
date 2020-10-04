@@ -42,29 +42,29 @@ export class CarStockDetailSaveComponent implements OnInit {
     public httpClient: HttpClient
   ) {
     this.carStockDeatilsForm = this.formBuilder.group({
-      id: '',
+      id: [''],
       carCompany: this.formBuilder.group({
-        id: ''
+        id: ['']
       }),
       carModel: this.formBuilder.group({
-        id: ''
+        id: ['']
       }),
       carGrade: this.formBuilder.group({
-        id: ''
+        id: ['']
       }),
-      engineNo: '',
-      chassisNo: '',
-      yearOfModel: '',
+      engineNo: [''],
+      chassisNo: [''],
+      yearOfModel: [''],
       carStockDetails: this.formBuilder.group({
-        id: '',
+        id: [''],
         client: this.formBuilder.group({
-          id: ''
+          id: ['']
         }),
-        carType: '',
-        color: '',
-        price: '',
-        carAuction: '',
-        availableStatus: ''
+        carType: [''],
+        color: [''],
+        price: [''],
+        carAuction: [''],
+        availableStatus: ['']
       })
     });
   }
@@ -89,7 +89,7 @@ export class CarStockDetailSaveComponent implements OnInit {
             },
             engineNo: res.content.engineNo,
             chassisNo: res.content.chassisNo,
-            yearOfModel: formatDate(res.content.yearOfModel,'yyyy-MM-dd','en-US'),
+            yearOfModel: formatDate(res.content.yearOfModel, 'yyyy-MM-dd', 'en-US'),
             carStockDetails: {
               client: {
                 id: res.content.carStockDetails.client.id
@@ -98,7 +98,7 @@ export class CarStockDetailSaveComponent implements OnInit {
               color: res.content.carStockDetails.color,
               price: res.content.carStockDetails.price,
               carAuction: res.content.carStockDetails.carAuction,
-              availableStatus: res.content.carStockDetails.availableStatus,
+              availableStatus: res.content.carStockDetails.availableStatus
             }
           });
           this.result = res;
@@ -147,7 +147,7 @@ export class CarStockDetailSaveComponent implements OnInit {
   }
 
   getModelByCompany(e) {
-    if(e.target.value) {
+    if (e.target.value) {
       this.vehicleService.carModelById(e.target.value).subscribe(
         (modelData): any => {
           this.carGradeList = modelData.content.carGradeList;
