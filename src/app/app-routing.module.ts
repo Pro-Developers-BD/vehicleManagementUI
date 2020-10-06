@@ -19,6 +19,7 @@ import {CarStockDetailSaveComponent} from "./components/vehicle/carStockDetails/
 import {ColorComponent} from "./components/vehicle/color/color.component";
 import {ColorSaveComponent} from "./components/vehicle/color/color-save/color-save.component";
 import {UserSaveComponent} from "./components/auth/user-save/user-save.component";
+import {VehiclesComponent} from "./components/vehicle/vehicles/vehicles.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path: 'color/list', component: ColorComponent},
   {path: 'color/save', component: ColorSaveComponent},
   {path: 'color/save/:id', component: ColorSaveComponent},
+  {path: 'vehicles', component: VehiclesComponent},
   {path: '**', redirectTo: ''}
 ];
 

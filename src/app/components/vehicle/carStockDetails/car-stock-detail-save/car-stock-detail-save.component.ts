@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {VehicleService} from "../../../../_services/vehicle.service";
 import {ClientService} from "../../../../_services/client.service";
 import {DatePipe, formatDate} from '@angular/common';
+import {FileUploader} from 'ng2-file-upload';
 
 @Component({
   selector: 'app-car-stock-detail-save',
@@ -19,7 +20,7 @@ export class CarStockDetailSaveComponent implements OnInit {
   public pageTitle: string;
   public carStockDeatilsForm: FormGroup;
   public result: any;
-  year: any;
+  public stock: any;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -31,6 +32,14 @@ export class CarStockDetailSaveComponent implements OnInit {
   /*  colorList: any;*/
   clientList: any;
   isChecked: boolean;
+  public uploader: FileUploader = new FileUploader({
+    isHTML5: true
+  });
+/*  public imageRequired: string;
+  public imagePath: any;*/
+  public imgURL: string | ArrayBuffer;
+  public name: any;
+  public message: string;
   public carTypeArr =[
     {id: 1, value: 'New'},
     {id: 2, value: 'Old'},
@@ -103,11 +112,12 @@ export class CarStockDetailSaveComponent implements OnInit {
               color: res.content.carStockDetails.color,
               price: res.content.carStockDetails.price,
               carAuction: res.content.carStockDetails.carAuction,
-              availableStatus: res.content.carStockDetails.availableStatus
+              availableStatus: res.content.carStockDetails.availableStatus,
             }
           });
           this.result = res;
           console.log(this.result);
+          //this.imagePath = res.content.imagePath;
           this.isChecked = res.content.carStockDetails.availableStatus;
         }
       );
@@ -121,7 +131,19 @@ export class CarStockDetailSaveComponent implements OnInit {
 
   uploadSubmit(): void {
     this.submitted = true;
+/*    if (typeof this.uploader.queue[0] === 'undefined' && this.carStockDeatilsForm.controls.mediaId.value === null) {
+      this.imageRequired = 'Image is required';
+    }
+    if (typeof this.uploader.queue[0] !== 'undefined') {
+      this.imageRequired = '';
+    }*/
+
     if (this.carStockDeatilsForm.valid) {
+      /*if (typeof this.uploader.queue[0] !== 'undefined') {
+        const fileItem = this.uploader.queue[0]._file;
+        this.carStockDeatilsForm.controls.imagePath.setValue(fileItem);
+        console.log(this.carStockDeatilsForm.get('imagePath').value);
+      }*/
       const stockForm = this.carStockDeatilsForm.getRawValue();
       const serialForm = JSON.stringify(stockForm);
       console.log(serialForm);
@@ -130,8 +152,28 @@ export class CarStockDetailSaveComponent implements OnInit {
           this.router.navigate(['carStockDetails/list']);
         }
       });
+      //this.uploader.clearQueue();
     }
   }
+
+  /*preview(files) {
+    if (files.length === 0) {
+      return;
+    }
+    const mimeType = files[0].type;
+    this.name = files[0].name;
+    this.imageRequired = '';
+    if (mimeType.match(/image\/!*!/) == null) {
+      this.message = 'Only images are supported.';
+      return;
+    }
+    const reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (event) => {
+      this.imgURL = reader.result;
+    };
+  }*/
 
   getCarCompanyList(): any {
     this.vehicleService.getCarCompanyList().subscribe(

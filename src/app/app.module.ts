@@ -44,6 +44,8 @@ import { ColorComponent } from './components/vehicle/color/color.component';
 import { ColorSaveComponent } from './components/vehicle/color/color-save/color-save.component';
 import { DpDatePickerModule } from "ng2-date-picker";
 import { UserSaveComponent } from './components/auth/user-save/user-save.component';
+import { VehiclesComponent } from './components/vehicle/vehicles/vehicles.component';
+import {FileUploadModule} from "ng2-file-upload";
 
 @NgModule({
   declarations: [
@@ -72,7 +74,8 @@ import { UserSaveComponent } from './components/auth/user-save/user-save.compone
     CarStockDetailSaveComponent,
     ColorComponent,
     ColorSaveComponent,
-    UserSaveComponent
+    UserSaveComponent,
+    VehiclesComponent
   ],
   imports: [
     BrowserModule,
@@ -90,6 +93,7 @@ import { UserSaveComponent } from './components/auth/user-save/user-save.compone
     ButtonsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     DpDatePickerModule,
+    FileUploadModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

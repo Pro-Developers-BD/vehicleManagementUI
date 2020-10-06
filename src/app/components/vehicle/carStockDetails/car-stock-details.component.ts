@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataTableDirective} from "angular-datatables";
 import {Subject} from "rxjs";
 import {VehicleService} from "../../../_services/vehicle.service";
+import {environment} from "../../../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-car-stock-details',
@@ -9,6 +11,7 @@ import {VehicleService} from "../../../_services/vehicle.service";
   styleUrls: ['./car-stock-details.component.scss']
 })
 export class CarStockDetailsComponent implements OnInit {
+  public baseUrl = environment.apiurl.service;
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
@@ -16,14 +19,16 @@ export class CarStockDetailsComponent implements OnInit {
   carStockDetailsList: any;
 
   constructor(
-    private vehicleService: VehicleService
-  ) { }
+    private vehicleService: VehicleService,
+    public httpClient: HttpClient
+  ) {
+  }
 
   ngOnInit(): void {
     this.loadData();
   }
 
-  loadData(): void{
+  loadData(): void {
     this.vehicleService.getCarStockInfoList().subscribe(
       (data: any) => {
         this.carStockDetailsList = data.content;
@@ -33,6 +38,14 @@ export class CarStockDetailsComponent implements OnInit {
         console.log('-----> err :', err);
       }
     );
+  }
+
+  deleteStock(id) {
+    const stockId = id;
+    let endPoints = "/carStock/";
+    this.httpClient.delete(this.baseUrl + endPoints + stockId).subscribe(data => {
+      console.log(data);
+    });
   }
 
 

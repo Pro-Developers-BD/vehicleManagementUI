@@ -16,7 +16,7 @@
         <th>Year Model</th>
         <th>Car Type</th>
         <th>Available</th>
-        <th>Created Date</th>
+        <th>Status</th>
         <th>Action</th>
       </tr>
       </thead>
@@ -27,13 +27,15 @@
         <td>{{ stock?.carGrade.gradeName}}</td>
         <td>{{ (stock?.yearOfModel | date : 'yyyy')}}</td>
         <td>{{ (stock?.carStockDetails?.carType)}}</td>
-        <td>{{ stock?.carStockDetails?.availableStatus == true? 'Yes':'No'}}</td>
-        <td>{{ stock?.createdAt | date}}</td>
+        <td>{{ stock?.carStockDetails?.availableStatus == true ? 'Yes' : 'No'}}</td>
+        <td>{{ stock?.activeStatus}}</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
             <div>
               <a class="btn btn-primary"
                  routerLink="/carStockDetails/save/{{stock.id}}">Edit</a>
+              <a class="btn btn-danger" style="padding: 4px;"
+                 (click)="deleteStock(stock.id)">Delete</a>
             </div>
           </div>
         </td>
