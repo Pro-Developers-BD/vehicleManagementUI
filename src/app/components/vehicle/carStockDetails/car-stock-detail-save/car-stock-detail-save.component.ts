@@ -44,7 +44,7 @@ export class CarStockDetailSaveComponent implements OnInit {
     {id: 1, value: 'New'},
     {id: 2, value: 'Old'},
     {id: 3, value: 'Own'},
-    {id: 4, value: 'Importer'},
+    {id: 4, value: 'Imported'},
   ]
 
   constructor(
