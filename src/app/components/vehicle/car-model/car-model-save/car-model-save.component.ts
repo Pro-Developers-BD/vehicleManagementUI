@@ -53,6 +53,8 @@ export class CarModelSaveComponent implements OnInit {
           for (let key in res.content.carGradeList) {
             if(res.content.carGradeList[key].gradeName != ''){
               this.checked=true;
+            }else{
+              this.checked=false;
             }
           }
         }

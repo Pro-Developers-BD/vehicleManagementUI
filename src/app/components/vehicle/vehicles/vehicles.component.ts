@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {VehicleService} from "../../../_services/vehicle.service";
 
 @Component({
   selector: 'app-vehicles',
@@ -6,10 +7,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vehicles.component.scss']
 })
 export class VehiclesComponent implements OnInit {
+  public allCars: any;
+  public carType: any = 'New';
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private vehicleService: VehicleService
+  ) {
   }
 
+  ngOnInit(): void {
+    this.getCars(this.carType);
+  }
+
+  getCars(type) {
+    console.log(this.carType);
+    this.vehicleService.getCarByType(this.carType).subscribe(
+      (res: any) => {
+        this.allCars = res;
+        console.log(this.allCars);
+      });
+  }
+
+  setCarType(event: any) {
+    this.carType = event.target.value;
+    this.getCars(this.carType);
+  }
 }

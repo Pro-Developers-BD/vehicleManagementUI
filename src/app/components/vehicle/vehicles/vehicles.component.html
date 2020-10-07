@@ -1,1 +1,47 @@
-<p>vehicles works!</p>
+<div>
+  <app-breadcrumb></app-breadcrumb>
+</div>
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center mb-3 pb-3">
+      <div class="col-md-12 heading-section text-center ftco-animate">
+        <h2 class="subheading font-weight-bold text-info">Featured Cars</h2>
+      </div>
+      <div class="col-md-12 heading-section float-left ftco-animate">
+        <div class="row">
+          <div class="col-2 inline">
+            <label for="carType" class="float-right">Car Type</label>
+          </div>
+          <div class="form-group col-3 p-0">
+            <select id="carType" (change)="setCarType($event)">
+              <option selected value="New">New</option>
+              <option value="Old">Old</option>
+              <option value="Own">Own</option>
+              <option value="Imported">Imported</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" >
+    <div class="inline">
+      <h2>{{carType}} Cars</h2>
+    </div>
+    <div class="row" >
+      <div class="col-md-3 col-lg-3 ftco-animate" >
+        <div class="product">
+          <a routerLink="#" class="img-prod" >
+            <img class="img-fluid mt-2" src="assets/img/car1.jpg" height="170px" alt="Car Image">
+            <div class="overlay"></div>
+          </a>
+          <div class="text py-3 pb-4 px-3 text-center">
+            <h3>Toyota</h3>
+            <!--<h3><a routerLink=" ">{{car?.carModel?.carModelName}}</a></h3>
+            <h4>Price : {{car?.carStockDetails?.price}} BDT</h4>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

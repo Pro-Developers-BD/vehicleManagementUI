@@ -46,6 +46,7 @@ import { DpDatePickerModule } from "ng2-date-picker";
 import { UserSaveComponent } from './components/auth/user-save/user-save.component';
 import { VehiclesComponent } from './components/vehicle/vehicles/vehicles.component';
 import {FileUploadModule} from "ng2-file-upload";
+import {BreadcrumbComponent} from "./components/layout/breadcrumb/breadcrumb.component";
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {FileUploadModule} from "ng2-file-upload";
     FooterComponent,
     TopNavComponent,
     LoginComponent,
+    BreadcrumbComponent,
     SafePipe,
     HomeComponent,
     AuthorisedSideNavTogglerComponent,

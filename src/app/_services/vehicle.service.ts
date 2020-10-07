@@ -55,4 +55,8 @@ export class VehicleService {
   getColorList(): any {
     return this.http.get(this.baseUrl + '/colors');
   }
+
+  getCarByType(type): any {
+    return this.http.get(this.baseUrl + '/carStock/getBycarType/' + type);
+  }
 }
