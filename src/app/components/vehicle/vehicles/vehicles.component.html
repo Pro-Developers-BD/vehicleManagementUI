@@ -24,23 +24,29 @@
       </div>
     </div>
   </div>
-  <div class="container" >
+  <div class="container">
     <div class="inline">
       <h2>{{carType}} Cars</h2>
     </div>
-    <div class="row" >
-      <div class="col-md-3 col-lg-3 ftco-animate" >
-        <div class="product">
-          <a routerLink="#" class="img-prod" >
-            <img class="img-fluid mt-2" src="assets/img/car1.jpg" height="170px" alt="Car Image">
-            <div class="overlay"></div>
-          </a>
-          <div class="text py-3 pb-4 px-3 text-center">
-            <h3>Toyota</h3>
-            <!--<h3><a routerLink=" ">{{car?.carModel?.carModelName}}</a></h3>
-            <h4>Price : {{car?.carStockDetails?.price}} BDT</h4>-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-lg-3 ftco-animate" *ngFor="let car of allCars">
+          <div class="product">
+            <a routerLink="#" class="img-prod">
+              <img class="img-fluid mt-2" src="assets/img/car1.jpg" height="170px" width="100%" alt="Car Image">
+              <div class="overlay"></div>
+            </a>
+            <div class="text py-3 pb-4 px-3 text-center">
+              <h6><a routerLink=" ">{{car?.carModel?.carModelName}}</a></h6>
+              <p><span class="float-left text-center text-info">{{car?.carStockDetails?.price}} BDT</span>
+                <span class="float-right text-success" *ngIf="car?.carStockDetails?.availableStatus==true">InStock</span>
+                <span class="float-right text-danger" *ngIf="car?.carStockDetails?.availableStatus==false">N/A</span>
+              </p>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
