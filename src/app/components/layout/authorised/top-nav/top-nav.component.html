@@ -57,7 +57,8 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
           <li class="nav-item pl-1">
-            <a class="nav-item nav-link" routerLink="" (click)="logout()" *ngIf="auth.currentUserValue">Logout</a>
+            <span class="nav-item nav-link" routerLink="" (click)="logout()" *ngIf="auth.currentUserValue">
+              <i class="fa fa-user" style="color: #007bff"></i> Logout</span>
             <a class="nav-item nav-link" routerLink="/login" *ngIf="auth.currentUserValue == null">Login</a>
           </li>
         </ul>
