@@ -159,7 +159,7 @@
           </div>
         </div>
 
-       <!-- <div class="col-12">
+        <div class="col-12">
           <div class="row">
             <div class="col-4 no-gutters upload-image">
              <img *ngIf="stock?.content?.media?.id && !imgURL" class="mt-2"
@@ -173,19 +173,19 @@
                 </label><span class="text-danger"> (*)</span>
                 <input #file id="imagePath" type="file" formControlName="imagePath" accept='image/*'
                        ng2FileSelect [uploader]="uploader" (change)="preview(file.files)" />
-                &lt;!&ndash; <div *ngIf="submitted && imagePath2.invalid" class="alert alert-danger">
+                <!-- <div *ngIf="submitted && imagePath2.invalid" class="alert alert-danger">
                     <div *ngIf="imagePath2.errors.required">
                         {{ 'REQUIRED.media' | translate }}
                     </div>
-                </div> &ndash;&gt;
-                &lt;!&ndash; <div class="alert alert-danger" *ngIf="imageRequired !=''">
+                </div> -->
+                <!-- <div class="alert alert-danger" *ngIf="imageRequired !=''">
                      &lt;!&ndash;  {{imageRequired}} &ndash;&gt;
                      Image is required
-                 </div>&ndash;&gt;
+                 </div>-->
               </div>
           </div>
 
-        </div>-->
+        </div>
       </div>
       <div class="row">
         <div class="mt-2 pr-2 ml-3">
