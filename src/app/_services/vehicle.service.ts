@@ -59,4 +59,8 @@ export class VehicleService {
   getCarByType(type): any {
     return this.http.get(this.baseUrl + '/carStock/getBycarType/' + type);
   }
+
+  saveStock(data: any): any {
+    return this.http.post(this.baseUrl + '/carStock', data);
+  }
 }

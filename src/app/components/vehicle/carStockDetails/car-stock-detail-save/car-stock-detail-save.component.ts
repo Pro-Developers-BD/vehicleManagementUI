@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {VehicleService} from '../../../../_services/vehicle.service';
 import {ClientService} from '../../../../_services/client.service';
-import {DatePipe, formatDate} from '@angular/common';
+import {DatePipe} from '@angular/common';
 import {FileUploader} from 'ng2-file-upload';
 
 @Component({
@@ -40,6 +40,7 @@ export class CarStockDetailSaveComponent implements OnInit {
   public imgURL: string | ArrayBuffer;
   public name: any;
   public message: string;
+  public year: Number = new Date().getFullYear();
   public carTypeArr = [
     {id: 1, value: 'New'},
     {id: 2, value: 'Old'},
@@ -57,32 +58,19 @@ export class CarStockDetailSaveComponent implements OnInit {
   ) {
     this.carStockDeatilsForm = this.formBuilder.group({
       id: [''],
-      carCompany: this.formBuilder.group({
-        id: ['']
-      }),
-      carModel: this.formBuilder.group({
-        id: ['']
-      }),
-      carGrade: this.formBuilder.group({
-        id: ['']
-      }),
+      carCompanyId: [''],
+      carModelId: [''],
+      carGradeId: [''],
       engineNo: [''],
       chassisNo: [''],
       yearOfModel: [''],
-      carStockDetails: this.formBuilder.group({
-        id: [''],
-        client: this.formBuilder.group({
-          id: ['']
-        }),
-        carType: [''],
-        color: [''],
-        price: [''],
-        carAuction: [''],
-        availableStatus: ['']
-      }),
-      media: this.formBuilder.group({
-        id: ['']
-      }),
+      clientId: [''],
+      carType: [''],
+      color: [''],
+      price: [''],
+      carAuction: [''],
+      availableStatus: [''],
+      mediaId: [''],
       imagePath: ['']
     });
   }
@@ -96,37 +84,25 @@ export class CarStockDetailSaveComponent implements OnInit {
           console.log(res);
           this.carStockDeatilsForm.patchValue({
             id: res.content.id,
-            carCompany: {
-              id: res.content.carCompany.id
-            },
-            carModel: {
-              id: res.content.carModel.id
-            },
-            carGrade: {
-              id: res.content.carGrade.id
-            },
+            carCompanyId: res.content.carCompanyId,
+            carModelId: res.content.carModelId,
+            carGradeId: res.content.carGradeId,
             engineNo: res.content.engineNo,
             chassisNo: res.content.chassisNo,
-            yearOfModel: formatDate(res.content.yearOfModel, 'yyyy-MM-dd', 'en-US'),
-            carStockDetails: {
-              client: {
-                id: res.content.carStockDetails.client.id
-              },
-              carType: res.content.carStockDetails.carType,
-              color: res.content.carStockDetails.color,
-              price: res.content.carStockDetails.price,
-              carAuction: res.content.carStockDetails.carAuction,
-              availableStatus: res.content.carStockDetails.availableStatus,
-              media: {
-                id: res.content.media.id
-              },
-              imagePath: res.content.imagePath
-            }
+            yearOfModel: res.content.yearOfModel,
+            clientId: res.content.clientId,
+            carType: res.content.carType,
+            color: res.content.color,
+            price: res.content.price,
+            carAuction: res.content.carAuction,
+            availableStatus: res.content.availableStatus,
+            mediaId: res.content.mediaId,
+            imagePath: res.content.imagePath
           });
           this.result = res;
           console.log(this.result);
           this.imagePath = res.content.imagePath;
-          this.isChecked = res.content.carStockDetails.availableStatus;
+          this.isChecked = res.content.availableStatus;
         }
       );
     } else {
@@ -147,20 +123,40 @@ export class CarStockDetailSaveComponent implements OnInit {
     }
 
     if (this.carStockDeatilsForm.valid) {
+      const data = new FormData();
+      data.append('id', this.carStockDeatilsForm.controls.id.value);
+      data.append('carCompanyId', this.carStockDeatilsForm.controls.carCompanyId.value);
+      data.append('carModelId', this.carStockDeatilsForm.controls.carModelId.value);
+      data.append('carGradeId', this.carStockDeatilsForm.controls.carGradeId.value);
+      data.append('engineNo', this.carStockDeatilsForm.controls.engineNo.value);
+      data.append('chassisNo', this.carStockDeatilsForm.controls.chassisNo.value);
+      data.append('yearOfModel', this.carStockDeatilsForm.controls.yearOfModel.value);
+      data.append('clientId', this.carStockDeatilsForm.controls.clientId.value);
+      data.append('carType', this.carStockDeatilsForm.controls.carType.value);
+      data.append('color', this.carStockDeatilsForm.controls.color.value);
+      data.append('carAuction', this.carStockDeatilsForm.controls.carAuction.value);
+      data.append('availableStatus', this.carStockDeatilsForm.controls.availableStatus.value);
       if (typeof this.uploader.queue[0] !== 'undefined') {
         const fileItem = this.uploader.queue[0]._file;
-        this.carStockDeatilsForm.controls.imagePath.setValue(fileItem);
+        data.append('imagePath', fileItem);
         console.log(this.carStockDeatilsForm.get('imagePath').value);
-        const stockForm = this.carStockDeatilsForm.getRawValue();
-        const serialForm = JSON.stringify(stockForm);
-        console.log(serialForm);
-        this.httpClient.post(this.baseUrl + '/carStock', serialForm, this.httpOptions).subscribe((res): any => {
+      }
+      /*const stockForm = this.carStockDeatilsForm.getRawValue();
+      const serialForm = JSON.stringify(stockForm);
+      console.log(serialForm);
+      this.httpClient.post(this.baseUrl + '/carStock', serialForm, this.httpOptions).subscribe((res): any => {
+        if (res) {
+          this.router.navigate(['carStockDetails/list']);
+        }
+      });*/
+      this.vehicleService.saveStock(data).subscribe(
+        (res): any => {
+          console.log(res);
           if (res) {
             this.router.navigate(['carStockDetails/list']);
           }
         });
-        this.uploader.clearQueue();
-      }
+      this.uploader.clearQueue();
     }
   }
 
@@ -187,6 +183,7 @@ export class CarStockDetailSaveComponent implements OnInit {
     this.vehicleService.getCarCompanyList().subscribe(
       (data): any => {
         this.carCompanyList = data.content;
+        console.log(this.carCompanyList);
       });
   }
 
@@ -240,14 +237,13 @@ export class CarStockDetailSaveComponent implements OnInit {
   onChecked(e) {
     if (e.target.checked) {
       this.isChecked = true;
-      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(true);
-      console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
+      this.carStockDeatilsForm.get('availableStatus').setValue(true);
+      console.log(this.carStockDeatilsForm.get('availableStatus').value);
     } else {
       this.isChecked = false;
-      this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').setValue(false);
-      console.log(this.carStockDeatilsForm.controls.carStockDetails.get('availableStatus').value);
+      this.carStockDeatilsForm.get('availableStatus').setValue(false);
+      console.log(this.carStockDeatilsForm.get('availableStatus').value);
     }
   }
-
 
 }
