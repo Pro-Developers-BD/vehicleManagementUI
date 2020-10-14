@@ -99,10 +99,10 @@ export class CarStockDetailSaveComponent implements OnInit {
             mediaId: res.content.mediaId,
             imagePath: res.content.imagePath
           });
-          this.result = res;
-          console.log(this.result);
           this.imagePath = res.content.imagePath;
           this.isChecked = res.content.availableStatus;
+          this.stock = res.content;
+          console.log(this.stock);
         }
       );
     } else {
@@ -134,6 +134,7 @@ export class CarStockDetailSaveComponent implements OnInit {
       data.append('clientId', this.carStockDeatilsForm.controls.clientId.value);
       data.append('carType', this.carStockDeatilsForm.controls.carType.value);
       data.append('color', this.carStockDeatilsForm.controls.color.value);
+      data.append('price', this.carStockDeatilsForm.controls.price.value);
       data.append('carAuction', this.carStockDeatilsForm.controls.carAuction.value);
       data.append('availableStatus', this.carStockDeatilsForm.controls.availableStatus.value);
       if (typeof this.uploader.queue[0] !== 'undefined') {
