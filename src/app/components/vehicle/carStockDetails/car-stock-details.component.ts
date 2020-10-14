@@ -17,6 +17,8 @@ export class CarStockDetailsComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   carStockDetailsList: any;
+  public allCompany: any =[];
+  public allModel: any =[];
 
   constructor(
     private vehicleService: VehicleService,
@@ -24,7 +26,7 @@ export class CarStockDetailsComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  ngOnInit(): any {
     this.loadData();
   }
 
@@ -33,6 +35,8 @@ export class CarStockDetailsComponent implements OnInit {
       (data: any) => {
         this.carStockDetailsList = data.content;
         console.log(this.carStockDetailsList);
+        this.getCompanyName();
+        this.getModelName();
         this.dtTrigger.next();
       }, (err) => {
         console.log('-----> err :', err);
@@ -49,4 +53,20 @@ export class CarStockDetailsComponent implements OnInit {
   }
 
 
+  public getCompanyName() {
+    for (let x in this.carStockDetailsList) {
+      const companyId = this.carStockDetailsList[x].carCompanyId;
+      this.vehicleService.carCompanyById(companyId).subscribe((res):any=>{
+        this.allCompany.push(res.content);
+      });
+    }
+  }
+  public getModelName() {
+    for (let x in this.carStockDetailsList) {
+      const modelId = this.carStockDetailsList[x].carModelId;
+      this.vehicleService.carModelById(modelId).subscribe((res):any=>{
+        this.allModel.push(res.content);
+      });
+    }
+  }
 }

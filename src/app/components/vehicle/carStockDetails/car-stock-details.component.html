@@ -12,9 +12,9 @@
       <tr>
         <th>Company</th>
         <th>Brand</th>
-        <th>Grade</th>
         <th>Year Model</th>
         <th>Car Type</th>
+        <th>Car Auction</th>
         <th>Available</th>
         <th>Status</th>
         <th>Action</th>
@@ -22,13 +22,13 @@
       </thead>
       <tbody>
       <tr *ngFor="let stock of carStockDetailsList">
-        <td>{{ stock.carCompanyId}}</td>
-        <td>{{ stock.carModelId}}</td>
-        <td>{{ stock.carGradeId}}</td>
+        <td><div *ngFor="let com of allCompany"><span *ngIf="stock.carCompanyId==com.id">{{com.carCompanyName}}</span></div></td>
+        <td><div *ngFor="let model of allModel"><span *ngIf="stock.carModelId==model.id">{{ model.carModelName }}</span></div></td>
         <td>{{ stock.yearOfModel}}</td>
         <td>{{ stock.carType }}</td>
+        <td>{{ stock.carAuction }}</td>
         <td>{{ stock.availableStatus == true ? 'Yes' : 'No'}}</td>
-        <td>{{ stock.activeStatus ==1 ? 'Active': 'Inactive'}}</td>
+        <td>{{ stock.activeStatus == 1 ? 'Active' : 'Inactive'}}</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
             <div>
