@@ -54,19 +54,13 @@ export class CarStockDetailsComponent implements OnInit {
 
 
   public getCompanyName() {
-    for (let x in this.carStockDetailsList) {
-      const companyId = this.carStockDetailsList[x].carCompanyId;
-      this.vehicleService.carCompanyById(companyId).subscribe((res):any=>{
-        this.allCompany.push(res.content);
-      });
-    }
+   this.vehicleService.getCarCompanyList().subscribe((res):any=>{
+     this.allCompany =res.content;
+   });
   }
   public getModelName() {
-    for (let x in this.carStockDetailsList) {
-      const modelId = this.carStockDetailsList[x].carModelId;
-      this.vehicleService.carModelById(modelId).subscribe((res):any=>{
-        this.allModel.push(res.content);
-      });
-    }
+    this.vehicleService.getCarModelList().subscribe((res):any=>{
+      this.allModel =res.content;
+    });
   }
 }
