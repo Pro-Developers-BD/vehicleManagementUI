@@ -11,6 +11,7 @@ export class VehiclesComponent implements OnInit {
   public baseUrl = environment.apiurl.service;
   public allCars: any;
   public carType: any = 'New';
+  private models: any =[];
 
   constructor(
     private vehicleService: VehicleService
@@ -26,6 +27,10 @@ export class VehiclesComponent implements OnInit {
     this.vehicleService.getCarByType(this.carType).subscribe(
       (res: any) => {
         this.allCars = res.content;
+        for (let x in this.allCars) {
+          console.log(this.allCars[x].carModelId);
+          this.getModelName(this.allCars[x].carModelId);
+        }
         console.log(this.allCars);
       });
   }
@@ -33,5 +38,12 @@ export class VehiclesComponent implements OnInit {
   setCarType(event: any) {
     this.carType = event.target.value;
     this.getCars(this.carType);
+  }
+
+  getModelName(id) {
+    this.vehicleService.carModelById(id).subscribe((res):any=>{
+      this.models.push(res.content);
+      console.log(this.models);
+    });
   }
 }

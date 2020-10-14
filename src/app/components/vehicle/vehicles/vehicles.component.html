@@ -38,8 +38,8 @@
               <div class="overlay"></div>
             </a>
             <div class="text py-3 pb-4 px-3 text-center">
-              <h6><a routerLink="#">{{car?.carModel?.carModelName}}</a></h6>
-              <p><span class="float-left text-center text-info">{{car?.price}} BDT</span>
+              <h6 *ngFor="let model of models"><a routerLink="#"><span *ngIf="car.carModelId == model.id">{{model.carModelName}}</span></a></h6>
+              <p><span class="float-left text-center text-info">{{car?.price | currency:'BDT'}}</span>
                 <span class="float-right text-success"
                       *ngIf="car?.availableStatus==true">InStock</span>
                 <span class="float-right text-danger"
