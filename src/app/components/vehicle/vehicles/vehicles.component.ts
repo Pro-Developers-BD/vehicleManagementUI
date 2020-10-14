@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {VehicleService} from "../../../_services/vehicle.service";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-vehicles',
@@ -7,6 +8,7 @@ import {VehicleService} from "../../../_services/vehicle.service";
   styleUrls: ['./vehicles.component.scss']
 })
 export class VehiclesComponent implements OnInit {
+  public baseUrl = environment.apiurl.service;
   public allCars: any;
   public carType: any = 'New';
 

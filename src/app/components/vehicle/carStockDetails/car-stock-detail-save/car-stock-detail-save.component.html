@@ -156,8 +156,8 @@
       <div class="col-12 col-sm-4">
         <div class="row">
           <div class="col-8 col-sm-8 no-gutters upload-image">
-            <img *ngIf="stock?.mediaId && !imgURL" class="mt-2"
-                 src="{{baseUrl}}/media?id={{stock?.mediaId}}" height="100" width="100" />
+            <img *ngIf="stock.mediaId && !imgURL" class="mt-2"
+                 src="{{baseUrl}}/media/{{stock.mediaId}}" height="100" width="100" />
             <img [src]="imgURL" height="200" width="200" *ngIf="imgURL" />
             <p>{{name}}</p>
           </div>

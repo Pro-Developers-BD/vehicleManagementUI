@@ -34,16 +34,16 @@
         <div class="col-md-3 col-lg-3 ftco-animate" *ngFor="let car of allCars">
           <div class="product">
             <a routerLink="#" class="img-prod">
-              <img class="img-fluid mt-2" src="assets/img/car1.jpg" height="170px" width="100%" alt="Car Image">
+              <img class="img-fluid mt-2" *ngIf="car.mediaId" src="{{baseUrl}}/media/{{car.mediaId}}" height="170px" width="100%" alt="Car Image">
               <div class="overlay"></div>
             </a>
             <div class="text py-3 pb-4 px-3 text-center">
               <h6><a routerLink="#">{{car?.carModel?.carModelName}}</a></h6>
-              <p><span class="float-left text-center text-info">{{car?.carStockDetails?.price}} BDT</span>
+              <p><span class="float-left text-center text-info">{{car?.price}} BDT</span>
                 <span class="float-right text-success"
-                      *ngIf="car?.carStockDetails?.availableStatus==true">InStock</span>
+                      *ngIf="car?.availableStatus==true">InStock</span>
                 <span class="float-right text-danger"
-                      *ngIf="car?.carStockDetails?.availableStatus == null || car?.carStockDetails?.availableStatus==false">N/A</span>
+                      *ngIf="car?.availableStatus == null || car?.availableStatus==false">N/A</span>
               </p>
             </div>
           </div>
