@@ -27,10 +27,7 @@ export class VehiclesComponent implements OnInit {
     this.vehicleService.getCarByType(this.carType).subscribe(
       (res: any) => {
         this.allCars = res.content;
-        for (let x in this.allCars) {
-          console.log(this.allCars[x].carModelId);
-          this.getModelName(this.allCars[x].carModelId);
-        }
+        this.getModelName();
         console.log(this.allCars);
       });
   }
@@ -40,9 +37,9 @@ export class VehiclesComponent implements OnInit {
     this.getCars(this.carType);
   }
 
-  getModelName(id) {
-    this.vehicleService.carModelById(id).subscribe((res):any=>{
-      this.models.push(res.content);
+  getModelName() {
+    this.vehicleService.getCarModelList().subscribe((res):any=>{
+      this.models=res.content;
       console.log(this.models);
     });
   }
