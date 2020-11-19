@@ -36,14 +36,14 @@ export class ClientInfoSaveComponent implements OnInit {
       id: '',
       customerName: ['', Validators.required],
       companyName: ['', Validators.required],
+      profession: this.formBuilder.group({
+        id: ''
+      }),
       address: ['', Validators.required],
       areaName: ['', Validators.required],
       divisionName: ['', Validators.required],
       contactNo: ['', Validators.required],
-      emailAddress: ['', Validators.required],
-      profession: this.formBuilder.group({
-        id: ''
-      })
+      emailAddress: ['', Validators.required]
     });
   }
 
