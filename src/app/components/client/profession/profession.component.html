@@ -24,6 +24,8 @@
             <div>
               <a class="btn btn-primary"
                  routerLink="/profession/save/{{profession.id}}">Edit</a>
+              <a class="btn btn-danger" style="padding: 4px;"
+                 (click)="deleteProfession(profession.id)">Delete</a>
             </div>
           </div>
         </td>

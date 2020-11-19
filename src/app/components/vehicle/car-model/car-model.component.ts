@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataTableDirective} from "angular-datatables";
 import {Subject} from "rxjs";
 import {VehicleService} from "../../../_services/vehicle.service";
+import {environment} from "../../../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-car-model',
@@ -9,6 +11,7 @@ import {VehicleService} from "../../../_services/vehicle.service";
   styleUrls: ['./car-model.component.scss']
 })
 export class CarModelComponent implements OnInit {
+  public baseUrl = environment.apiurl.service;
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
@@ -16,7 +19,8 @@ export class CarModelComponent implements OnInit {
   public carModelList: any;
 
   constructor(
-    private vehicleService: VehicleService
+    private vehicleService: VehicleService,
+    public httpClient: HttpClient
   ) {
   }
 
@@ -34,6 +38,14 @@ export class CarModelComponent implements OnInit {
         console.log('-----> err :', err);
       }
     );
+  }
+
+  deleteModel(id) {
+    const modelId = id;
+    let endPoints = "/carModel/";
+    this.httpClient.delete(this.baseUrl + endPoints + modelId).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

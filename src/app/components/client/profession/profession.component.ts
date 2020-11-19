@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ClientService} from '../../../_services/client.service';
 import {DataTableDirective} from 'angular-datatables';
 import {Subject} from 'rxjs';
+import {environment} from "../../../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-profession',
@@ -9,7 +11,7 @@ import {Subject} from 'rxjs';
   styleUrls: ['./profession.component.scss']
 })
 export class ProfessionComponent implements OnInit {
-
+  public baseUrl = environment.apiurl.service;
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
@@ -17,7 +19,8 @@ export class ProfessionComponent implements OnInit {
   public professionList: any;
 
   constructor(
-    private clientService: ClientService
+    private clientService: ClientService,
+    public httpClient: HttpClient
   ) {
   }
 
@@ -25,7 +28,7 @@ export class ProfessionComponent implements OnInit {
     this.loadData();
   }
 
-  loadData(): void{
+  loadData(): void {
     this.clientService.getProfessionList().subscribe(
       (data: any) => {
         this.professionList = data.content;
@@ -35,5 +38,13 @@ export class ProfessionComponent implements OnInit {
         console.log('-----> err :', err);
       }
     );
+  }
+
+  deleteProfession(id) {
+    const professionId = id;
+    let endPoints = "/professions/";
+    this.httpClient.delete(this.baseUrl + endPoints + professionId).subscribe(data => {
+      console.log(data);
+    });
   }
 }

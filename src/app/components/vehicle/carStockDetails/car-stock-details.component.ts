@@ -22,7 +22,7 @@ export class CarStockDetailsComponent implements OnInit {
 
   constructor(
     private vehicleService: VehicleService,
-    public httpClient: HttpClient
+    public httpClient: HttpClient,
   ) {
   }
 

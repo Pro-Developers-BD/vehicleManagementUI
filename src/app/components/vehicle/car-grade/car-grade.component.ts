@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataTableDirective} from 'angular-datatables';
 import {Subject} from 'rxjs';
 import {VehicleService} from '../../../_services/vehicle.service';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-car-grade',
@@ -9,7 +11,7 @@ import {VehicleService} from '../../../_services/vehicle.service';
   styleUrls: ['./car-grade.component.scss']
 })
 export class CarGradeComponent implements OnInit {
-
+  public baseUrl = environment.apiurl.service;
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
@@ -18,7 +20,8 @@ export class CarGradeComponent implements OnInit {
   public carGradeList: any;
 
   constructor(
-    private vehicleService: VehicleService
+    private vehicleService: VehicleService,
+    public httpClient: HttpClient
   ) {
   }
 
@@ -36,5 +39,13 @@ export class CarGradeComponent implements OnInit {
         console.log('-----> err :', err);
       }
     );
+  }
+
+  deleteGrade(id) {
+    const gradeId = id;
+    let endPoints = "/carGrades/";
+    this.httpClient.delete(this.baseUrl + endPoints + gradeId).subscribe(data => {
+      console.log(data);
+    });
   }
 }

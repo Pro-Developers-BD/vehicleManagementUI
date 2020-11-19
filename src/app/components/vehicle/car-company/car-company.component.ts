@@ -3,6 +3,8 @@ import {DataTableDirective} from "angular-datatables";
 import {Subject} from "rxjs";
 import {ClientService} from "../../../_services/client.service";
 import {VehicleService} from "../../../_services/vehicle.service";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-car-company',
@@ -10,7 +12,7 @@ import {VehicleService} from "../../../_services/vehicle.service";
   styleUrls: ['./car-company.component.scss']
 })
 export class CarCompanyComponent implements OnInit {
-
+  public baseUrl = environment.apiurl.service;
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};
@@ -18,7 +20,8 @@ export class CarCompanyComponent implements OnInit {
   public carCompanyList: any;
 
   constructor(
-    private vehicleService: VehicleService
+    private vehicleService: VehicleService,
+    public httpClient: HttpClient
   ) {
   }
 
@@ -36,6 +39,14 @@ export class CarCompanyComponent implements OnInit {
         console.log('-----> err :', err);
       }
     );
+  }
+
+  deleteCompany(id) {
+    const companyId = id;
+    let endPoints = "/carCompany/";
+    this.httpClient.delete(this.baseUrl + endPoints + companyId).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }
