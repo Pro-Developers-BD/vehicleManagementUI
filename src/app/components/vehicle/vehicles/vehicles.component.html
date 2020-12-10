@@ -4,15 +4,15 @@
 <section class="ftco-section">
   <div class="container">
     <div class="row justify-content-center mb-3 pb-3">
-      <div class="col-md-12 heading-section text-center ftco-animate">
+      <div class="col-md-12 heading-section text-left ftco-animate">
         <h2 class="subheading font-weight-bold text-info">Featured Cars</h2>
       </div>
-      <div class="col-md-12 heading-section float-left ftco-animate">
-        <div class="row">
-          <div class="col-2 inline">
-            <label for="carType" class="float-right">Car Type</label>
+      <div class="col-md-12 heading-section ftco-animate">
+        <div class="row float-left">
+          <div class="col-6 inline font-weight-bold">
+            <label for="carType">Car Type</label>
           </div>
-          <div class="form-group col-3 p-0">
+          <div class="form-group col-6">
             <select id="carType" (change)="setCarType($event)">
               <option selected value="New">New</option>
               <option value="Old">Old</option>
@@ -24,9 +24,9 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container-fluid">
     <div class="inline">
-      <h2>{{carType}} Cars</h2>
+      <h2 class="text-black-50">{{carType}} Cars</h2>
     </div>
 
     <div class="container">
@@ -35,10 +35,13 @@
           <div class="product">
             <div class="text py-3 pb-4 px-3 text-center">
               <a class="img-prod">
-                <img class="img-fluid mt-2" *ngIf="car.mediaId" src="{{baseUrl}}/media/{{car.mediaId}}" height="200" width="200" alt="Car Image">
+                <img class="img-fluid mt-2" *ngIf="car.mediaId" src="{{baseUrl}}/media/{{car.mediaId}}" height="200"
+                     width="200" alt="Car Image">
                 <div class="overlay"></div>
               </a>
-              <h6 *ngFor="let model of models"><a routerLink="#"><span class="font-weight-bold m-0" *ngIf="car.carModelId == model.id">{{model.carModelName}}</span></a></h6>
+              <h6 *ngFor="let model of models"><a routerLink="#"><span class="font-weight-bold m-0"
+                                                                       *ngIf="car.carModelId == model.id">{{model.carModelName}}</span></a>
+              </h6>
               <p><span class="float-left text-info">{{car?.price | currency:'BDT'}}</span>
                 <span class="float-right text-success font-weight-bold"
                       *ngIf="car?.availableStatus==true">InStock</span>
