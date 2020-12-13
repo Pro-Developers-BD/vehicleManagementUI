@@ -23,7 +23,7 @@ export class VehiclesComponent implements OnInit {
   }
 
   getCars(type) {
-    console.log(this.carType);
+    console.log(type);
     this.vehicleService.getCarByType(this.carType).subscribe(
       (res: any) => {
         this.allCars = res.content;

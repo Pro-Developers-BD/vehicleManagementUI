@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/auth/login';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {LoginComponent} from './components/auth/login';
 import {HomeComponent} from './components/layout/home/home.component';
 import {ProfessionSaveComponent} from './components/client/profession/profession-save/profession-save.component';
 import {ProfessionComponent} from './components/client/profession/profession.component';
@@ -14,12 +14,14 @@ import {CarModelComponent} from './components/vehicle/car-model/car-model.compon
 import {CarModelSaveComponent} from './components/vehicle/car-model/car-model-save/car-model-save.component';
 import {CarCompanyComponent} from './components/vehicle/car-company/car-company.component';
 import {CarCompanySaveComponent} from './components/vehicle/car-company/car-company-save/car-company-save.component';
-import {CarStockDetailsComponent} from "./components/vehicle/carStockDetails/car-stock-details.component";
-import {CarStockDetailSaveComponent} from "./components/vehicle/carStockDetails/car-stock-detail-save/car-stock-detail-save.component";
-import {ColorComponent} from "./components/vehicle/color/color.component";
-import {ColorSaveComponent} from "./components/vehicle/color/color-save/color-save.component";
-import {UserSaveComponent} from "./components/auth/user-save/user-save.component";
-import {VehiclesComponent} from "./components/vehicle/vehicles/vehicles.component";
+import {CarStockDetailsComponent} from './components/vehicle/carStockDetails/car-stock-details.component';
+import {CarStockDetailSaveComponent} from './components/vehicle/carStockDetails/car-stock-detail-save/car-stock-detail-save.component';
+import {ColorComponent} from './components/vehicle/color/color.component';
+import {ColorSaveComponent} from './components/vehicle/color/color-save/color-save.component';
+import {UserSaveComponent} from './components/auth/user-save/user-save.component';
+import {VehiclesComponent} from './components/vehicle/vehicles/vehicles.component';
+import {VehicleDetailsComponent} from './components/vehicle/vehicles/vehicle-details/vehicle-details/vehicle-details.component';
+import {VehicleDetailSaveComponent} from './components/vehicle/vehicles/vehicle-details/vehicle-detail-save/vehicle-detail-save.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -50,6 +52,9 @@ const routes: Routes = [
   {path: 'color/save', component: ColorSaveComponent},
   {path: 'color/save/:id', component: ColorSaveComponent},
   {path: 'vehicles', component: VehiclesComponent},
+  {path: 'vehicles/Details/:id', component: VehicleDetailsComponent},
+  {path: 'vehicles/Details/save', component: VehicleDetailSaveComponent},
+  {path: 'vehicles/Details/save/:id', component: VehicleDetailSaveComponent},
   {path: '**', redirectTo: ''}
 ];
 
@@ -57,4 +62,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

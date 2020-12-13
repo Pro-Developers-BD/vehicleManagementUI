@@ -1,0 +1,93 @@
+<div class="main-container col1-layout wow bounceInUp animated">
+  <div class="main">
+    <div class="col-main">
+      <div class="product-view wow bounceInUp animated" itemscope="" itemtype="http://schema.org/Product"
+           itemid="#product_base">
+        <div id="messages_product_view"></div>
+        <div class="product-essential container">
+          <div class="row">
+            <div class="product-img-box col-lg-5 col-sm-5 col-xs-12">
+              <div class="product-image">
+                <div class="product-full">
+                  <img id="product-zoom1" *ngIf="vehicleDetails.mediaId"
+                       src="{{baseUrl}}/media/{{vehicleDetails.mediaId}}"
+                       data-zoom-image="assets/img/car1.jpg" alt="product-image"/>
+                </div>
+              </div>
+              <div class="toll-free"><a href="tel:8801922034567"><i class="fa fa-phone"></i> +880 192 034 567</a></div>
+            </div>
+
+            <div class="product-shop col-lg- col-sm-7 col-xs-12">
+              <div class="brand">{{carCompanyName}}</div>
+              <div class="product-name">
+                <h1>{{carBrandName}}</h1>
+              </div>
+
+              <div class="price-block">
+                <div class="price-box">
+
+                  <p class="special-price"><span class="price-label"> Special Price </span>
+                    <span class="price"> {{vehicleDetails.price  | currency:'BDT'}} </span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="spec-row" id="summarySpecs">
+                <h2>Specifications</h2>
+                <table width="100%">
+                  <tbody>
+                  <tr>
+                    <td class="label-spec"> Mileage <span class="coln">:</span></td>
+                    <td class="value-spec"> 17 kmpl</td>
+                  </tr>
+                  <tr>
+                    <td class="label-spec"> Engine Display <span class="coln">:</span></td>
+                    <td class="value-spec"> 259 kw</td>
+                  </tr>
+                  <tr class="odd">
+                    <td class="label-spec"> Transmission <span class="coln">:</span></td>
+                    <td class="value-spec"> Automatic</td>
+                  </tr>
+                  <tr class="odd">
+                    <td class="label-spec"> Fuel Type <span class="coln">:</span></td>
+                    <td class="value-spec"> Diesel</td>
+                  </tr>
+                  <tr>
+                    <td class="label-spec"> Model <span class="coln">:</span></td>
+                    <td class="value-spec"> {{vehicleDetails.yearOfModel}}</td>
+                  </tr>
+                  <tr>
+                    <td class="label-spec"> Power Windows <span class="coln">:</span></td>
+                    <td class="value-spec"> Yes</td>
+                  </tr>
+                  <tr class="odd">
+                    <td class="label-spec"> Airbags <span class="coln">:</span></td>
+                    <td class="value-spec"> Available</td>
+                  </tr>
+                  <tr class="odd">
+                    <td class="label-spec"> ABS <span class="coln">:</span></td>
+                    <td class="value-spec"> Yes</td>
+                  </tr>
+                  <tr>
+                    <td class="label-spec"> Central Locking <span class="coln">:</span></td>
+                    <td class="value-spec"> Yes</td>
+                  </tr>
+                  <tr>
+                    <td class="label-spec"> Fog Lamps <span class="coln">:</span></td>
+                    <td class="value-spec"> Front</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <ul class="shipping-pro">
+                <li>Free Servicing</li>
+                <li>Free Monthly Checkup</li>
+                <li>Extended Warrenty</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

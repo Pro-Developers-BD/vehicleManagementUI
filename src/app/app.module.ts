@@ -47,6 +47,8 @@ import { UserSaveComponent } from './components/auth/user-save/user-save.compone
 import { VehiclesComponent } from './components/vehicle/vehicles/vehicles.component';
 import {FileUploadModule} from "ng2-file-upload";
 import {BreadcrumbComponent} from "./components/layout/breadcrumb/breadcrumb.component";
+import { VehicleDetailsComponent } from './components/vehicle/vehicles/vehicle-details/vehicle-details/vehicle-details.component';
+import { VehicleDetailSaveComponent } from './components/vehicle/vehicles/vehicle-details/vehicle-detail-save/vehicle-detail-save.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import {BreadcrumbComponent} from "./components/layout/breadcrumb/breadcrumb.com
     ColorComponent,
     ColorSaveComponent,
     UserSaveComponent,
-    VehiclesComponent
+    VehiclesComponent,
+    VehicleDetailsComponent,
+    VehicleDetailSaveComponent
   ],
   imports: [
     BrowserModule,
