@@ -18,7 +18,7 @@
             </div>
 
             <div class="product-shop col-lg- col-sm-7 col-xs-12">
-              <div class="brand">{{carCompanyName}}</div>
+              <div class="brand text-success"><h4 class="font-weight-bold">{{carCompanyName}}</h4></div>
               <div class="product-name">
                 <h1>{{carBrandName}}</h1>
               </div>
@@ -26,8 +26,8 @@
               <div class="price-block">
                 <div class="price-box">
 
-                  <p class="special-price"><span class="price-label"> Special Price </span>
-                    <span class="price"> {{vehicleDetails.price  | currency:'BDT'}} </span>
+                  <p class="special-price"><span class="price-label"> Price </span>
+                    <span class="price text-danger"> {{vehicleDetails.price  | currency:'BDT'}} </span>
                   </p>
                 </div>
               </div>
@@ -37,44 +37,28 @@
                 <table width="100%">
                   <tbody>
                   <tr>
-                    <td class="label-spec"> Mileage <span class="coln">:</span></td>
-                    <td class="value-spec"> 17 kmpl</td>
+                    <td class="label-spec"> Car Type <span class="coln">:</span></td>
+                    <td class="value-spec"> {{vehicleDetails.carType}}</td>
                   </tr>
                   <tr>
-                    <td class="label-spec"> Engine Display <span class="coln">:</span></td>
-                    <td class="value-spec"> 259 kw</td>
+                    <td class="label-spec"> Engine No <span class="coln">:</span></td>
+                    <td class="value-spec"> {{vehicleDetails.engineNo}}</td>
                   </tr>
                   <tr class="odd">
-                    <td class="label-spec"> Transmission <span class="coln">:</span></td>
-                    <td class="value-spec"> Automatic</td>
+                    <td class="label-spec"> Chassis No <span class="coln">:</span></td>
+                    <td class="value-spec"> {{vehicleDetails.chassisNo}}</td>
                   </tr>
                   <tr class="odd">
-                    <td class="label-spec"> Fuel Type <span class="coln">:</span></td>
-                    <td class="value-spec"> Diesel</td>
+                    <td class="label-spec"> Color <span class="coln">:</span></td>
+                    <td class="value-spec"> {{vehicleDetails.color}}</td>
                   </tr>
                   <tr>
-                    <td class="label-spec"> Model <span class="coln">:</span></td>
+                    <td class="label-spec"> Year of Model <span class="coln">:</span></td>
                     <td class="value-spec"> {{vehicleDetails.yearOfModel}}</td>
                   </tr>
                   <tr>
-                    <td class="label-spec"> Power Windows <span class="coln">:</span></td>
-                    <td class="value-spec"> Yes</td>
-                  </tr>
-                  <tr class="odd">
-                    <td class="label-spec"> Airbags <span class="coln">:</span></td>
-                    <td class="value-spec"> Available</td>
-                  </tr>
-                  <tr class="odd">
-                    <td class="label-spec"> ABS <span class="coln">:</span></td>
-                    <td class="value-spec"> Yes</td>
-                  </tr>
-                  <tr>
-                    <td class="label-spec"> Central Locking <span class="coln">:</span></td>
-                    <td class="value-spec"> Yes</td>
-                  </tr>
-                  <tr>
-                    <td class="label-spec"> Fog Lamps <span class="coln">:</span></td>
-                    <td class="value-spec"> Front</td>
+                    <td class="label-spec"> Car Auction <span class="coln">:</span></td>
+                    <td class="value-spec"> {{vehicleDetails.carAuction}}</td>
                   </tr>
                   </tbody>
                 </table>

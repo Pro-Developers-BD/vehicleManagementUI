@@ -26,20 +26,21 @@ export class VehicleDetailsComponent implements OnInit {
       this.vehicleService.carStockDeatilsById(parseInt(id)).subscribe(
         (res: any) => {
           this.vehicleDetails = res.content;
+          console.log(this.vehicleDetails);
           this.getCarCompany(this.vehicleDetails.carCompanyId);
           this.getCarBrand(this.vehicleDetails.carModelId);
         });
     }
   }
 
-  public getCarCompany(number){
+  public getCarCompany(number) {
     this.vehicleService.carCompanyById(parseInt(number)).subscribe(
       (res: any) => {
         this.carCompanyName = res.content.carCompanyName;
       });
   }
 
-  public getCarBrand(number){
+  public getCarBrand(number) {
     this.vehicleService.carModelById(parseInt(number)).subscribe(
       (res: any) => {
         this.carBrandName = res.content.carModelName;

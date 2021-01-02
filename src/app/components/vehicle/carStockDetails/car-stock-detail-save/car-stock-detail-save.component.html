@@ -181,6 +181,23 @@
 
       </div>
 
+<!--      <div class="form-group col-12">
+        <div class="row">
+          <div class="col-2" *ngFor="let item of images; let i= index">
+            <div class="img-responsive">
+              <img src="{{baseUrl}}/media/{{item}}"/>
+              &lt;!&ndash; <fa-icon  [icon]="['fas', 'times']"></fa-icon> &ndash;&gt;
+              <span class="btn btn-danger btn-xs" (click)="onRemoveImage(i)">Remove</span>
+            </div>
+          </div>
+        </div>
+        <label for="imagePath" class="custom-file-upload mt-2">
+          upload media
+        </label> <br/>
+        <input type="file" id="imagePath" ng2FileSelect [uploader]="uploader" multiple
+               (onFileSelected)="onFileSelected($event)"/> <br/>
+      </div>-->
+
       <div class="row">
         <div class="mt-2 pr-2 ml-3">
           <input type="reset" class="btn btn-lg btn-danger" value="Reset">

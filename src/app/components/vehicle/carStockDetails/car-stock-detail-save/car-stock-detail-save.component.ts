@@ -47,6 +47,7 @@ export class CarStockDetailSaveComponent implements OnInit {
     {id: 3, value: 'Own'},
     {id: 4, value: 'Imported'},
   ];
+  public images: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -235,6 +236,7 @@ export class CarStockDetailSaveComponent implements OnInit {
       });
   }*/
 
+
   onChecked(e) {
     if (e.target.checked) {
       this.isChecked = true;
@@ -247,4 +249,29 @@ export class CarStockDetailSaveComponent implements OnInit {
     }
   }
 
+  /*public onFileSelected(event: File[]) {
+    for (let i = 0; i < this.uploader.queue.length; i++) {
+      let fileItem = this.uploader.queue[i]._file;
+      if (fileItem.size > 10000000) {
+        console.log("Each File should be less than 10 MB of size.");
+        return;
+      }
+    }
+    this.uploader.clearQueue();
+    for (let j = 0; j < event["length"]; j++) {
+      let data = new FormData();
+      const file: File = event[j];
+      data.append('files', file);
+      this.clientService.saveVehicleImages(data)
+        .subscribe((res: any) => {
+          this.images.push(res.content.id);
+        });
+    }
+  }
+
+  public onRemoveImage(item: any) {
+    if (item > -1) {
+      this.images.splice(item, 1);
+    }
+  }*/
 }

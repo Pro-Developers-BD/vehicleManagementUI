@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -13,9 +13,10 @@ export class ClientService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  getProfessionById(id : number): any {
+  getProfessionById(id: number): any {
     return this.http.get(this.baseUrl + '/professions/' + id);
   }
 
@@ -23,16 +24,19 @@ export class ClientService {
     return this.http.post(this.baseUrl + '/professions', data);
   }
 
-  getProfessionList(): any{
-    return this.http.get(this.baseUrl + '/professions' );
+  getProfessionList(): any {
+    return this.http.get(this.baseUrl + '/professions');
   }
-  getDomainById(id : number): any {
+
+  getDomainById(id: number): any {
     return this.http.get(this.baseUrl + '/domains/' + id);
   }
+
   saveDomain(data: any): any {
     return this.http.post(this.baseUrl + '/domains', data);
   }
-  getDomainList(): any{
+
+  getDomainList(): any {
     return this.http.get(this.baseUrl + '/domains');
   }
 
@@ -40,11 +44,15 @@ export class ClientService {
     return this.http.post(this.baseUrl + '/clients', data);
   }
 
-  getClientInfoById(id : number): any {
+  getClientInfoById(id: number): any {
     return this.http.get(this.baseUrl + '/clients/' + id);
   }
 
   getClientList(): any {
-    return this.http.get(this.baseUrl + '/clients' );
+    return this.http.get(this.baseUrl + '/clients');
+  }
+
+  saveVehicleImages(image: Object) {
+    return this.http.post(this.baseUrl + '/media', image);
   }
 }
