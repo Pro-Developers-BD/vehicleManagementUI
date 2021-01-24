@@ -9,10 +9,26 @@
             <div class="product-img-box col-lg-5 col-sm-5 col-xs-12">
               <div class="product-image">
                 <div class="product-full">
-                  <img id="product-zoom1" *ngIf="vehicleDetails.mediaId"
-                       src="{{baseUrl}}/media/{{vehicleDetails.mediaId}}"
-                       data-zoom-image="assets/img/car1.jpg" alt="product-image"/>
+                  <img id="product-zoom" src="{{baseUrl}}/media/{{images[0]}}"
+                       data-zoom-image="products-images/p46.jpg"
+                       alt="product-image"/>
                 </div>
+
+                <div class="more-views">
+                  <div class="slider-items-products">
+                    <div id="gallery_02" class="product-flexslider hidden-buttons product-img-thumb">
+                      <div class="slider-items slider-width-col4 block-content">
+                        <div class="more-views-items" *ngFor="let image of images; let i=index;">
+                          <a href="#" data-image="{{image}}" data-zoom-image="{{image}}">
+                            <img id="product-zoom[{{image}}]" src="{{baseUrl}}/media/{{image}}" alt="car-image"
+                                 width="50px" height="50px"/>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
               <div class="toll-free"><a href="tel:8801922034567"><i class="fa fa-phone"></i> +880 192 034 567</a></div>
             </div>
@@ -70,6 +86,7 @@
               </ul>
             </div>
           </div>
+
         </div>
       </div>
     </div>

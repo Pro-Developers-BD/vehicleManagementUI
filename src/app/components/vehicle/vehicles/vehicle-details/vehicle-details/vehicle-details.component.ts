@@ -13,6 +13,7 @@ export class VehicleDetailsComponent implements OnInit {
   public vehicleDetails: any;
   public carCompanyName: any;
   public carBrandName: any;
+  public images: any = [];
 
   constructor(
     private router: Router,
@@ -27,6 +28,12 @@ export class VehicleDetailsComponent implements OnInit {
         (res: any) => {
           this.vehicleDetails = res.content;
           console.log(this.vehicleDetails);
+          let image = this.vehicleDetails.images;
+          image.forEach(obj => {
+            if (obj) {
+              this.images.push(obj.split('id=')[1].split(',')[0]);
+            }
+          });
           this.getCarCompany(this.vehicleDetails.carCompanyId);
           this.getCarBrand(this.vehicleDetails.carModelId);
         });

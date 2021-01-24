@@ -36,18 +36,18 @@ export class CarStockDetailSaveComponent implements OnInit {
     isHTML5: true
   });
   public imageRequired: string;
-  public imagePath: any;
   public imgURL: string | ArrayBuffer;
   public name: any;
   public message: string;
   public year: Number = new Date().getFullYear();
   public carTypeArr = [
-    {id: 1, value: 'New'},
-    {id: 2, value: 'Old'},
-    {id: 3, value: 'Own'},
-    {id: 4, value: 'Imported'},
+    { id: 1, value: 'New' },
+    { id: 2, value: 'Old' },
+    { id: 3, value: 'Own' },
+    { id: 4, value: 'Imported' },
   ];
-  public images: any;
+  images: string[] = [];
+  private fileList: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -71,8 +71,7 @@ export class CarStockDetailSaveComponent implements OnInit {
       price: [''],
       carAuction: [''],
       availableStatus: [''],
-      mediaId: [''],
-      imagePath: ['']
+      images: []
     });
   }
 
@@ -97,10 +96,15 @@ export class CarStockDetailSaveComponent implements OnInit {
             price: res.content.price,
             carAuction: res.content.carAuction,
             availableStatus: res.content.availableStatus,
-            mediaId: res.content.mediaId,
-            imagePath: res.content.imagePath
+            images: res.content.images
           });
-          this.imagePath = res.content.imagePath;
+          let images = res.content.images;
+          images.forEach(obj => {
+            if (obj) {
+              console.log(obj.split('id=')[1].split(',')[0]);
+              this.images.push(obj.split('id=')[1].split(',')[0]);
+            }
+          });
           this.isChecked = res.content.availableStatus;
           this.stock = res.content;
           console.log(this.stock);
@@ -116,13 +120,13 @@ export class CarStockDetailSaveComponent implements OnInit {
 
   uploadSubmit(): void {
     this.submitted = true;
-    if (typeof this.uploader.queue[0] === 'undefined' && this.carStockDeatilsForm.controls.mediaId.value === null) {
-      this.imageRequired = 'Image is required';
-    }
-    if (typeof this.uploader.queue[0] !== 'undefined') {
-      this.imageRequired = '';
-    }
-
+    this.carStockDeatilsForm.value.images = this.images;
+    /* if (typeof this.uploader.queue[0] === 'undefined' && this.carStockDeatilsForm.controls.images.value === null) {
+       this.imageRequired = 'Image is required';
+     }
+     if (typeof this.uploader.queue[0] !== 'undefined') {
+       this.imageRequired = '';
+     }*/
     if (this.carStockDeatilsForm.valid) {
       const data = new FormData();
       data.append('id', this.carStockDeatilsForm.controls.id.value);
@@ -138,11 +142,8 @@ export class CarStockDetailSaveComponent implements OnInit {
       data.append('price', this.carStockDeatilsForm.controls.price.value);
       data.append('carAuction', this.carStockDeatilsForm.controls.carAuction.value);
       data.append('availableStatus', this.carStockDeatilsForm.controls.availableStatus.value);
-      if (typeof this.uploader.queue[0] !== 'undefined') {
-        const fileItem = this.uploader.queue[0]._file;
-        data.append('imagePath', fileItem);
-        console.log(this.carStockDeatilsForm.get('imagePath').value);
-      }
+      data.append('images', this.carStockDeatilsForm.value.images);
+      console.log(data);
       /*const stockForm = this.carStockDeatilsForm.getRawValue();
       const serialForm = JSON.stringify(stockForm);
       console.log(serialForm);
@@ -162,24 +163,22 @@ export class CarStockDetailSaveComponent implements OnInit {
     }
   }
 
-  preview(files) {
+  /*preview(files) {
     if (files.length === 0) {
       return;
     }
     const mimeType = files[0].type;
     this.name = files[0].name;
     this.imageRequired = '';
-    if (mimeType.match(/image\/*/) == null) {
+    if (mimeType.match(/image\/!*!/) == null) {
       this.message = 'Only images are supported.';
       return;
     }
     const reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]);
     reader.onload = (event) => {
       this.imgURL = reader.result;
     };
-  }
+  }*/
 
   getCarCompanyList(): any {
     this.vehicleService.getCarCompanyList().subscribe(
@@ -249,7 +248,7 @@ export class CarStockDetailSaveComponent implements OnInit {
     }
   }
 
-  /*public onFileSelected(event: File[]) {
+  public onFileSelected(event: File[]) {
     for (let i = 0; i < this.uploader.queue.length; i++) {
       let fileItem = this.uploader.queue[i]._file;
       if (fileItem.size > 10000000) {
@@ -264,7 +263,8 @@ export class CarStockDetailSaveComponent implements OnInit {
       data.append('files', file);
       this.clientService.saveVehicleImages(data)
         .subscribe((res: any) => {
-          this.images.push(res.content.id);
+          console.log(res);
+          this.images.push(res.id);
         });
     }
   }
@@ -273,5 +273,5 @@ export class CarStockDetailSaveComponent implements OnInit {
     if (item > -1) {
       this.images.splice(item, 1);
     }
-  }*/
+  }
 }

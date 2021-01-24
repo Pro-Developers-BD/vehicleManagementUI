@@ -12,6 +12,7 @@ export class VehiclesComponent implements OnInit {
   public allCars: any;
   public carType: any = 'New';
   private models: any =[];
+  private images: any = [];
 
   constructor(
     private vehicleService: VehicleService
@@ -23,10 +24,18 @@ export class VehiclesComponent implements OnInit {
   }
 
   getCars(type) {
-    console.log(type);
     this.vehicleService.getCarByType(this.carType).subscribe(
       (res: any) => {
         this.allCars = res.content;
+        for (let x in this.allCars) {
+          let image = this.allCars[x].images;
+          image.forEach(obj => {
+            if (obj) {
+              console.log(obj.split('id=')[1].split(',')[0]);
+              this.images.push(obj.split('id=')[1].split(',')[0]);
+            }
+          });
+        }
         this.getModelName();
         console.log(this.allCars);
       });

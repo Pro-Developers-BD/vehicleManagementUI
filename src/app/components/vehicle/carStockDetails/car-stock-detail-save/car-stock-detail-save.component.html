@@ -153,7 +153,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-sm-4">
+  <!--    <div class="col-12 col-sm-4">
         <div class="row">
           <div class="col-8 col-sm-8 no-gutters upload-image">
             <img *ngIf="stock?.mediaId && !imgURL" class="mt-2"
@@ -167,36 +167,36 @@
               </label><span class="text-danger"> (*)</span>
               <input #file id="imagePath" type="file" formControlName="imagePath" accept='image/*'
                      ng2FileSelect [uploader]="uploader" (change)="preview(file.files)" />
-              <!-- <div *ngIf="submited && imagePath2.invalid" class="alert alert-danger">
+              &lt;!&ndash; <div *ngIf="submited && imagePath2.invalid" class="alert alert-danger">
                   <div *ngIf="imagePath2.errors.required">
                       {{ 'REQUIRED.media' | translate }}
                   </div>
-              </div> -->
-              <!-- <div class="alert alert-danger" *ngIf="imageRequired !=''">
+              </div> &ndash;&gt;
+              &lt;!&ndash; <div class="alert alert-danger" *ngIf="imageRequired !=''">
                    &lt;!&ndash;  {{imageRequired}} &ndash;&gt;
                    Image is required
-               </div>-->
+               </div>&ndash;&gt;
             </div>
         </div>
 
-      </div>
+      </div>-->
 
-<!--      <div class="form-group col-12">
+      <div class="form-group col-12">
         <div class="row">
           <div class="col-2" *ngFor="let item of images; let i= index">
             <div class="img-responsive">
-              <img src="{{baseUrl}}/media/{{item}}"/>
-              &lt;!&ndash; <fa-icon  [icon]="['fas', 'times']"></fa-icon> &ndash;&gt;
+              <span><img src="{{baseUrl}}/media/{{item}}"/></span>
+              <!-- <fa-icon  [icon]="['fas', 'times']"></fa-icon> -->
               <span class="btn btn-danger btn-xs" (click)="onRemoveImage(i)">Remove</span>
             </div>
           </div>
         </div>
-        <label for="imagePath" class="custom-file-upload mt-2">
+        <label for="images" class="custom-file-upload mt-2">
           upload media
         </label> <br/>
-        <input type="file" id="imagePath" ng2FileSelect [uploader]="uploader" multiple
+        <input type="file" id="images" ng2FileSelect [uploader]="uploader" multiple
                (onFileSelected)="onFileSelected($event)"/> <br/>
-      </div>-->
+      </div>
 
       <div class="row">
         <div class="mt-2 pr-2 ml-3">
