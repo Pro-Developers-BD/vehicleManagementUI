@@ -9,24 +9,19 @@
             <div class="product-img-box col-lg-5 col-sm-5 col-xs-12">
               <div class="product-image">
                 <div class="product-full">
-                  <img id="product-zoom" src="{{baseUrl}}/media/{{images[0]}}"
+                  <img id="product-zoom" src="{{baseUrl}}/media/{{imageId}}"
                        data-zoom-image="products-images/p46.jpg"
                        alt="product-image"/>
                 </div>
 
-                <div class="more-views">
-                  <div class="slider-items-products">
-                    <div id="gallery_02" class="product-flexslider hidden-buttons product-img-thumb">
-                      <div class="slider-items slider-width-col4 block-content">
-                        <div class="more-views-items" *ngFor="let image of images; let i=index;">
-                          <a href="#" data-image="{{image}}" data-zoom-image="{{image}}">
-                            <img id="product-zoom[{{image}}]" src="{{baseUrl}}/media/{{image}}" alt="car-image"
-                                 width="50px" height="50px"/>
-                          </a>
-                        </div>
-                      </div>
+                <div class="more-views-items">
+                  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+                                      (init)="slickInit($event)" (breakpoint)="breakpoint($event)">
+                    <div ngxSlickItem *ngFor="let image of images; let i=index;" class="slide">
+                      <img id="{{image}}" src="{{baseUrl}}/media/{{image}}" alt="car-image"
+                           width="100%" (click)="changeImage($event)"/>
                     </div>
-                  </div>
+                  </ngx-slick-carousel>
                 </div>
 
               </div>

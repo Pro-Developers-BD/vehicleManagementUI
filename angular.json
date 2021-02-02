@@ -28,14 +28,18 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.css",
-              "./node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "node_modules/slick-carousel/slick/slick.scss",
+              "node_modules/slick-carousel/slick/slick-theme.scss",
               "src/styles.scss"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js",
-              "./node_modules/datatables.net/js/jquery.dataTables.js"
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/slick-carousel/slick/slick.min.js"
             ]
           },
           "configurations": {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {VehicleService} from "../../../../../_services/vehicle.service";
-import {environment} from "../../../../../../environments/environment";
+import {ActivatedRoute, Router} from '@angular/router';
+import {VehicleService} from '../../../../_services/vehicle.service';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -14,6 +14,16 @@ export class VehicleDetailsComponent implements OnInit {
   public carCompanyName: any;
   public carBrandName: any;
   public images: any = [];
+  public imageId: any;
+
+  slideConfig = {
+    "slidesToShow": 3,
+    "slidesToScroll": 2,
+    "nextArrow": "<div class='nav-btn next-slide'></div>",
+    "prevArrow": "<div class='nav-btn prev-slide'></div>",
+    "dots": true,
+    "infinite": true
+  };
 
   constructor(
     private router: Router,
@@ -31,7 +41,8 @@ export class VehicleDetailsComponent implements OnInit {
           let image = this.vehicleDetails.images;
           image.forEach(obj => {
             if (obj) {
-              this.images.push(obj.split('id=')[1].split(',')[0]);
+              const imgId = obj.split('id=')[1].split(',')[0];
+              this.images.push(imgId);
             }
           });
           this.getCarCompany(this.vehicleDetails.carCompanyId);
@@ -54,4 +65,16 @@ export class VehicleDetailsComponent implements OnInit {
       });
   }
 
+  slickInit(e) {
+    console.log('slick initialized');
+    this.imageId =this.images[0];
+  }
+
+  breakpoint(e) {
+    console.log('breakpoint');
+  }
+
+  changeImage(e) {
+    this.imageId = e.target.id;
+  }
 }

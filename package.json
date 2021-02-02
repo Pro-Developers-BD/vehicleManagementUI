@@ -43,7 +43,9 @@
     "ngx-bootstrap": "^6.1.0",
     "ngx-cookie-service": "^10.0.1",
     "ngx-permissions": "^8.0.0",
+    "ngx-slick-carousel": "^0.5.1",
     "rxjs": "~6.6.0",
+    "slick-carousel": "^1.8.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

@@ -20,8 +20,7 @@ import {ColorComponent} from './components/vehicle/color/color.component';
 import {ColorSaveComponent} from './components/vehicle/color/color-save/color-save.component';
 import {UserSaveComponent} from './components/auth/user-save/user-save.component';
 import {VehiclesComponent} from './components/vehicle/vehicles/vehicles.component';
-import {VehicleDetailsComponent} from './components/vehicle/vehicles/vehicle-details/vehicle-details/vehicle-details.component';
-import {VehicleDetailSaveComponent} from './components/vehicle/vehicles/vehicle-details/vehicle-detail-save/vehicle-detail-save.component';
+import {VehicleDetailsComponent} from './components/vehicle/vehicles/vehicle-details/vehicle-details.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -53,8 +52,6 @@ const routes: Routes = [
   {path: 'color/save/:id', component: ColorSaveComponent},
   {path: 'vehicles', component: VehiclesComponent},
   {path: 'vehicles/Details/:id', component: VehicleDetailsComponent},
-  {path: 'vehicles/Details/save', component: VehicleDetailSaveComponent},
-  {path: 'vehicles/Details/save/:id', component: VehicleDetailSaveComponent},
   {path: '**', redirectTo: ''}
 ];
 
