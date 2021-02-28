@@ -35,12 +35,14 @@
           <div class="product">
             <div class="text py-3 pb-4 px-3 text-center">
               <a class="img-prod" routerLink="/vehicles/Details/{{car.id}}">
-                <img class="img-fluid mt-2" src="{{baseUrl}}/media/{{images[0]}}" height="200"
+                <img class="img-fluid mt-2" src="{{baseUrl}}/media/{{car.images[0].split('id=')[1].split(',')[0]}}"
+                     height="200"
                      width="200" alt="Car Image">
                 <div class="overlay"></div>
               </a>
-              <h6 *ngFor="let model of models"><a routerLink="/vehicles/Details/{{car.id}}"><span class="font-weight-bold m-0"
-                                                                       *ngIf="car.carModelId == model.id">{{model.carModelName}}</span></a>
+              <h6 *ngFor="let model of models"><a routerLink="/vehicles/Details/{{car.id}}"><span
+                class="font-weight-bold m-0"
+                *ngIf="car.carModelId == model.id">{{model.carModelName}}</span></a>
               </h6>
               <p><span class="float-left text-info">{{car?.price | currency:'BDT'}}</span>
                 <span class="float-right text-success font-weight-bold"
