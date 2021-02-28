@@ -185,7 +185,7 @@
         <div class="row">
           <div class="col-2" *ngFor="let item of images; let i= index">
             <div class="img-responsive">
-              <span><img src="{{baseUrl}}/media/{{item}}"/></span>
+              <span><img src="{{baseUrl}}/media/{{item}}" height="100" width="100"/></span>
               <!-- <fa-icon  [icon]="['fas', 'times']"></fa-icon> -->
               <span class="btn btn-danger btn-xs" (click)="onRemoveImage(i)">Remove</span>
             </div>
